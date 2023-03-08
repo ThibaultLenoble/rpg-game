@@ -1,3 +1,11 @@
 node_modules/
 dist/
-.prettierrc.cjs
+.prettierrc
+.history
+.husky
+.vscode
+coverage
+dist
+node_modules
+vite.config.ts
+jest.config.ts
