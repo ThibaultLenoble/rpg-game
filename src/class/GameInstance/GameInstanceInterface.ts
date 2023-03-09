@@ -1,4 +1,4 @@
-import Player from "../player/Player";
+import Player from "../Player/Player";
 import RoomEvent from "../RoomEvent/RoomEvent";
 
 export default interface GameInstanceInterface {
