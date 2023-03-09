@@ -12,8 +12,10 @@ export default class GameController implements GameControllerInterface {
   validateNumericInput(inputValue: string): void {
     if (this.isNumeric(inputValue)) {
       if (this.gameInstance) {
-        this.gameInstance.handleChoice(parseFloat(inputValue))
+        this.gameInstance.handleChoice(parseFloat(inputValue) - 1)
       }
+    } else {
+      console.error('Non numeric option')
     }
   }
 
