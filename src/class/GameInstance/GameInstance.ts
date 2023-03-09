@@ -15,6 +15,7 @@ export default class GameInstance implements GameInstanceInterface {
     this.player = player;
     this.actualRoom = roomChanger();
     this.roomCount++;
+    this.dipslayEquipment();
   }
 
   changeRoom(): void {
@@ -77,6 +78,13 @@ export default class GameInstance implements GameInstanceInterface {
         console.error("L'évènement n'existe pas ou n'a pas de type");
         break;
     }
+  }
+
+  dipslayEquipment() {
+    console.log(this.player);
+    document.querySelector<HTMLDivElement>(
+      ".life__player"
+    )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} PV`;
   }
 
   endGame(): void {
