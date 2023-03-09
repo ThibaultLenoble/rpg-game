@@ -20,10 +20,9 @@ export default class GameInstance implements GameInstanceInterface {
     console.log('change de salle')
     this.actualRoom = roomChanger();
     this.roomCount++;
+    document.querySelector<HTMLDivElement>(".prompt__room-advance")!.innerHTML = `${this.roomCount}/${this.maxRoom}`
   }
-
-  generateRoom(): void {}
-
+  
   handleChoice(choiceIndex: number): void {
     if (this.actualRoom) {
       if (this.actualRoom.isChoiceExist(choiceIndex)) {
