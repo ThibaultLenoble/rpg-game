@@ -1,4 +1,5 @@
 import "./style.css";
+import GameController from "./controller/GameController/GameController";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="prompt">
@@ -8,3 +9,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <button class="prompt__submit">Continuer</button>
   </div>
 `;
+
+const gameController = new GameController();
+gameController.validateNumericInput('0')

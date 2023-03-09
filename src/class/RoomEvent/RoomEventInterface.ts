@@ -1,10 +1,7 @@
 import ChoiceInterface from "../Choice/ChoiceInterface";
 
-interface RoomEventInterface {
-  type: string;
+export default interface RoomEventInterface {
   inputContext: string;
   outputContext: string;
-  choices: ChoiceInterface[];
+  choices?: ChoiceInterface[];
 }
-
-export default RoomEventInterface;
