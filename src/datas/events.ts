@@ -8,12 +8,38 @@ export const dataEvents: RoomEvent[] = [
     "Vous vous déplacez",
     [dataChoices[0], dataChoices[1]]
   ),
+  new EnigmaEvent("Je suis un énigme", "Vous vous creusez la tête", [
+    dataChoices[0],
+    dataChoices[1],
+  ]),
   new EnigmaEvent(
-    "Je suis un énigme",
+    "Je suis un énigme super stylée",
     "Vous vous creusez la tête",
-    [
-      dataChoices[0],
-      dataChoices[1],
-    ]
+    [dataChoices[0], dataChoices[1]]
+  ),
+  new EnigmaEvent(
+    "Je suis un énigme méga stylée",
+    "Vous vous creusez la tête",
+    [dataChoices[0], dataChoices[1]]
+  ),
+  new EnigmaEvent(
+    "Je suis un énigme assez stylée",
+    "Vous vous creusez la tête",
+    [dataChoices[0], dataChoices[1]]
+  ),
+  new EnigmaEvent(
+    "Je suis un énigme plutot stylée",
+    "Vous vous creusez la tête",
+    [dataChoices[0], dataChoices[1]]
+  ),
+  new EnigmaEvent(
+    "Je suis un énigme pas du tout stylée",
+    "Vous vous creusez la tête",
+    [dataChoices[0], dataChoices[1]]
+  ),
+  new EnigmaEvent(
+    "Je suis un énigme un peu stylée",
+    "Vous vous creusez la tête",
+    [dataChoices[0], dataChoices[1]]
   ),
 ];

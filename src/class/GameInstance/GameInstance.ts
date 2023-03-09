@@ -2,6 +2,7 @@ import GameInstanceInterface from "./GameInstanceInterface";
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeRoom as roomChanger } from "../../utils/RoomHandler";
+import { dataEvents } from "../../datas/events";
 
 export default class GameInstance implements GameInstanceInterface {
   actualRoom?: RoomEvent | undefined;
@@ -56,8 +57,31 @@ export default class GameInstance implements GameInstanceInterface {
     }
   }
 
+  getRandomEvent(): RoomEvent {
+    const randomEvent =
+      dataEvents[Math.floor(Math.random() * dataEvents.length)];
+    return randomEvent;
+  }
+
+  getRandomChoicesAccordingToEvent(event: RoomEvent): RoomEvent {
+    switch (event.constructor.name) {
+      case "RoomEvent":
+        break;
+      case "EnigmaEvent":
+        break;
+      case "FightEvent":
+        break;
+      case "ExchangeEvent":
+        break;
+      default:
+        console.error("L'évènement n'existe pas ou n'a pas de type");
+        break;
+    }
+  }
+
   endGame(): void {
     console.log("Fin du jeu");
-    document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = "Le jeu est fini. Vous avez gagné !!! 🥳🥳🥳🥳🥳🥳";
+    document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
+      "Le jeu est fini. Vous avez gagné !!! 🥳🥳🥳🥳🥳🥳";
   }
 }

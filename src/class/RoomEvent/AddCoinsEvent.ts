@@ -1,15 +1,16 @@
 import RoomEvent from "./RoomEvent";
 import ChoiceInterface from "../Choice/ChoiceInterface";
 
-export default class EnigmaEvent extends RoomEvent {
-  type: string;
+export default class AddCoinsEvent extends RoomEvent {
+  coinsToAdd: number;
 
   constructor(
     inputContext: string,
     outputContext: string,
+    coinsToAdd: number,
     choices?: ChoiceInterface[]
   ) {
     super(inputContext, outputContext, choices);
-    this.type = "Enigme";
+    this.coinsToAdd = coinsToAdd;
   }
 }
