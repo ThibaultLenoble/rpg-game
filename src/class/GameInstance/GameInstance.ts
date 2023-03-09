@@ -96,6 +96,28 @@ export default class GameInstance implements GameInstanceInterface {
     }
   }
 
+  getRandomEvent(): RoomEvent {
+    const randomEvent =
+      dataEvents[Math.floor(Math.random() * dataEvents.length)];
+    return randomEvent;
+  }
+
+  getRandomChoicesAccordingToEvent(event: RoomEvent): RoomEvent {
+    switch (event.constructor.name) {
+      case "RoomEvent":
+        break;
+      case "EnigmaEvent":
+        break;
+      case "FightEvent":
+        break;
+      case "ExchangeEvent":
+        break;
+      default:
+        console.error("L'évènement n'existe pas ou n'a pas de type");
+        break;
+    }
+  }
+
   dipslayEquipment() {
     document.querySelector<HTMLDivElement>(
       ".life__player"
