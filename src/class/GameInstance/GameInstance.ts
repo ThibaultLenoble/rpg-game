@@ -1,6 +1,6 @@
 import GameInstanceInterface from "./GameInstanceInterface";
 import RoomEvent from "../RoomEvent/RoomEvent";
-import Player from "../player/Player";
+import Player from "../Player/Player";
 import {changeRoom as roomChanger} from "../../utils/RoomHandler";
 
 export default class GameInstance implements GameInstanceInterface {
