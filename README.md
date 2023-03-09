@@ -89,3 +89,23 @@ Vous avez accès à 3 environnements :
 - Local (via ViteJs)
 - Preprod (dès qu'une PR est mergée sur develop): [https://develop--dreamy-youtiao-3d2f75.netlify.app/](https://develop--dreamy-youtiao-3d2f75.netlify.app/)
 - Prod (dès qu'une PR est mergée sur master):[https://dreamy-youtiao-3d2f75.netlify.app](https://dreamy-youtiao-3d2f75.netlify.app)
+
+## Documentation
+
+### Character
+
+#### Attributes
+
+#### Methods
+
+### Event
+
+#### Attributes
+
+#### Methods
+
+### Choice
+
+#### Attributes
+
+#### Methods
