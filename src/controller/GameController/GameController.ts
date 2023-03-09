@@ -40,6 +40,6 @@ export default class GameController implements GameControllerInterface {
   }
 
   isNumeric(str: string) {
-    return !isNaN(parseFloat(str))
+    return !isNaN(parseFloat(str));
   }
 }
