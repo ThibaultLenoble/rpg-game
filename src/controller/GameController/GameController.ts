@@ -1,42 +1,41 @@
 import GameControllerInterface from "./GameControllerInterface";
 import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
-import Weapon from "../../class/Weapon/Weapon";
+import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
 
 export default class GameController implements GameControllerInterface {
   gameInstance?: GameInstance;
+
+  player?: Player
 
   setGameInstance(player: Player): void {
     this.gameInstance = new GameInstance(player);
   }
 
-  validateNumericInput(inputValue: string): void {
+  validateNumericInput(inputValue: string): boolean {
     if (this.isNumeric(inputValue)) {
-      if (this.gameInstance) {
-        this.gameInstance.handleChoice(parseFloat(inputValue) - 1);
-      }
+      return true;
     } else {
-      console.error("Non numeric option");
+      console.error('Non numeric option')
+      return false
     }
   }
 
   handleInput(inputValue: string) {
     if (this.gameInstance) {
-      this.validateNumericInput(inputValue);
+      if(this.validateNumericInput(inputValue)) {
+        this.gameInstance.handleChoice(parseFloat(inputValue) - 1)
+      }
     } else {
-      inputValue
-        ? this.setGameInstance(
-            new Player(
-              inputValue,
-              12,
-              50,
-              new Weapon("dagger", 20),
-              "mage noir",
-              5,
-              1000
-            )
-          )
-        : null;
+      if (this.player) {
+        if(this.validateNumericInput(inputValue)) {
+          this.player = setRole(this.player, parseFloat(inputValue) - 1)
+          this.setGameInstance(this.player)
+        }
+      } else {
+        this.player = new Player(inputValue);
+        document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = displayAllRoleChoices()
+      }
     }
   }
 
