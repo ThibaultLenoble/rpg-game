@@ -4,9 +4,9 @@ import RoomEvent from "../RoomEvent/RoomEvent";
 export default interface GameInstanceInterface {
   roomCount: number;
   player: Player;
-  actualRoom: RoomEvent;
+  actualRoom?: RoomEvent;
 
   generateRoom(): void;
 
-  changeRoom(): void
+  changeRoom(): void;
 }

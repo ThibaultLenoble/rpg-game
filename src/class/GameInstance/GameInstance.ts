@@ -3,13 +3,12 @@ import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../player/Player";
 
 export default class GameInstance implements GameInstanceInterface {
-  actualRoom: RoomEvent | undefined;
+  actualRoom?: RoomEvent;
   player: Player;
   roomCount: number = 1;
 
   constructor(player: Player) {
     this.player = player;
-    this.generateRoom();
   }
 
   changeRoom(): void {}

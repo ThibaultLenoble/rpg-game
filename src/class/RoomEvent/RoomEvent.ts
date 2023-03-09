@@ -35,6 +35,14 @@ class RoomEvent implements RoomEventInterface {
     return this.choices;
   }
 
+  displayAllChoices(): string {
+    let labels = "";
+    this.choices.forEach((choice, index) => {
+      labels += `${index + 1} - ${choice.label} \n`;
+    });
+    return labels;
+  }
+
   setType(type: string): void {
     this.type = type;
   }
