@@ -10,13 +10,13 @@ export default class Weapon {
   setName(name: string) {
     this.name = name;
   }
-  getName() {
+  getName():string {
     return this.name;
   }
   setDamage(damage: number) {
     this.damage = damage;
   }
-  getDamage() {
-    return this.name;
+  getDamage():number {
+    return this.damage;
   }
 }
