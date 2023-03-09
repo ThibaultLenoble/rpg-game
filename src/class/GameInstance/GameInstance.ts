@@ -14,6 +14,7 @@ export default class GameInstance implements GameInstanceInterface {
     this.player = player;
     this.actualRoom = roomChanger();
     this.roomCount++;
+    this.dipslayEquipment();
   }
 
   changeRoom(): void {
@@ -56,8 +57,16 @@ export default class GameInstance implements GameInstanceInterface {
     }
   }
 
+  dipslayEquipment() {
+    console.log(this.player);
+    document.querySelector<HTMLDivElement>(
+      ".life__player"
+    )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} PV`;
+  }
+
   endGame(): void {
     console.log("Fin du jeu");
-    document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = "Le jeu est fini. Vous avez gagné !!! 🥳🥳🥳🥳🥳🥳";
+    document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
+      "Le jeu est fini. Vous avez gagné !!! 🥳🥳🥳🥳🥳🥳";
   }
 }
