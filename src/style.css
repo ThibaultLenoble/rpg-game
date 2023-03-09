@@ -20,3 +20,7 @@
 .prompt__submit {
   padding: 1rem 2rem;
 }
+
+.prompt__description {
+  white-space: pre-wrap;
+}

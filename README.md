@@ -39,17 +39,17 @@ L'objectif est d'atteindre et de finir la dernière salle du donjon (normalement
 #### Le choix
 
 Un choix minimum doit être fait sur le personnage, choix de perso, choix de classe,d’arme ou autres.
-Ce choix doit affecter le personnage interprété par le joueur/lajoueuse.
+Ce choix doit affecter le personnage interprété par le joueur/la joueuse.
 
 #### La boucle de gameplay
 
-Le coeur du jeux, le personnage va répéter cette évènement tant qu’il n’est pas mot ouqu’il n’a pas gagner.
-Vous êtes libre du déroulement d’une boucle, cependant au moinsun click est demandé pour passer à la boucle suivante.
+Le coeur du jeux, le personnage va répéter cette évènement tant qu’il n’est pas mort ou qu’il n’a pas gagner.
+Vous êtes libre du déroulement d’une boucle, cependant au moins un click est demandé pour passer à la boucle suivante.
 
 #### Conditions de fin de partie
 
 A vous de les déterminer, mais un ou plusieurs évènements doivent entrainer la fin dujeux que cela soit une
-victoire ou une défaite. Le game over doit être clair pour lejoueur.
+victoire ou une défaite. Le game over doit être clair pour le joueur.
 
 #### Obligation
 
