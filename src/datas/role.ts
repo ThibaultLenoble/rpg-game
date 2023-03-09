@@ -1,5 +1,5 @@
 import {dataWeapon} from "./weapons";
-import Weapon from "../class/weapon/Weapon";
+import Weapon from "../class/Weapon/Weapon";
 
 export const dataRole: { title: string, hpMax: number, weapon: Weapon }[] = [
   {
