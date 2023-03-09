@@ -2,15 +2,18 @@ import ChoiceInterface from "../Choice/ChoiceInterface";
 import RoomEventInterface from "./RoomEventInterface";
 
 class RoomEvent implements RoomEventInterface {
+  type: string
   inputContext: string;
   outputContext: string;
   choices: ChoiceInterface[] = [];
 
   constructor(
+    type: string,
     inputContext: string,
     outputContext: string,
     choices?: ChoiceInterface[]
   ) {
+    this.type = type
     this.inputContext = inputContext;
     this.outputContext = outputContext;
 

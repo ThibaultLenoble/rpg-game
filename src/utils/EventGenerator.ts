@@ -4,9 +4,10 @@ import ChoiceInterface from "../class/Choice/ChoiceInterface";
 import {dataChoices} from "../datas/choices";
 
 export const getRandomEvent = (): RoomEvent => {
-  let event = dataEvents.available[Math.floor(Math.random() * dataEvents.available.length)]
+  let rand = Math.floor(Math.random() * dataEvents.available.length)
+  let event = dataEvents.available[rand]
 
-  switch (event.constructor.name) {
+  switch (event.type) {
     case "EnigmaEvent":
     case "FightEvent":
     case "ExchangeEvent":
@@ -29,7 +30,7 @@ export const getRandomChoicesAccordingToEvent = (event: RoomEvent): ChoiceInterf
 
   for (let i = 0; i < choicesCount; i++) {
     let choiceList: ChoiceInterface[] = [];
-    switch (event.constructor.name) {
+    switch (event.type) {
       case "EnigmaEvent":
         choiceList = dataChoices.EnigmaEvent;
         break;
