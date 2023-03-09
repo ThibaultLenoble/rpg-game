@@ -6,7 +6,7 @@ export default interface GameInstanceInterface {
   player: Player;
   actualRoom?: RoomEvent;
 
-  generateRoom(): void;
+  maxRoom: number;
 
   changeRoom(): void;
 }
