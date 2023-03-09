@@ -7,8 +7,8 @@ class Player implements PlayerInterface {
     this.name = name;
   }
 
-  getName(name: string) {
-    return (this.name = name);
+  getName() {
+    return this.name
   }
 }
 
