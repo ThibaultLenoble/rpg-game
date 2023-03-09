@@ -1,3 +1,4 @@
+import GameController from "./controller/GameController/GameController";
 import "./style.css";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
@@ -8,3 +9,14 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <button class="prompt__submit">Continuer</button>
   </div>
 `;
+
+const inputBtn: any = document.querySelector(".prompt__submit");
+const inputEl: any = document.querySelector(".prompt__input");
+
+inputBtn.addEventListener("click", () => getValue());
+
+const gameController = new GameController();
+
+const getValue = () => {
+  gameController.handleInput(inputEl.value);
+};

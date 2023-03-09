@@ -8,13 +8,11 @@ export default class GameInstance implements GameInstanceInterface {
   roomCount: number = 1;
 
   constructor(player: Player) {
-    this.player = player
+    this.player = player;
+    this.generateRoom();
   }
 
-  changeRoom(): void {
-  }
+  changeRoom(): void {}
 
-  generateRoom(): void {
-  }
-
+  generateRoom(): void {}
 }
