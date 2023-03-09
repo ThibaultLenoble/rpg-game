@@ -6,6 +6,5 @@ export default interface GameControllerInterface {
 
   setGameInstance(player: Player): void
 
-  validateInput(): void
-  inputValue?: string;
+  validateNumericInput(inputValue: string): void
 }

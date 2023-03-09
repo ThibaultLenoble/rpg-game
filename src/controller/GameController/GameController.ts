@@ -5,25 +5,20 @@ import Player from "../../class/Player/Player";
 export default class GameController implements GameControllerInterface {
   gameInstance?: GameInstance;
 
-  constructor(gameInstance?: GameInstance, inputValue?: string) {
-    if (gameInstance) {
-      this.gameInstance = gameInstance;
-    } else {
-      inputValue
-        ? (this.gameInstance = new GameInstance(new Player(inputValue)))
-        : null;
-    }
-  }
-
-  setGameInstance(player: Player): void {
+  setGameInstance(player: Player): void
+  {
     this.gameInstance = new GameInstance(player);
   }
 
-  validateInput(): void {}
-
-  handleInput(inputValue: string) {
-    return inputValue;
+  validateNumericInput(inputValue: string): void {
+    if (this.isNumeric(inputValue)) {
+      if (this.gameInstance) {
+        this.gameInstance.handleChoice(parseFloat(inputValue))
+      }
+    }
   }
 
- 
+  isNumeric(str: string) {
+    return !isNaN(parseFloat(str))
+  }
 }
