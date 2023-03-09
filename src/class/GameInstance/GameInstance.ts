@@ -101,7 +101,7 @@ export default class GameInstance implements GameInstanceInterface {
       ".life__player"
     )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} PV`;
   }
-
+  
   endGame(isWin: boolean = false): void {
     console.log("Fin du jeu");
     if (isWin) {
