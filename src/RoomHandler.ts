@@ -1,6 +1,6 @@
 import ChoiceInterface from "./class/Choice/ChoiceInterface";
 import RoomEvent from "./class/RoomEvent/RoomEvent";
-import { dataChoices } from "./datas/choices";
+import { dataEvents } from "./datas/events";
 
 export const changeRoom = (choices?: ChoiceInterface[]) => {
   if (choices) {
@@ -11,16 +11,11 @@ export const changeRoom = (choices?: ChoiceInterface[]) => {
       choices
     );
 
-    document.querySelector<HTMLDivElement>("#app")!.innerHTML =
+    document.querySelector<HTMLDivElement>("#.prompt__description")!.innerHTML =
       actualRoom.displayAllChoices();
   } else {
-    const actualRoom = new RoomEvent(
-      "enigma",
-      "Vous êtes dans une salle, vous pouvez choisir de partir en direction de la salle suivante ou de rester dans cette salle",
-      "Vous avez choisi de partir en direction de la salle suivante",
-      dataChoices
-    );
-    document.querySelector<HTMLDivElement>("#app")!.innerHTML =
+    const actualRoom = dataEvents[0];
+    document.querySelector<HTMLDivElement>("#.prompt__description")!.innerHTML =
       actualRoom.displayAllChoices();
   }
 };
