@@ -34,7 +34,9 @@ class RoomEvent implements RoomEventInterface {
   displayAllChoices(): string {
     let labels = "";
     this.choices.forEach((choice, index) => {
-      labels += `${index + 1} - ${choice.label} \n`;
+      if (choice !== undefined) {
+        labels += `${index + 1} - ${choice.label} \n`;
+      }
     });
     return labels;
   }

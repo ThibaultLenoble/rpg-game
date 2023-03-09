@@ -2,8 +2,8 @@ import Weapon from "../Weapon/Weapon";
 
 class Player {
   name: string;
-  currentLife?: number;
-  maxLife?: number;
+  currentLife: number = 0;
+  maxLife: number = 0;
   weapon?: Weapon;
   role?: string;
   level: number;
@@ -60,6 +60,43 @@ class Player {
 
   getCoins(): number {
     return this.coins;
+  }
+
+  takeHit(damage: number) {
+    this.currentLife -= damage;
+
+    if (this.currentLife < 0) {
+      this.currentLife = 0;
+    }
+
+    document.querySelector<HTMLDivElement>(
+      ".life__player"
+    )!.innerHTML = `${this.currentLife}/${this.maxLife} PV`;
+  }
+
+  heal(amount: number) {
+    this.currentLife += amount;
+
+    if (this.currentLife > this.maxLife) {
+      this.currentLife =  this.maxLife;
+    }
+
+    document.querySelector<HTMLDivElement>(
+      ".life__player"
+    )!.innerHTML = `${this.currentLife}/${this.maxLife} PV`;
+  }
+
+  earnMoney(amount: number) {
+    this.coins += amount;
+  }
+
+  giveMoney(amount: number): boolean {
+    if (this.coins < amount) {
+      return false;
+    } else  {
+      this.coins -= amount;
+      return true;
+    }
   }
 }
 

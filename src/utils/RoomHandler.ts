@@ -1,8 +1,9 @@
 import ChoiceInterface from "../class/Choice/ChoiceInterface";
-import { dataEvents } from "../datas/events";
 import EnigmaEvent from "../class/RoomEvent/EnigmaEvent";
+import {getRandomEvent} from "./EventGenerator";
+import RoomEvent from "../class/RoomEvent/RoomEvent";
 
-export const changeRoom = (choices?: ChoiceInterface[]) => {
+export const changeEvent = (event?: RoomEvent, choices?: ChoiceInterface[]) => {
   if (choices) {
     const actualRoom = new EnigmaEvent(
       "Vous êtes dans une salle, vous pouvez choisir de partir en direction de la salle suivante ou de rester dans cette salle",
@@ -11,14 +12,22 @@ export const changeRoom = (choices?: ChoiceInterface[]) => {
     );
 
     document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
-      actualRoom.displayAllChoices();
-
-    return actualRoom
-  } else {
-    const actualRoom = dataEvents[0];
-    document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
-      actualRoom.displayAllChoices();
+      actualRoom.outputContext + '\n' + actualRoom.inputContext + '\n' + actualRoom.displayAllChoices();
 
     return actualRoom
   }
+
+  if (event) {
+    document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
+      event.outputContext + '\n' + event.inputContext + '\n' + event.displayAllChoices();
+
+    return event;
+  }
+
+  const actualRoom = getRandomEvent();
+  document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
+    actualRoom.outputContext + '\n' + actualRoom.inputContext + '\n' + actualRoom.displayAllChoices();
+
+  return actualRoom
+
 };

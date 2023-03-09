@@ -1,19 +1,20 @@
 import RoomEvent from "../class/RoomEvent/RoomEvent";
-import { dataChoices } from "./choices";
+import {dataChoices} from "./choices";
 import EnigmaEvent from "../class/RoomEvent/EnigmaEvent";
+import MainEvent from "../class/RoomEvent/MainEvent";
 
-export const dataEvents: RoomEvent[] = [
-  new EnigmaEvent(
-    "Vous êtes dans une salle, vous pouvez choisir de partir en direction de la salle suivante ou de rester dans cette salle",
-    "Vous vous déplacez",
-    [dataChoices[0], dataChoices[1]]
-  ),
-  new EnigmaEvent(
-    "Je suis un énigme",
-    "Vous vous creusez la tête",
-    [
-      dataChoices[0],
-      dataChoices[1],
-    ]
-  ),
-];
+export const dataEvents: { mainEvents: MainEvent[], available: RoomEvent[] } = {
+  mainEvents: [
+    new MainEvent(
+      "Aller à la salle suivante ?",
+      "",
+      [dataChoices.MainEvent[0]]
+    ),
+  ],
+  available: [
+    new EnigmaEvent(
+      'Vous arrivez dans une salle et vous voyez plusieurs coffre',
+      ''
+    )
+  ]
+};

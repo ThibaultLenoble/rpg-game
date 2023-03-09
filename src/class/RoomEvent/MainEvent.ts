@@ -1,7 +1,7 @@
 import RoomEvent from "./RoomEvent";
 import ChoiceInterface from "../Choice/ChoiceInterface";
 
-export default class EnigmaEvent extends RoomEvent {
+export default class MainEvent extends RoomEvent {
   type: string;
 
   constructor(
@@ -10,6 +10,6 @@ export default class EnigmaEvent extends RoomEvent {
     choices?: ChoiceInterface[]
   ) {
     super(inputContext, outputContext, choices);
-    this.type = "Enigme";
+    this.type = "Main";
   }
 }
