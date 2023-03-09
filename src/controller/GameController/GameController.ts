@@ -5,8 +5,7 @@ import Player from "../../class/Player/Player";
 export default class GameController implements GameControllerInterface {
   gameInstance?: GameInstance;
 
-  setGameInstance(player: Player): void
-  {
+  setGameInstance(player: Player): void {
     this.gameInstance = new GameInstance(player);
   }
 
@@ -18,6 +17,15 @@ export default class GameController implements GameControllerInterface {
     }
   }
 
+  handleInput(inputValue: string) {
+    if (this.gameInstance) {
+      this.validateNumericInput(inputValue)
+    } else {
+      inputValue
+        ? (this.gameInstance = new GameInstance(new Player(inputValue)))
+        : null;
+    }
+  }
   isNumeric(str: string) {
     return !isNaN(parseFloat(str))
   }
