@@ -3,7 +3,7 @@ import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
 
 export default class GameController implements GameControllerInterface {
-  gameInstance?: GameInstance = new GameInstance(new Player('J1'));
+  gameInstance?: GameInstance;
 
   setGameInstance(player: Player): void {
     this.gameInstance = new GameInstance(player);
@@ -24,7 +24,7 @@ export default class GameController implements GameControllerInterface {
       this.validateNumericInput(inputValue)
     } else {
       inputValue
-        ? (this.gameInstance = new GameInstance(new Player(inputValue)))
+        ? (this.setGameInstance(new Player(inputValue)))
         : null;
     }
   }
