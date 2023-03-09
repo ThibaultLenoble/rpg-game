@@ -1,6 +1,6 @@
-import ChoiceInterface from "./class/Choice/ChoiceInterface";
-import RoomEvent from "./class/RoomEvent/RoomEvent";
-import { dataEvents } from "./datas/events";
+import ChoiceInterface from "../class/Choice/ChoiceInterface";
+import RoomEvent from "../class/RoomEvent/RoomEvent";
+import { dataEvents } from "../datas/events";
 
 export const changeRoom = (choices?: ChoiceInterface[]) => {
   if (choices) {
