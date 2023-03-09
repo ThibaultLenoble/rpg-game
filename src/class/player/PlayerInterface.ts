@@ -1,5 +1,3 @@
-interface PlayerInterface {
+export default interface PlayerInterface {
     name: string;
 }
-
-export default PlayerInterface;
