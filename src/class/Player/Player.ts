@@ -2,29 +2,19 @@ import Weapon from "../Weapon/Weapon";
 
 class Player {
   name: string;
-  currentLife: number;
-  maxLife: number;
-  weapon: Weapon;
-  role: string;
+  currentLife?: number;
+  maxLife?: number;
+  weapon?: Weapon;
+  role?: string;
   level: number;
   coins: number;
 
   constructor(
     name: string,
-    currentLife: number,
-    maxLife: number,
-    weapon: Weapon,
-    role: string,
-    level: number,
-    coins: number
   ) {
     this.name = name;
-    this.currentLife = currentLife;
-    this.maxLife = maxLife;
-    this.weapon = weapon;
-    this.role = role;
-    this.level = level;
-    this.coins = coins;
+    this.level = 1;
+    this.coins = 100;
   }
 
   getName(): string {
@@ -36,7 +26,7 @@ class Player {
     this.maxLife = maxLife;
   }
 
-  getLife(): { current: number; max: number } {
+  getLife(): { current?: number; max?: number } {
     return { current: this.currentLife, max: this.maxLife };
   }
 
@@ -44,7 +34,7 @@ class Player {
     this.weapon = weapon;
   }
 
-  getWeapon(): Weapon {
+  getWeapon(): Weapon | undefined {
     return this.weapon;
   }
 
@@ -52,7 +42,7 @@ class Player {
     this.role = role;
   }
 
-  getRole(): string {
+  getRole(): string | undefined {
     return this.role;
   }
 
