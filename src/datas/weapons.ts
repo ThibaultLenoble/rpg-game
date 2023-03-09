@@ -1,4 +1,4 @@
-import Weapon from "../class/weapon/Weapon";
+import Weapon from "../class/Weapon/Weapon";
 
 export const dataWeapon: Weapon[] = [
   new Weapon('Arme 1', 200),
