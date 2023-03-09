@@ -22,7 +22,7 @@ export default class GameInstance implements GameInstanceInterface {
     this.roomCount++;
     document.querySelector<HTMLDivElement>(".prompt__room-advance")!.innerHTML = `${this.roomCount}/${this.maxRoom}`
   }
-
+  
   handleChoice(choiceIndex: number): void {
     if (this.actualRoom) {
       if (this.actualRoom.isChoiceExist(choiceIndex)) {

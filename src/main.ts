@@ -1,5 +1,6 @@
 import GameController from "./controller/GameController/GameController";
 import "./style.css";
+import GameController from "./controller/GameController/GameController";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="prompt">
