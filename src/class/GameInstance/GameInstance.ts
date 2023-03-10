@@ -91,7 +91,7 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.earnMoney(money);
-        this.mainEvent.outputContext = `Vous avez gagné ${money} pièces.`;
+        this.mainEvent.outputContext = `Vous avez gagné ${money} knacki balls.`;
         this.actualRoom = changeEvent(this.mainEvent);
         break;
       case "exchange":
@@ -140,7 +140,7 @@ export default class GameInstance {
 
     document.querySelector<HTMLDivElement>(
       ".player__coins"
-    )!.innerHTML = `${this.player.coins} $`;
+    )!.innerHTML = `${this.player.coins} knacki balls`;
   }
 
   endGame(isWin: boolean = false): void {

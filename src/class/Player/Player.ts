@@ -9,9 +9,7 @@ class Player {
   level: number;
   coins: number;
 
-  constructor(
-    name: string,
-  ) {
+  constructor(name: string) {
     this.name = name;
     this.level = 1;
     this.coins = 100;
@@ -78,7 +76,7 @@ class Player {
     this.currentLife += amount;
 
     if (this.currentLife > this.maxLife) {
-      this.currentLife =  this.maxLife;
+      this.currentLife = this.maxLife;
     }
 
     document.querySelector<HTMLDivElement>(
@@ -91,14 +89,14 @@ class Player {
 
     document.querySelector<HTMLDivElement>(
       ".player__coins"
-    )!.innerHTML = `${this.coins} $`;
+    )!.innerHTML = `${this.coins} knacki balls`;
   }
 
   giveMoney(amount: number): boolean {
-    let response = true
+    let response = true;
     if (this.coins < amount) {
       response = false;
-    } else  {
+    } else {
       this.coins -= amount;
       response = true;
       return true;
@@ -106,27 +104,27 @@ class Player {
 
     document.querySelector<HTMLDivElement>(
       ".player__coins"
-    )!.innerHTML = `${this.coins} $`;
+    )!.innerHTML = `${this.coins} knacki balls`;
 
     return response;
   }
 
-  exchangeAction(slug: string, amount: number): string|boolean {
+  exchangeAction(slug: string, amount: number): string | boolean {
     switch (slug) {
-      case 'hit':
+      case "hit":
         this.takeHit(amount);
-        return 'Vous prenez ' + amount + ' dégats';
-      case 'give-coin':
-        let isExchangeable = this.giveMoney(amount)
-        return isExchangeable ? 'Vous donnez ' + amount + ' pièces' : false;
-      case 'get-coin':
+        return "Vous prenez " + amount + " dégats";
+      case "give-coin":
+        let isExchangeable = this.giveMoney(amount);
+        return isExchangeable ? "Vous donnez " + amount + " pièces" : false;
+      case "get-coin":
         this.earnMoney(amount);
-        return 'Vous gagnez ' + amount + ' pièces';
-      case 'heal':
+        return "Vous gagnez " + amount + "  knacki balls";
+      case "heal":
         this.heal(amount);
-        return 'Vous êtes soigné de ' + amount + ' PV';
+        return "Vous êtes soigné de " + amount + " PV";
       default:
-        return 'Objet inconnu'
+        return "Objet inconnu";
     }
   }
 }
