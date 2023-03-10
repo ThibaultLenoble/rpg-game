@@ -12,9 +12,11 @@ export const getRandomEvent = (): RoomEvent => {
     case "EnigmaEvent":
     case "FightEvent":
     case "ExchangeEvent":
-      event.choices = getRandomChoicesAccordingToEvent(event)
-      if (event instanceof ExchangeEvent) {
-        event.choices.push(dataChoices.MainEvent[2])
+      if (event.choices.length === 0) {
+        event.choices = getRandomChoicesAccordingToEvent(event)
+        if (event instanceof ExchangeEvent) {
+          event.choices.push(dataChoices.MainEvent[2])
+        }
       }
       break;
     default:
