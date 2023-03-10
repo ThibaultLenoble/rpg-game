@@ -20,8 +20,7 @@ export default class GameInstance {
 
   constructor(player: Player) {
     this.player = player;
-    this.actualRoom = changeEvent();
-    this.roomCount++;
+    this.actualRoom = changeEvent(dataEvents.mainEvents[1]);
     this.dipslayEquipment();
   }
 
@@ -31,7 +30,7 @@ export default class GameInstance {
       this.endGame(true);
     } else {
       console.log("change de salle");
-      this.actualRoom = changeEvent();
+      this.actualRoom = changeEvent(undefined);
       document.querySelector<HTMLDivElement>(
         ".prompt__room-advance"
       )!.innerHTML = `${this.roomCount}/${this.maxRoom}`;

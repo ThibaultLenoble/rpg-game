@@ -10,6 +10,11 @@ export const dataEvents: { mainEvents: MainEvent[], available: RoomEvent[] } = {
       "",
       [dataChoices.MainEvent[0]]
     ),
+    new MainEvent(
+      "Scénario de base",
+      "",
+      [dataChoices.MainEvent[0]]
+    ),
   ],
   available: [
     new EnigmaEvent(

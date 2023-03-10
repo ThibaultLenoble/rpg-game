@@ -3,6 +3,7 @@ import Player from "../../class/Player/Player";
 import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
 
 export default class GameController {
+
   gameInstance?: GameInstance;
 
   player?: Player
@@ -33,7 +34,7 @@ export default class GameController {
         }
       } else {
         this.player = new Player(inputValue);
-        document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = displayAllRoleChoices()
+        document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n' + displayAllRoleChoices()
       }
     }
   }
