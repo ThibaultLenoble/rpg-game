@@ -10,7 +10,6 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <input type="text" class="prompt__input">
     <button class="prompt__submit">Continuer</button>
   </div>
-  
   <div class="context">
     <img src="" />
   </div>
