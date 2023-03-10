@@ -62,13 +62,13 @@ export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
       "Au détour d'un couloir, vous apercevez une lumière scintillante dans un coin de la pièce, quelques coffres sont entassés."
     ),
     new ExchangeEvent(
-      "Vous arrivez dans une salle et un marchand vous accueille."
+      "«C'EST L'HEURE DE MARCHANDER !!!!» Vous entendez une voix qui vous interpelle. Vous vous retournez et vous apercevez un marchand qui vous propose quelques affaires."
     ),
     new ExchangeEvent(
-      "Vous arrivez dans une salle et un marchand vous accueille."
+      "La salle est plongée dans le noir, au centre un homme et sa lampe qui vous propose de marchander."
     ),
     new ExchangeEvent(
-      "Vous arrivez dans une salle et un marchand vous accueille."
+      "Vous tombez nez à nez avec un marchand qui vous propose quelques affaires."
     ),
   ],
 };
