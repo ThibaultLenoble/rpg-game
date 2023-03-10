@@ -4,7 +4,7 @@ import Weapon from "../class/Weapon/Weapon";
 export const dataRole: { title: string; hpMax: number; weapon: Weapon }[] = [
   {
     title: "La Jambonneuse Justicière",
-    hpMax: 50,
+    hpMax: 60,
     weapon: dataWeapon[1],
   },
   {
@@ -14,12 +14,12 @@ export const dataRole: { title: string; hpMax: number; weapon: Weapon }[] = [
   },
   {
     title: "le Nain voleur de chaussettes",
-    hpMax: 80,
+    hpMax: 90,
     weapon: dataWeapon[3],
   },
   {
     title: "Pâté croûte-man",
-    hpMax: 80,
+    hpMax: 120,
     weapon: dataWeapon[4],
   },
 ];
