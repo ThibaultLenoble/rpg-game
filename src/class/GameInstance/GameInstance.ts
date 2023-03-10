@@ -28,7 +28,7 @@ export default class GameInstance {
 
   changeRoom(): void {
     this.roomCount++;
-    if (this.roomCount > 10) {
+    if (this.roomCount > this.maxRoom) {
       this.endGame(true);
     } else {
       console.log("change de salle");
@@ -154,6 +154,16 @@ export default class GameInstance {
         ".prompt__description"
       )!.innerHTML = "Le jeu est fini. Vous avez perdu !!!";
     }
+
+    document.querySelector<HTMLDivElement>(
+      ".prompt__room-advance"
+    )!.remove();
+    document.querySelector<HTMLDivElement>(
+      ".prompt__input"
+    )!.remove();
+    document.querySelector<HTMLDivElement>(
+      ".prompt__submit"
+    )!.remove();
   }
 
   randomIntFromInterval(min: number, max: number): number {

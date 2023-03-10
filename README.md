@@ -28,11 +28,10 @@ Le joueur doit créer son personnage. Pour cela, il doit choisir entre différen
 qui vont modifier ses statistiques de base ainsi que l'arme utilisée.
 
 Après avoir créé son personnage, la partie commence. Le joueur passe de salle en salle en passant
-divers évènements. Certaines salles contiennent des choix auquel le joueur sera
-confronté et d'autres contiendront des combats contre des ennemis aléatoires. A la
-fin de chaque évènement le joueur obtiendra des récompenses et pourra avancer à la salle suivante.
+divers évènements. Les salles contiennent des choix auquel le joueur sera
+confronté. A la fin de chaque évènement le joueur obtiendra des récompenses et pourra avancer à la salle suivante.
 
-L'objectif est d'atteindre et de finir la dernière salle du donjon (normalement un boss).
+L'objectif est d'atteindre et de finir la dernière salle du donjon.
 
 ### Les éléments indispensable
 
@@ -48,7 +47,7 @@ Vous êtes libre du déroulement d’une boucle, cependant au moins un click est
 
 #### Conditions de fin de partie
 
-A vous de les déterminer, mais un ou plusieurs évènements doivent entrainer la fin dujeux que cela soit une
+A vous de les déterminer, mais un ou plusieurs évènements doivent entrainer la fin du jeux que cela soit une
 victoire ou une défaite. Le game over doit être clair pour le joueur.
 
 #### Obligation
@@ -59,7 +58,7 @@ victoire ou une défaite. Le game over doit être clair pour le joueur.
   Pas d’harcèlement à travers le scénario, on garde la décence habituelle,
   dans le respect des règles de l’école. On est entre adulte respectable.
 - Respecter les 3 parties du jeu : choix de départ (peu importe lequel),
-  traverser dessalles (boucle de gameplay), fin du jeu (game over).
+  traverser des salles (boucle de gameplay), fin du jeu (game over).
 - Chaque membre du groupe doit créer une classe.
 
 #### N'est pas noté
@@ -90,22 +89,27 @@ Vous avez accès à 3 environnements :
 - Preprod (dès qu'une PR est mergée sur develop): [https://develop--dreamy-youtiao-3d2f75.netlify.app/](https://develop--dreamy-youtiao-3d2f75.netlify.app/)
 - Prod (dès qu'une PR est mergée sur master):[https://dreamy-youtiao-3d2f75.netlify.app](https://dreamy-youtiao-3d2f75.netlify.app)
 
-## Documentation
+## Informations
 
-### Character
+### Structure
 
-#### Attributes
+Le prompt du joueur envoie les informations au controller. Le controller valide l'input et gère l'instanciation du jeu.
+Ensuite le joueur se déplace de salle en salle. Chaque salle est un Event. Chaque Event a un type (EnigmaEvent pour les choix et
+ExchangeEvent pour les marchands). Chaque Event a un nombre de choix disponible générées aléatoirement par l'eventGenerator. 
+Chaque choix correspond ensuite à une action.
+Cette action est renvoyer à la GameInstance qui va ensuite appliquer les changements sur le joueur. 
 
-#### Methods
+Les actions globales :
+- `get-out` : Pour changer de salle
+- `nothing` : Pour ne rien faire
+- `exchange` : Pour initier un échange
 
-### Event
+Le joueur peut subir plusieurs actions :
+- `hit` :  prendre un coup
+- `heal` : se soigner
+- `earn-money` : Gagner de l'argent
+- `give-money` : donner de l'argent
 
-#### Attributes
-
-#### Methods
-
-### Choice
-
-#### Attributes
-
-#### Methods
+Le joueur peut aussi être confronté à des marchands. Ce dernier propose des échanges d'un type de donnée vers un autre :
+- De la vie contre de l'argent
+- De l'argent contre de la vie

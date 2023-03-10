@@ -13,7 +13,7 @@ export const changeEvent = (event?: RoomEvent) => {
   document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = ''
 
   document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
-    event.outputContext  + '\n' + event.inputContext + '\n' + event.displayAllChoices();
+    event.outputContext  + '\n \n' + event.inputContext + '\n \n' + event.displayAllChoices();
 
   return event
 
