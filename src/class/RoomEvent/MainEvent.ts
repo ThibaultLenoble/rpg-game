@@ -1,14 +1,15 @@
 import RoomEvent from "./RoomEvent";
-import ChoiceInterface from "../Choice/ChoiceInterface";
+import Choice from "../Choice/Choice";
 
 export default class MainEvent extends RoomEvent {
 
+  type: string = 'MainEvent';
+
   constructor(
-    type: string,
     inputContext: string,
     outputContext: string,
-    choices?: ChoiceInterface[]
+    choices?: Choice[]
   ) {
-    super(type, inputContext, outputContext, choices);
+    super(inputContext, outputContext, choices);
   }
 }

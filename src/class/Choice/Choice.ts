@@ -1,6 +1,4 @@
-import ChoiceInterface from "./ChoiceInterface";
-
-class Choice implements ChoiceInterface {
+class Choice {
   label: string;
   action: string;
 

@@ -1,7 +1,8 @@
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 import {dataEvents} from "../datas/events";
-import ChoiceInterface from "../class/Choice/ChoiceInterface";
 import {dataChoices} from "../datas/choices";
+import Choice from "../class/Choice/Choice";
+import ExchangeEvent from "../class/RoomEvent/ExchangeEvent";
 
 export const getRandomEvent = (): RoomEvent => {
   let rand = Math.floor(Math.random() * dataEvents.available.length)
@@ -12,6 +13,9 @@ export const getRandomEvent = (): RoomEvent => {
     case "FightEvent":
     case "ExchangeEvent":
       event.choices = getRandomChoicesAccordingToEvent(event)
+      if (event instanceof ExchangeEvent) {
+        event.choices.push(dataChoices.MainEvent[2])
+      }
       break;
     default:
       console.error("L'évènement n'existe pas ou n'a pas de type");
@@ -21,7 +25,7 @@ export const getRandomEvent = (): RoomEvent => {
   return event;
 }
 
-export const getRandomChoicesAccordingToEvent = (event: RoomEvent): ChoiceInterface[] => {
+export const getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => {
   let minChoices = 2;
   let maxChoices = 4;
   let choicesCount = randomIntFromInterval(minChoices, maxChoices)
@@ -29,7 +33,7 @@ export const getRandomChoicesAccordingToEvent = (event: RoomEvent): ChoiceInterf
   let choices = [];
 
   for (let i = 0; i < choicesCount; i++) {
-    let choiceList: ChoiceInterface[] = [];
+    let choiceList: Choice[] = [];
     switch (event.type) {
       case "EnigmaEvent":
         choiceList = dataChoices.EnigmaEvent;

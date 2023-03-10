@@ -1,9 +1,10 @@
-import GameControllerInterface from "./GameControllerInterface";
 import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
 import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
+import {dataRole} from "../../datas/role";
 
-export default class GameController implements GameControllerInterface {
+export default class GameController {
+
   gameInstance?: GameInstance;
 
   player?: Player
@@ -16,7 +17,9 @@ export default class GameController implements GameControllerInterface {
     if (this.isNumeric(inputValue)) {
       return true;
     } else {
-      console.error('Non numeric option')
+      document.querySelector<HTMLDivElement>(
+        ".prompt__error"
+      )!.innerHTML = `Erreur : Veuillez entrer une option valide`;
       return false
     }
   }
@@ -29,12 +32,27 @@ export default class GameController implements GameControllerInterface {
     } else {
       if (this.player) {
         if(this.validateNumericInput(inputValue)) {
-          this.player = setRole(this.player, parseFloat(inputValue) - 1)
-          this.setGameInstance(this.player)
+          if (parseFloat(inputValue) - 1 > -1 && parseFloat(inputValue) - 1 < dataRole.length) {
+            this.player = setRole(this.player, parseFloat(inputValue) - 1)
+
+            document.querySelector<HTMLDivElement>(".player__role")!.innerHTML = 'Role : ' + this.player.role;
+
+            this.setGameInstance(this.player)
+          } else {
+            document.querySelector<HTMLDivElement>(
+              ".prompt__error"
+            )!.innerHTML = `Erreur : l'option n'existe pas`;
+          }
         }
       } else {
-        this.player = new Player(inputValue);
-        document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = displayAllRoleChoices()
+        if(inputValue.length >= 3) {
+          this.player = new Player(inputValue);
+          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = '';
+          document.querySelector<HTMLDivElement>(".player__name")!.innerHTML = 'Joueur ' + this.player.name;
+          document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n \n' + displayAllRoleChoices()
+        } else {
+          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = 'Le nom du personnage doit faire au minimum 3 caractères';
+        }
       }
     }
   }

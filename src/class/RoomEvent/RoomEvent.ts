@@ -1,21 +1,21 @@
-import ChoiceInterface from "../Choice/ChoiceInterface";
-import RoomEventInterface from "./RoomEventInterface";
+import Choice from "../Choice/Choice";
 
-class RoomEvent implements RoomEventInterface {
-  type: string
+export default class RoomEvent {
+  type: string = 'Room';
   inputContext: string;
-  outputContext: string;
-  choices: ChoiceInterface[] = [];
+  outputContext?: string;
+  choices: Choice[] = [];
 
   constructor(
-    type: string,
     inputContext: string,
-    outputContext: string,
-    choices?: ChoiceInterface[]
+    outputContext?: string,
+    choices?: Choice[]
   ) {
-    this.type = type
     this.inputContext = inputContext;
-    this.outputContext = outputContext;
+
+    if (outputContext) {
+      this.outputContext = outputContext;
+    }
 
     if (choices) {
       this.choices = choices
@@ -26,11 +26,11 @@ class RoomEvent implements RoomEventInterface {
     return this.inputContext;
   }
 
-  getOutputContext(): string {
-    return this.outputContext;
+  getOutputContext(): string|undefined {
+    return this.outputContext ?? '';
   }
 
-  getChoices(): ChoiceInterface[] {
+  getChoices(): Choice[] {
     return this.choices;
   }
 
@@ -52,7 +52,7 @@ class RoomEvent implements RoomEventInterface {
     this.outputContext = outputContext;
   }
 
-  setChoices(choices: ChoiceInterface[]): void {
+  setChoices(choices: Choice[]): void {
     this.choices = choices;
   }
 
@@ -64,5 +64,3 @@ class RoomEvent implements RoomEventInterface {
     return this.choices[index] !== undefined
   }
 }
-
-export default RoomEvent;
