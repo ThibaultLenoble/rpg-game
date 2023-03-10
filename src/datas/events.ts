@@ -2,14 +2,28 @@ import RoomEvent from "../class/RoomEvent/RoomEvent";
 import { dataChoices } from "./choices";
 import EnigmaEvent from "../class/RoomEvent/EnigmaEvent";
 import MainEvent from "../class/RoomEvent/MainEvent";
+import ExchangeEvent from "../class/RoomEvent/ExchangeEvent";
 
 export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
   mainEvents: [
     new MainEvent("Aller à la salle suivante ?", "", [
       dataChoices.MainEvent[0],
     ]),
+    new MainEvent(
+      "Douglas Ancelin, un archéologue intrépide, a découvert l'entrée d'un ancien château abandonné dans les sous-terrains de la ville. Il s'est mis en tête de découvrir les trésors cachés dans le château, mais il n'est jamais revenu de son exploration. Inquiète pour son ami, la Jambonneuse Justicière a décidé de partir à sa recherche. Elle s'est rapidement rendue compte que le château était infesté de créatures étranges et dangereuses, qui avaient sans doute été libérées par les fouilles de Douglas. Pour sauver son ami, la Jambonneuse Justicière doit parcourir les sombres couloirs du château, affronter des ennemis redoutables et résoudre des énigmes complexes. Heureusement, elle peut compter sur le Voleur de Moutons, qui s'est joint à sa quête.",
+      "",
+      [dataChoices.MainEvent[0]]
+    ),
   ],
   available: [
+    new EnigmaEvent(
+      "Vous arrivez dans une salle et vous voyez plusieurs coffre",
+      ""
+    ),
+    new ExchangeEvent(
+      "Vous arrivez dans une salle et un marchand vous accueille.",
+      ""
+    ),
     new EnigmaEvent(
       "Vous arrivez dans une salle et vous voyez plusieurs coffre",
       ""

@@ -70,7 +70,7 @@ class Player {
     }
 
     document.querySelector<HTMLDivElement>(
-      ".life__player"
+      ".player__life"
     )!.innerHTML = `${this.currentLife}/${this.maxLife} PV`;
   }
 
@@ -82,20 +82,51 @@ class Player {
     }
 
     document.querySelector<HTMLDivElement>(
-      ".life__player"
+      ".player__life"
     )!.innerHTML = `${this.currentLife}/${this.maxLife} PV`;
   }
 
   earnMoney(amount: number) {
     this.coins += amount;
+
+    document.querySelector<HTMLDivElement>(
+      ".player__coins"
+    )!.innerHTML = `${this.coins} $`;
   }
 
   giveMoney(amount: number): boolean {
+    let response = true
     if (this.coins < amount) {
-      return false;
+      response = false;
     } else  {
       this.coins -= amount;
+      response = true;
       return true;
+    }
+
+    document.querySelector<HTMLDivElement>(
+      ".player__coins"
+    )!.innerHTML = `${this.coins} $`;
+
+    return response;
+  }
+
+  exchangeAction(slug: string, amount: number): string|boolean {
+    switch (slug) {
+      case 'hit':
+        this.takeHit(amount);
+        return 'Vous prenez ' + amount + ' dégats';
+      case 'give-coin':
+        let isExchangeable = this.giveMoney(amount)
+        return isExchangeable ? 'Vous donnez ' + amount + ' pièces' : false;
+      case 'get-coin':
+        this.earnMoney(amount);
+        return 'Vous gagnez ' + amount + ' pièces';
+      case 'heal':
+        this.heal(amount);
+        return 'Vous êtes soigné de ' + amount + ' PV';
+      default:
+        return 'Objet inconnu'
     }
   }
 }
