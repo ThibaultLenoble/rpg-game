@@ -1,5 +1,5 @@
 import RoomEvent from "./RoomEvent";
-import ChoiceInterface from "../Choice/ChoiceInterface";
+import Choice from "../Choice/Choice";
 
 export default class MainEvent extends RoomEvent {
 
@@ -8,7 +8,7 @@ export default class MainEvent extends RoomEvent {
   constructor(
     inputContext: string,
     outputContext: string,
-    choices?: ChoiceInterface[]
+    choices?: Choice[]
   ) {
     super(inputContext, outputContext, choices);
   }

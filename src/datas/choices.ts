@@ -9,6 +9,7 @@ export const dataChoices: {MainEvent: Choice[], EnigmaEvent: SimpleChoice[], Exc
       "Rester dans cette salle",
       "Vous avez choisi de rester dans cette salle"
     ),
+    new Choice("ne rien faire", "nothing"),
   ],
   EnigmaEvent: [
     new SimpleChoice("Ouvrir le coffre", "chest-heal"),
@@ -16,9 +17,29 @@ export const dataChoices: {MainEvent: Choice[], EnigmaEvent: SimpleChoice[], Exc
     new SimpleChoice("Ouvrir le coffre", "chest-earn-money"),
   ],
   ExchangeEvent: [
-    new ExchangeChoice("Echanger avec un autre joueur", "exchange"),
-    new ExchangeChoice("Echanger avec un autre vendeur", "exchange"),
-    new ExchangeChoice("Echanger avec un autre marchand", "exchange"),
-    new ExchangeChoice("Echanger avec un autre magasinier", "exchange"),
+    new ExchangeChoice(
+      "Echanger avec un marchand" ,
+      "exchange",
+      {
+        type: 'hit',
+        amount: 10
+      },
+      {
+        type: 'get-coin',
+        amount: 100
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger avec un marchand" ,
+      "exchange",
+      {
+        type: 'give-coin',
+        amount: 200
+      },
+      {
+        type: 'heal',
+        amount: 30
+      }
+    )
   ]
 };
