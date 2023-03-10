@@ -14,8 +14,9 @@ export const setRole = (player: Player, roleId: number) => {
 
 export const displayAllRoleChoices = (): string => {
   let labels = "";
+  console.log(dataRole)
   dataRole.forEach((role, index) => {
-    labels += `${index + 1} - ${role.title} \n`;
+    labels += `${index + 1} - ${role.title} - ❤️:${role.hpMax} /  🗡️:${role.weapon.name} - ${role.weapon.damage} \n`;
   });
   return labels;
 }
