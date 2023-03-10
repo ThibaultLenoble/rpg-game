@@ -24,8 +24,24 @@ export const dataChoices: {
       "chest-hit"
     ),
     new SimpleChoice(
+      "Ouvrir le coffre avec la clé posée au sol juste à côté",
+      "chest-heal"
+    ),
+    new SimpleChoice(
+      "Ouvrir le coffre avec la clé posée au sol juste à côté",
+      "chest-earn-money"
+    ),
+    new SimpleChoice(
       "Donner un coup de pied dans le coffre en espérant qu'il s'ouvre",
       "chest-earn-money"
+    ),
+    new SimpleChoice(
+      "Donner un coup de pied dans le coffre en espérant qu'il s'ouvre",
+      "chest-hit"
+    ),
+    new SimpleChoice(
+      "Donner un coup de pied dans le coffre en espérant qu'il s'ouvre",
+      "chest-heal"
     ),
   ],
   ExchangeEvent: [

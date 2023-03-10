@@ -2,6 +2,7 @@ import RoomEvent from "../class/RoomEvent/RoomEvent";
 import {dataEvents} from "../datas/events";
 import {dataChoices} from "../datas/choices";
 import Choice from "../class/Choice/Choice";
+import ExchangeEvent from "../class/RoomEvent/ExchangeEvent";
 
 export const getRandomEvent = (): RoomEvent => {
   let rand = Math.floor(Math.random() * dataEvents.available.length)
@@ -12,7 +13,9 @@ export const getRandomEvent = (): RoomEvent => {
     case "FightEvent":
     case "ExchangeEvent":
       event.choices = getRandomChoicesAccordingToEvent(event)
-      event.choices.push(dataChoices.MainEvent[2])
+      if (event instanceof ExchangeEvent) {
+        event.choices.push(dataChoices.MainEvent[2])
+      }
       break;
     default:
       console.error("L'évènement n'existe pas ou n'a pas de type");

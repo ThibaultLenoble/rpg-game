@@ -9,10 +9,12 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <p class="prompt__description">Bienvenue sur RPG game, veuillez entrer votre nom pour commencer une partie</p>
     <input type="text" class="prompt__input">
     <button class="prompt__submit">Continuer</button>
-    <div class="player__equipement">
-      <p class="player__life"></p>
-      <p class="player__coins"></p>
-    </div>
+  </div>
+  <div class="player">
+    <p class="player__name"></p>
+    <p class="player__role"></p>
+    <p class="player__life"></p>
+    <p class="player__coins"></p>
   </div>
 `;
 

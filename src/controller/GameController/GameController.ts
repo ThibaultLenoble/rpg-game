@@ -34,6 +34,9 @@ export default class GameController {
         if(this.validateNumericInput(inputValue)) {
           if (parseFloat(inputValue) - 1 > -1 && parseFloat(inputValue) - 1 < dataRole.length) {
             this.player = setRole(this.player, parseFloat(inputValue) - 1)
+
+            document.querySelector<HTMLDivElement>(".player__role")!.innerHTML = 'Role : ' + this.player.role;
+
             this.setGameInstance(this.player)
           } else {
             document.querySelector<HTMLDivElement>(
@@ -42,10 +45,11 @@ export default class GameController {
           }
         }
       } else {
-        if(inputValue.length > 3) {
+        if(inputValue.length >= 3) {
           this.player = new Player(inputValue);
           document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = '';
-          document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n' + displayAllRoleChoices()
+          document.querySelector<HTMLDivElement>(".player__name")!.innerHTML = 'Joueur ' + this.player.name;
+          document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n \n' + displayAllRoleChoices()
         } else {
           document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = 'Le nom du personnage doit faire au minimum 3 caractères';
         }

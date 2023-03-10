@@ -24,3 +24,9 @@
 .prompt__description {
   white-space: pre-wrap;
 }
+
+.player {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+}
