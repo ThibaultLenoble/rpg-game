@@ -22,6 +22,12 @@ const inputBtn: any = document.querySelector(".prompt__submit");
 const inputEl: any = document.querySelector(".prompt__input");
 
 inputBtn.addEventListener("click", () => {getValue(); inputEl.value= ""});
+document.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    getValue();
+    inputEl.value= ""
+  }
+});
 
 const gameController = new GameController();
 
