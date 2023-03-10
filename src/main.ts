@@ -4,7 +4,7 @@ import "./style.css";
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="prompt">
     <span class="prompt__error"></span>
-    <h1 class="prompt__title">Donjons & Lardons</h1>
+    <h1 class="prompt__title">Donjons & Lardons 🏰 🥓</h1>
     <span class="prompt__room-advance"></span>
     <p class="prompt__description">Bienvenue sur Donjons & Lardons, veuillez entrer votre nom pour commencer une partie</p>
     <input type="text" class="prompt__input">
