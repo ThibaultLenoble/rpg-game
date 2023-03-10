@@ -48,7 +48,7 @@ Vous êtes libre du déroulement d’une boucle, cependant au moins un click est
 
 #### Conditions de fin de partie
 
-A vous de les déterminer, mais un ou plusieurs évènements doivent entrainer la fin dujeux que cela soit une
+A vous de les déterminer, mais un ou plusieurs évènements doivent entrainer la fin du jeux que cela soit une
 victoire ou une défaite. Le game over doit être clair pour le joueur.
 
 #### Obligation
@@ -59,7 +59,7 @@ victoire ou une défaite. Le game over doit être clair pour le joueur.
   Pas d’harcèlement à travers le scénario, on garde la décence habituelle,
   dans le respect des règles de l’école. On est entre adulte respectable.
 - Respecter les 3 parties du jeu : choix de départ (peu importe lequel),
-  traverser dessalles (boucle de gameplay), fin du jeu (game over).
+  traverser des salles (boucle de gameplay), fin du jeu (game over).
 - Chaque membre du groupe doit créer une classe.
 
 #### N'est pas noté
