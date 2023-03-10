@@ -32,7 +32,7 @@ export default class GameController {
     } else {
       if (this.player) {
         if(this.validateNumericInput(inputValue)) {
-          if (parseFloat(inputValue) - 1 > -1 && parseFloat(inputValue) - 1 < dataRole.length - 1) {
+          if (parseFloat(inputValue) - 1 > -1 && parseFloat(inputValue) - 1 < dataRole.length) {
             this.player = setRole(this.player, parseFloat(inputValue) - 1)
             this.setGameInstance(this.player)
           } else {
