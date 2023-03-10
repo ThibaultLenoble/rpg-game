@@ -74,10 +74,11 @@ export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
       "Vous tombez nez à nez avec un marchand qui vous propose quelques affaires."
     ),
     new ExchangeEvent(
-      "Au loin, vous entendez des murmures... ... ... Vous vous approchez et vous apercevez un mage noir. C'est l'archimage Lenoble qui vous propose quelques affaires."
+      "Au loin, vous entendez des murmures... ... ... Vous vous approchez et vous apercevez un mage noir. C'est l'archimage Lenoble qui vous propose quelques affaires.",
+      "https://i.postimg.cc/J7sJRnPf/mage-noire.png"
     ),
     new ExchangeEvent(
-      "Oh mon dieu !!!! LE MEILLEUR MARCHAND DE LA REGION EST ICI !!!! C'est Alexis Bezos et ses super deals de la mort qui tue !! Profitez-en !"
+      "Oh mon dieu !!!! LE MEILLEUR MARCHAND DE LA REGION EST ICI !!!! C'est Alexis Bezos et ses super deals de la mort qui tue !! Profitez-en !",
     ),
     new EnigmaEvent(
       "La nouvelle pièce dans laquelle vous rentrez a une odeur étrange. Vous sentez comme une odeur de tacos 3 viandes XXL supplément cheddar. (Attention, vous pouvez en mourir)",

@@ -5,11 +5,13 @@ export default class RoomEvent {
   inputContext: string;
   outputContext?: string;
   choices: Choice[] = [];
+  image?: string;
 
   constructor(
     inputContext: string,
     outputContext?: string,
-    choices?: Choice[]
+    choices?: Choice[],
+    image?: string,
   ) {
     this.inputContext = inputContext;
 
@@ -19,6 +21,10 @@ export default class RoomEvent {
 
     if (choices) {
       this.choices = choices
+    }
+
+    if (image) {
+      this.image = image
     }
   }
 
