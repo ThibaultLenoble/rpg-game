@@ -3,6 +3,8 @@ import Player from "../Player/Player";
 import {changeEvent} from "../../utils/EventHandler";
 import {dataEvents} from "../../datas/events";
 import MainEvent from "../RoomEvent/MainEvent";
+import ExchangeChoice from "../Choice/ExchangeChoice";
+import Choice from "../Choice/Choice";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -41,17 +43,18 @@ export default class GameInstance {
     if (this.actualRoom) {
       if (this.actualRoom.isChoiceExist(choiceIndex)) {
         let choice = this.actualRoom.getChoice(choiceIndex);
-        this.handleAction(choice.action);
+        this.handleAction(choice);
       } else {
-        // Le choix n'existe pas
-        console.error("Le choix n'existe pas");
+        document.querySelector<HTMLDivElement>(
+          ".prompt__error"
+        )!.innerHTML = `Erreur : l'option n'existe pas`;
       }
     }
   }
 
-  handleAction(actionSlug: string) {
+  handleAction(choice: Choice|ExchangeChoice) {
     let hasCase = false;
-    switch (actionSlug) {
+    switch (choice.action) {
       case "get-out":
         hasCase = true;
         this.changeRoom();
@@ -84,7 +87,26 @@ export default class GameInstance {
         break;
       case "exchange":
         hasCase = true;
-        this.actualRoom = changeEvent(dataEvents.mainEvents[0]);
+        let isExchangeOk = false;
+        if (choice instanceof ExchangeChoice ) {
+          let exchangeAction = this.player.exchangeAction(choice.needed.type, choice.needed.amount);
+          if (exchangeAction) {
+            isExchangeOk =  true;
+            this.mainEvent.outputContext = exchangeAction + ', ' +
+              this.player.exchangeAction(choice.giving.type, choice.giving.amount)
+            this.actualRoom = changeEvent(dataEvents.mainEvents[0]);
+          }
+        }
+
+        if (!isExchangeOk) {
+          document.querySelector<HTMLDivElement>(
+            ".prompt__error"
+          )!.innerHTML = `Erreur : l'échange n'est pas possible`;
+        }
+        break;
+      case "nothing":
+        this.mainEvent.outputContext = `Vous n'avez rien fait`
+        this.actualRoom = changeEvent(this.mainEvent);
         break;
       default:
         if (!hasCase) {
@@ -96,8 +118,12 @@ export default class GameInstance {
 
   dipslayEquipment() {
     document.querySelector<HTMLDivElement>(
-      ".life__player"
+      ".player__life"
     )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} PV`;
+
+    document.querySelector<HTMLDivElement>(
+      ".player__coins"
+    )!.innerHTML = `${this.player.coins} $`;
   }
   
   endGame(isWin: boolean = false): void {

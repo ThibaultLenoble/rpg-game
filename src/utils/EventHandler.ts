@@ -8,8 +8,10 @@ export const changeEvent = (event?: RoomEvent) => {
     event = getRandomEvent();
   }
 
+  event.outputContext = event.outputContext ?? ''
+
   document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML =
-    event.outputContext + '\n' + event.inputContext + '\n' + event.displayAllChoices();
+    event.outputContext  + '\n' + event.inputContext + '\n' + event.displayAllChoices();
 
   return event
 
