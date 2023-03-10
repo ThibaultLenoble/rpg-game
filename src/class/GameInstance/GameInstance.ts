@@ -1,11 +1,10 @@
-import GameInstanceInterface from "./GameInstanceInterface";
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
-import {changeEvent} from "../../utils/RoomHandler";
+import {changeEvent} from "../../utils/EventHandler";
 import {dataEvents} from "../../datas/events";
 import MainEvent from "../RoomEvent/MainEvent";
 
-export default class GameInstance implements GameInstanceInterface {
+export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
   player: Player;
 
@@ -43,7 +42,7 @@ export default class GameInstance implements GameInstanceInterface {
     if (this.actualRoom) {
       if (this.actualRoom.isChoiceExist(choiceIndex)) {
         let choice = this.actualRoom.getChoice(choiceIndex);
-        this.handleEvent(choice.action);
+        this.handleAction(choice.action);
       } else {
         // Le choix n'existe pas
         console.error("Le choix n'existe pas");
@@ -51,9 +50,9 @@ export default class GameInstance implements GameInstanceInterface {
     }
   }
 
-  handleEvent(eventSlug: string) {
+  handleAction(actionSlug: string) {
     let hasCase = false;
-    switch (eventSlug) {
+    switch (actionSlug) {
       case "get-out":
         hasCase = true;
         this.changeRoom();

@@ -6,7 +6,6 @@ import RoomEvent from "../class/RoomEvent/RoomEvent";
 export const changeEvent = (event?: RoomEvent, choices?: ChoiceInterface[]) => {
   if (choices) {
     const actualRoom = new EnigmaEvent(
-      "EnigmaEvent",
       "Vous êtes dans une salle, vous pouvez choisir de partir en direction de la salle suivante ou de rester dans cette salle",
       "Vous avez choisi de partir en direction de la salle suivante",
       choices

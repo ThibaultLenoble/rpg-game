@@ -1,9 +1,8 @@
-import GameControllerInterface from "./GameControllerInterface";
 import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
 import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
 
-export default class GameController implements GameControllerInterface {
+export default class GameController {
   gameInstance?: GameInstance;
 
   player?: Player

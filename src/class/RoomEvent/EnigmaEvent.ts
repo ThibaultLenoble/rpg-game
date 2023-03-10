@@ -3,12 +3,13 @@ import ChoiceInterface from "../Choice/ChoiceInterface";
 
 export default class EnigmaEvent extends RoomEvent {
 
+  type: string = 'EnigmaEvent';
+
   constructor(
-    type: string,
     inputContext: string,
     outputContext: string,
     choices?: ChoiceInterface[]
   ) {
-    super(type, inputContext, outputContext, choices);
+    super(inputContext, outputContext, choices);
   }
 }
