@@ -16,6 +16,7 @@ export default class GameInstance {
   maxRoom: number = 15;
 
   healMinValue: number = 10;
+  hpPlusMinValue: number = 5;
   coinMinValue: number = 50;
   chestMinDamageValue: number = 5;
   levelMultiplicator: number = 2;
@@ -66,8 +67,36 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.heal(heal);
-        this.mainEvent.outputContext = `Vous avez été soigné de ${heal} PV.`;
+        this.mainEvent.outputContext = `Vous avez été soigné de ${heal} ❤️.`;
         this.actualRoom = changeEvent(this.mainEvent);
+        break;
+      case "chest-hp-plus":
+        hasCase = true;
+        let hpPlus =
+          this.hpPlusMinValue *
+          (this.player.level * this.levelMultiplicator) *
+          this.randomIntFromInterval(1, 4);
+        this.player.maxLife += hpPlus;
+        this.player.heal(hpPlus);
+        this.mainEvent.outputContext = `Votre vie augmente de ${hpPlus} ❤️.`;
+        this.actualRoom = changeEvent(this.mainEvent);
+        break;
+      case "tacos":
+        hasCase = true;
+        if (this.randomIntFromInterval(1, 2) == 1) {
+          let tacosPlus = 100;
+          this.player.maxLife += tacosPlus;
+          this.player.heal(tacosPlus);
+          this.mainEvent.outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
+        } else {
+          this.player.currentLife = 0;
+        }
+
+        if (this.player.currentLife <= 0) {
+          this.endGame(false);
+        } else {
+          this.actualRoom = changeEvent(this.mainEvent);
+        }
         break;
       case "chest-hit":
         hasCase = true;
@@ -91,7 +120,7 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.earnMoney(money);
-        this.mainEvent.outputContext = `Vous avez gagné ${money} knacki balls.`;
+        this.mainEvent.outputContext = `Vous avez gagné ${money} 🫘.`;
         this.actualRoom = changeEvent(this.mainEvent);
         break;
       case "exchange":
@@ -136,11 +165,11 @@ export default class GameInstance {
   dipslayEquipment() {
     document.querySelector<HTMLDivElement>(
       ".player__life"
-    )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} PV`;
+    )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} ❤️`;
 
     document.querySelector<HTMLDivElement>(
       ".player__coins"
-    )!.innerHTML = `${this.player.coins} knacki balls`;
+    )!.innerHTML = `${this.player.coins} 🫘`;
   }
 
   endGame(isWin: boolean = false): void {

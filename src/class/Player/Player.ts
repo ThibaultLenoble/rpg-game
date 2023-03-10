@@ -69,7 +69,7 @@ class Player {
 
     document.querySelector<HTMLDivElement>(
       ".player__life"
-    )!.innerHTML = `${this.currentLife}/${this.maxLife} PV`;
+    )!.innerHTML = `${this.currentLife}/${this.maxLife} ❤️`;
   }
 
   heal(amount: number) {
@@ -81,7 +81,7 @@ class Player {
 
     document.querySelector<HTMLDivElement>(
       ".player__life"
-    )!.innerHTML = `${this.currentLife}/${this.maxLife} PV`;
+    )!.innerHTML = `${this.currentLife}/${this.maxLife} ❤️`;
   }
 
   earnMoney(amount: number) {
@@ -89,7 +89,7 @@ class Player {
 
     document.querySelector<HTMLDivElement>(
       ".player__coins"
-    )!.innerHTML = `${this.coins} knacki balls`;
+    )!.innerHTML = `${this.coins} 🫘`;
   }
 
   giveMoney(amount: number): boolean {
@@ -99,12 +99,11 @@ class Player {
     } else {
       this.coins -= amount;
       response = true;
-      return true;
     }
 
     document.querySelector<HTMLDivElement>(
       ".player__coins"
-    )!.innerHTML = `${this.coins} knacki balls`;
+    )!.innerHTML = `${this.coins} 🫘`;
 
     return response;
   }
@@ -116,13 +115,17 @@ class Player {
         return "Vous prenez " + amount + " dégats";
       case "give-coin":
         let isExchangeable = this.giveMoney(amount);
-        return isExchangeable ? "Vous donnez " + amount + " pièces" : false;
+        return isExchangeable ? "Vous donnez " + amount + " 🫘" : false;
       case "get-coin":
         this.earnMoney(amount);
-        return "Vous gagnez " + amount + "  knacki balls";
+        return "Vous gagnez " + amount + " 🫘";
       case "heal":
         this.heal(amount);
-        return "Vous êtes soigné de " + amount + " PV";
+        return "Vous êtes soigné de " + amount + " ❤️";
+      case "hp-plus":
+        this.maxLife += amount;
+        this.currentLife += amount
+        return "Votre vie augmente de " + amount + " ❤️ supplémentaires";
       default:
         return "Objet inconnu";
     }
