@@ -30,9 +30,11 @@ export default class ExchangeChoice extends Choice {
         return "dégats";
       case "give-coin":
       case "get-coin":
-        return "knacki balls";
+        return "🫘";
       case "heal":
-        return "PV";
+        return "❤️";
+      case "hp-plus":
+        return "❤️ supplémentaires";
       default:
         return "Objet inconnu";
     }
