@@ -1,11 +1,10 @@
-import GameInstanceInterface from "./GameInstanceInterface";
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import {changeEvent} from "../../utils/RoomHandler";
 import {dataEvents} from "../../datas/events";
 import MainEvent from "../RoomEvent/MainEvent";
 
-export default class GameInstance implements GameInstanceInterface {
+export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
   player: Player;
 
