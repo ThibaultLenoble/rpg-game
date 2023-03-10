@@ -1,9 +1,9 @@
 import RoomEvent from "./RoomEvent";
 import Choice from "../Choice/Choice";
 
-export default class EnigmaEvent extends RoomEvent {
+export default class ExchangeEvent extends RoomEvent {
 
-  type: string = 'EnigmaEvent';
+  type: string = 'ExchangeEvent';
 
   constructor(
     inputContext: string,
