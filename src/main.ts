@@ -10,18 +10,20 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <input type="text" class="prompt__input">
     <button class="prompt__submit">Continuer</button>
   </div>
-  
+  <div class="context">
+    <img src="https://i.postimg.cc/85FpQzq1/douglas-archeologue.png" />
+  </div>
   <div class="player">
-   <div class="player__pic">
-    </div>
     <div class="player__info">
-    <p class="player__name"></p>
-    <p class="player__role"></p>
-    <p class="player__life"></p>
-    <p class="player__coins"></p>
+      <p class="player__name"></p>
+      <p class="player__role"></p>
+      <p class="player__life"></p>
+      <p class="player__coins"></p>
     </div>
+    <div class="player__pic"></div>
+     </div>
   </div>
-  </div>
+
 `;
 
 const inputBtn: any = document.querySelector(".prompt__submit");
