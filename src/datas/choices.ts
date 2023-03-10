@@ -30,7 +30,7 @@ export const dataChoices: {
   ],
   ExchangeEvent: [
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "hit",
@@ -42,7 +42,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "give-coin",
@@ -54,7 +54,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "hit",
@@ -66,7 +66,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "hit",
@@ -78,7 +78,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "give-coin",
@@ -90,7 +90,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "give-coin",
@@ -102,7 +102,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "give-coin",
@@ -114,7 +114,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger ",
+      "Echanger",
       "exchange",
       {
         type: "give-coin",
