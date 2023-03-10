@@ -9,7 +9,7 @@ export default class EnigmaEvent extends RoomEvent {
     inputContext: string,
     outputContext?: string,
     choices?: Choice[],
-    image?: string
+    image?: string,
   ) {
     super(inputContext, outputContext, choices, image);
 

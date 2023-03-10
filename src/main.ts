@@ -11,10 +11,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <button class="prompt__submit">Continuer</button>
   </div>
   <div class="context">
-    <img src="" />
+    <img src="https://i.postimg.cc/85FpQzq1/douglas-archeologue.png" />
   </div>
   <div class="player">
-   <div class="player__pic">
     </div>
     <div class="player__info">
     <p class="player__name"></p>

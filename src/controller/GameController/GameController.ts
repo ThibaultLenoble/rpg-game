@@ -42,7 +42,7 @@ export default class GameController {
             if (this.player.image)
               document.querySelector<HTMLDivElement>(
                 ".player__pic"
-              )!.innerHTML = "<img width='200' height='200' src='" + this.player.image + "' />";
+              )!.innerHTML = "<img width='150' height='150' src='" + this.player.image + "' />";
 
             this.setGameInstance(this.player);
           } else {
