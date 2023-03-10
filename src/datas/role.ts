@@ -18,7 +18,7 @@ export const dataRole: { title: string; hpMax: number; weapon: Weapon }[] = [
     weapon: dataWeapon[2],
   },
   {
-    title: "Saucifflard l'Implaccable",
+    title: "Saucifflard l'Implaccable teckel",
     hpMax: 120,
     weapon: dataWeapon[3],
   },

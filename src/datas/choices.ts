@@ -48,6 +48,17 @@ export const dataChoices: {
       "Donner un coup de pied dans le coffre en espérant qu'il s'ouvre",
       "chest-heal"
     ),
+    new SimpleChoice("Ouvrir le coffre délicatement", "chest-heal"),
+    new SimpleChoice("Ouvrir le coffre délicatement", "chest-hit"),
+    new SimpleChoice("Ouvrir le coffre délicatement", "chest-earn-money"),
+
+    new SimpleChoice("Fracasser le coffre au sol", "chest-heal"),
+    new SimpleChoice("Fracasser le coffre au sol", "chest-hit"),
+    new SimpleChoice("Fracasser le coffre au sol", "chest-earn-money"),
+
+    new SimpleChoice("Ouvrir le coffre par télékinésie", "chest-heal"),
+    new SimpleChoice("Ouvrir le coffre par télékinésie", "chest-hit"),
+    new SimpleChoice("Ouvrir le coffre par télékinésie", "chest-earn-money"),
     new SimpleChoice(
       "Vous voyez une fiole magique",
       "chest-heal"
