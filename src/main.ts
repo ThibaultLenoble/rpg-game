@@ -14,13 +14,14 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <img src="https://i.postimg.cc/85FpQzq1/douglas-archeologue.png" />
   </div>
   <div class="player">
-    </div>
     <div class="player__info">
-    <p class="player__name"></p>
-    <p class="player__role"></p>
-    <p class="player__life"></p>
-    <p class="player__coins"></p>
+      <p class="player__name"></p>
+      <p class="player__role"></p>
+      <p class="player__life"></p>
+      <p class="player__coins"></p>
+    </div>
     <div class="player__pic"></div>
+     </div>
   </div>
 
 `;
