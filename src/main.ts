@@ -10,22 +10,30 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <input type="text" class="prompt__input">
     <button class="prompt__submit">Continuer</button>
   </div>
+  <div class="context">
+    <img src="" />
+  </div>
   <div class="player">
     <p class="player__name"></p>
     <p class="player__role"></p>
     <p class="player__life"></p>
     <p class="player__coins"></p>
+    <div class="player__pic"></div>
   </div>
+
 `;
 
 const inputBtn: any = document.querySelector(".prompt__submit");
 const inputEl: any = document.querySelector(".prompt__input");
 
-inputBtn.addEventListener("click", () => {getValue(); inputEl.value= ""});
-document.addEventListener('keypress', function (e) {
-  if (e.key === 'Enter') {
+inputBtn.addEventListener("click", () => {
+  getValue();
+  inputEl.value = "";
+});
+document.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
     getValue();
-    inputEl.value= ""
+    inputEl.value = "";
   }
 });
 

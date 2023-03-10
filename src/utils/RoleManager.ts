@@ -8,6 +8,7 @@ export const setRole = (player: Player, roleId: number) => {
   player.role = role.title
   player.currentLife = player.maxLife = role.hpMax
   player.weapon = role.weapon
+  player.image = role.image
 
   return player;
 }

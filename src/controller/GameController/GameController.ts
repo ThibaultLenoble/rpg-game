@@ -1,13 +1,12 @@
 import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
 import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
-import {dataRole} from "../../datas/role";
+import { dataRole } from "../../datas/role";
 
 export default class GameController {
-
   gameInstance?: GameInstance;
 
-  player?: Player
+  player?: Player;
 
   setGameInstance(player: Player): void {
     this.gameInstance = new GameInstance(player);
@@ -20,24 +19,32 @@ export default class GameController {
       document.querySelector<HTMLDivElement>(
         ".prompt__error"
       )!.innerHTML = `Erreur : Veuillez entrer une option valide`;
-      return false
+      return false;
     }
   }
 
   handleInput(inputValue: string) {
     if (this.gameInstance) {
-      if(this.validateNumericInput(inputValue)) {
-        this.gameInstance.handleChoice(parseFloat(inputValue) - 1)
+      if (this.validateNumericInput(inputValue)) {
+        this.gameInstance.handleChoice(parseFloat(inputValue) - 1);
       }
     } else {
       if (this.player) {
-        if(this.validateNumericInput(inputValue)) {
-          if (parseFloat(inputValue) - 1 > -1 && parseFloat(inputValue) - 1 < dataRole.length) {
-            this.player = setRole(this.player, parseFloat(inputValue) - 1)
+        if (this.validateNumericInput(inputValue)) {
+          if (
+            parseFloat(inputValue) - 1 > -1 &&
+            parseFloat(inputValue) - 1 < dataRole.length
+          ) {
+            this.player = setRole(this.player, parseFloat(inputValue) - 1);
 
-            document.querySelector<HTMLDivElement>(".player__role")!.innerHTML = 'Role : ' + this.player.role;
+            document.querySelector<HTMLDivElement>(".player__role")!.innerHTML =
+              "Role : " + this.player.role;
+            if (this.player.image)
+              document.querySelector<HTMLDivElement>(
+                ".player__pic"
+              )!.innerHTML = "<img width='200' height='200' src='" + this.player.image + "' />";
 
-            this.setGameInstance(this.player)
+            this.setGameInstance(this.player);
           } else {
             document.querySelector<HTMLDivElement>(
               ".prompt__error"
@@ -45,13 +52,19 @@ export default class GameController {
           }
         }
       } else {
-        if(inputValue.length >= 3) {
+        if (inputValue.length >= 3) {
           this.player = new Player(inputValue);
-          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = '';
-          document.querySelector<HTMLDivElement>(".player__name")!.innerHTML = 'Joueur ' + this.player.name;
-          document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n \n' + displayAllRoleChoices()
+          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML =
+            "";
+          document.querySelector<HTMLDivElement>(".player__name")!.innerHTML =
+            "Joueur " + this.player.name;
+          document.querySelector<HTMLDivElement>(
+            ".prompt__description"
+          )!.innerHTML =
+            "Veuillez choisir une classe" + "\n \n" + displayAllRoleChoices();
         } else {
-          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = 'Le nom du personnage doit faire au minimum 3 caractères';
+          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML =
+            "Le nom du personnage doit faire au minimum 3 caractères";
         }
       }
     }

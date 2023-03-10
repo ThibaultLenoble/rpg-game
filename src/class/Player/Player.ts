@@ -8,6 +8,7 @@ class Player {
   role?: string;
   level: number;
   coins: number;
+  image?: string;
 
   constructor(name: string) {
     this.name = name;
@@ -58,6 +59,14 @@ class Player {
 
   getCoins(): number {
     return this.coins;
+  }
+
+  setImage(image: string) {
+    this.image = image;
+  }
+
+  getImage(): string | undefined {
+    return this.image;
   }
 
   takeHit(damage: number) {
