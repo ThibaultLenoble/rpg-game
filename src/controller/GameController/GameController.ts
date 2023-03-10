@@ -42,10 +42,13 @@ export default class GameController {
           }
         }
       } else {
-        if(this.validateNumericInput(inputValue)) {
+        if(inputValue.length > 3) {
           this.player = new Player(inputValue);
+          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = '';
+          document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n' + displayAllRoleChoices()
+        } else {
+          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML = 'Le nom du personnage doit faire au minimum 3 caractères';
         }
-        document.querySelector<HTMLDivElement>(".prompt__description")!.innerHTML = 'Veuillez choisir une classe' + '\n' + displayAllRoleChoices()
       }
     }
   }
