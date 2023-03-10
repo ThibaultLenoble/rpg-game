@@ -10,7 +10,7 @@ export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
       dataChoices.MainEvent[0],
     ]),
     new MainEvent(
-      "Douglas Ancelin, un archéologue intrépide, a découvert l'entrée d'un ancien château abandonné dans les sous-terrains de la ville. Il s'est mis en tête de découvrir les trésors cachés dans le château, mais il n'est jamais revenu de son exploration. Inquiète pour son ami, la Jambonneuse Justicière a décidé de partir à sa recherche. Elle s'est rapidement rendue compte que le château était infesté de créatures étranges et dangereuses, qui avaient sans doute été libérées par les fouilles de Douglas. Pour sauver son ami, la Jambonneuse Justicière doit parcourir les sombres couloirs du château, affronter des ennemis redoutables et résoudre des énigmes complexes. Heureusement, elle peut compter sur le Voleur de Moutons, qui s'est joint à sa quête.",
+      "Douglas Ancelin, un archéologue intrépide, a découvert l'entrée d'un ancien château abandonné dans les sous-terrains de la ville. Il s'est mis en tête de découvrir les trésors cachés dans le château, mais il n'est jamais revenu de son exploration. Inquiète pour son ami, la Jambonneuse Justicière a décidé de partir à sa recherche. Elle s'est rapidement rendue compte que le château était infesté de créatures étranges et dangereuses, qui avaient sans doute été libérées par les fouilles de Douglas. Pour sauver son ami, la Jambonneuse Justicière doit parcourir les sombres couloirs du château, affronter des ennemis redoutables et résoudre des énigmes complexes. Heureusement, elle peut compter sur le Voleur de Moutons, Saucifflard l'Implaccable ainsi que le Nain voleur de chaussettes qui se sont joints à sa quête.",
       "",
       [dataChoices.MainEvent[0]]
     ),
@@ -62,13 +62,13 @@ export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
       "Au détour d'un couloir, vous apercevez une lumière scintillante dans un coin de la pièce, quelques coffres sont entassés."
     ),
     new ExchangeEvent(
-      "Vous arrivez dans une salle et un marchand vous accueille."
+      "«C'EST L'HEURE DE MARCHANDER !!!!» Vous entendez une voix qui vous interpelle. Vous vous retournez et vous apercevez un marchand qui vous propose quelques affaires."
     ),
     new ExchangeEvent(
-      "Vous arrivez dans une salle et un marchand vous accueille."
+      "La salle est plongée dans le noir, au centre un homme et sa lampe qui vous propose de marchander."
     ),
     new ExchangeEvent(
-      "Vous arrivez dans une salle et un marchand vous accueille."
+      "Vous tombez nez à nez avec un marchand qui vous propose quelques affaires."
     ),
   ],
 };

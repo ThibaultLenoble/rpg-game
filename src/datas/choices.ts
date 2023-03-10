@@ -30,7 +30,7 @@ export const dataChoices: {
   ],
   ExchangeEvent: [
     new ExchangeChoice(
-      "Echanger avec un marchand",
+      "Echanger",
       "exchange",
       {
         type: "hit",
@@ -42,7 +42,7 @@ export const dataChoices: {
       }
     ),
     new ExchangeChoice(
-      "Echanger avec un marchand",
+      "Echanger",
       "exchange",
       {
         type: "give-coin",
@@ -51,6 +51,78 @@ export const dataChoices: {
       {
         type: "heal",
         amount: 30,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "hit",
+        amount: 5,
+      },
+      {
+        type: "get-coin",
+        amount: 50,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "hit",
+        amount: 21,
+      },
+      {
+        type: "get-coin",
+        amount: 111,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "give-coin",
+        amount: 300,
+      },
+      {
+        type: "heal",
+        amount: 45,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "give-coin",
+        amount: 100,
+      },
+      {
+        type: "heal",
+        amount: 15,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "give-coin",
+        amount: 1000,
+      },
+      {
+        type: "heal",
+        amount: 200,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "give-coin",
+        amount: 750,
+      },
+      {
+        type: "heal",
+        amount: 50,
       }
     ),
   ],
