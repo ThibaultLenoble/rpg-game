@@ -31,6 +31,12 @@ inputBtn.addEventListener("click", () => {
   getValue();
   inputEl.value = "";
 });
+document.addEventListener("keypress", function (e) {
+  if (e.key === "Enter") {
+    getValue();
+    inputEl.value = "";
+  }
+});
 
 const gameController = new GameController();
 

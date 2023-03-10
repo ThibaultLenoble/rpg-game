@@ -13,7 +13,12 @@ export const dataChoices: {
       "Rester dans cette salle",
       "Vous avez choisi de rester dans cette salle"
     ),
-    new Choice("ne rien faire", "nothing"),
+    new Choice("ne rien faire", "nothing")
+    ,
+    new Choice(
+      'Vous prenez le tacos',
+      'tacos'
+    )
   ],
   EnigmaEvent: [
     new SimpleChoice("Ouvrir le coffre", "chest-heal"),
@@ -54,6 +59,18 @@ export const dataChoices: {
     new SimpleChoice("Ouvrir le coffre par télékinésie", "chest-heal"),
     new SimpleChoice("Ouvrir le coffre par télékinésie", "chest-hit"),
     new SimpleChoice("Ouvrir le coffre par télékinésie", "chest-earn-money"),
+    new SimpleChoice(
+      "Vous voyez une fiole magique",
+      "chest-heal"
+    ),
+    new SimpleChoice(
+      "Vous voyez une fiole magique",
+      "chest-hit"
+    ),
+    new SimpleChoice(
+      "Vous voyez une fiole magique",
+      "chest-hp-plus"
+    )
   ],
   ExchangeEvent: [
     new ExchangeChoice(
@@ -150,6 +167,18 @@ export const dataChoices: {
       {
         type: "heal",
         amount: 50,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "give-coin",
+        amount: 1000,
+      },
+      {
+        type: "hp-plus",
+        amount: 40,
       }
     ),
   ],
