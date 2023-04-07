@@ -1,3 +1,8 @@
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable no-case-declarations */
+import Render from "../Render/Render";
+
 class Player {
   name: string;
   currentLife: number = 0;
@@ -6,12 +11,14 @@ class Player {
   level: number;
   coins: number = 0;
   image?: string;
+  render: Render;
 
-  constructor(name: string) {
+  constructor(name: string, render: Render) {
     this.name = name;
     this.level = 1;
+    this.render = render;
   }
-  
+
   takeHit(damage: number) {
     this.currentLife -= damage;
 
@@ -19,9 +26,10 @@ class Player {
       this.currentLife = 0;
     }
 
-    document.querySelector<HTMLDivElement>(
-      ".player__life"
-    )!.innerHTML = `${this.currentLife}/${this.maxLife} ❤️`;
+    this.render.displayMessage(
+      ".player__life",
+      `${this.currentLife}/${this.maxLife} ❤️`
+    );
   }
 
   heal(amount: number) {
@@ -31,17 +39,16 @@ class Player {
       this.currentLife = this.maxLife;
     }
 
-    document.querySelector<HTMLDivElement>(
-      ".player__life"
-    )!.innerHTML = `${this.currentLife}/${this.maxLife} ❤️`;
+    this.render.displayMessage(
+      ".player__life",
+      `${this.currentLife}/${this.maxLife} ❤️`
+    );
   }
 
   earnMoney(amount: number) {
     this.coins += amount;
 
-    document.querySelector<HTMLDivElement>(
-      ".player__coins"
-    )!.innerHTML = `${this.coins} 🫘`;
+    this.render.displayMessage(".player__coins", `${this.coins} 🫘`);
   }
 
   giveMoney(amount: number): boolean {
@@ -53,9 +60,7 @@ class Player {
       response = true;
     }
 
-    document.querySelector<HTMLDivElement>(
-      ".player__coins"
-    )!.innerHTML = `${this.coins} 🫘`;
+    this.render.displayMessage(".player__coins", `${this.coins} 🫘`);
 
     return response;
   }
@@ -66,7 +71,7 @@ class Player {
         this.takeHit(amount);
         return "Vous prenez " + amount + " dégats";
       case "give-coin":
-        let isExchangeable = this.giveMoney(amount);
+        const isExchangeable = this.giveMoney(amount);
         return isExchangeable ? "Vous donnez " + amount + " 🫘" : false;
       case "get-coin":
         this.earnMoney(amount);
@@ -76,7 +81,7 @@ class Player {
         return "Vous êtes soigné de " + amount + " ❤️";
       case "hp-plus":
         this.maxLife += amount;
-        this.currentLife += amount
+        this.currentLife += amount;
         return "Votre vie augmente de " + amount + " ❤️ supplémentaires";
       default:
         return "Objet inconnu";

@@ -1,24 +1,25 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
 import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
 import { dataRole } from "../../datas/role";
+import Render from "../../class/Render/Render";
 
 export default class GameController {
   gameInstance?: GameInstance;
 
   player?: Player;
 
-  setGameInstance(player: Player): void {
-    this.gameInstance = new GameInstance(player);
-  }
+  render = new Render();
 
   validateNumericInput(inputValue: string): boolean {
     if (this.isNumeric(inputValue)) {
       return true;
     } else {
-      document.querySelector<HTMLDivElement>(
-        ".prompt__error"
-      )!.innerHTML = `Erreur : Veuillez entrer une option valide`;
+      this.render.displayMessage(
+        ".prompt__error",
+        "Erreur : Veuillez entrer une option valide"
+      );
       return false;
     }
   }
@@ -37,34 +38,44 @@ export default class GameController {
           ) {
             this.player = setRole(this.player, parseFloat(inputValue) - 1);
 
-            document.querySelector<HTMLDivElement>(".player__role")!.innerHTML =
-              "Role : " + this.player.role;
+            this.render.displayMessage(
+              ".player__role",
+              "Role : " + this.player.role
+            );
             if (this.player.image)
-              document.querySelector<HTMLDivElement>(
-                ".player__pic"
-              )!.innerHTML = "<img width='150' height='150' src='" + this.player.image + "' alt=''/>";
+              this.render.displayMessage(
+                ".player__pic",
+                "<img width='150' height='150' src='" +
+                  this.player.image +
+                  "' />"
+              );
 
-            this.setGameInstance(this.player);
+            this.gameInstance = new GameInstance(this.player, this.render);
           } else {
-            document.querySelector<HTMLDivElement>(
-              ".prompt__error"
-            )!.innerHTML = `Erreur : l'option n'existe pas`;
+            this.render.displayMessage(
+              ".prompt__error",
+              "Erreur : l'option n'existe pas"
+            );
           }
         }
       } else {
         if (inputValue.length >= 3) {
-          this.player = new Player(inputValue);
-          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML =
-            "";
-          document.querySelector<HTMLDivElement>(".player__name")!.innerHTML =
-            "Joueur " + this.player.name;
-          document.querySelector<HTMLDivElement>(
-            ".prompt__description"
-          )!.innerHTML =
-            "Veuillez choisir une classe" + "\n \n" + displayAllRoleChoices();
+          this.player = new Player(inputValue, this.render);
+          this.render.displayMessage(".prompt__error", "");
+          this.render.displayMessage(
+            ".player__name",
+            "Joueur " + this.player.name
+          );
+
+          this.render.displayMessage(
+            ".prompt__description",
+            "Veuillez choisir une classe" + "\n \n" + displayAllRoleChoices()
+          );
         } else {
-          document.querySelector<HTMLDivElement>(".prompt__error")!.innerHTML =
-            "Le nom du personnage doit faire au minimum 3 caractères";
+          this.render.displayMessage(
+            ".prompt__error",
+            "Le nom du personnage doit faire au minimum 3 caractères"
+          );
         }
       }
     }
