@@ -28,18 +28,6 @@ export default class RoomEvent {
     }
   }
 
-  getInputContext(): string {
-    return this.inputContext;
-  }
-
-  getOutputContext(): string|undefined {
-    return this.outputContext ?? '';
-  }
-
-  getChoices(): Choice[] {
-    return this.choices;
-  }
-
   displayAllChoices(): string {
     let labels = "";
     this.choices.forEach((choice, index) => {
@@ -48,25 +36,5 @@ export default class RoomEvent {
       }
     });
     return labels;
-  }
-
-  setInputContext(inputContext: string): void {
-    this.inputContext = inputContext;
-  }
-
-  setOutputContext(outputContext: string): void {
-    this.outputContext = outputContext;
-  }
-
-  setChoices(choices: Choice[]): void {
-    this.choices = choices;
-  }
-
-  getChoice(index: number) {
-    return this.choices[index]
-  }
-
-  isChoiceExist(index: number) {
-    return this.choices[index] !== undefined
   }
 }

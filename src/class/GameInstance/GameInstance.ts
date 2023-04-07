@@ -9,10 +9,12 @@ import MainEvent from "../RoomEvent/MainEvent";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
+import { getRandomEvent } from "../../utils/EventGenerator";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
   player: Player;
+  rooms: RoomEvent[] = [];
 
   mainEvent: MainEvent = dataEvents.mainEvents[0];
   roomCount: number = 0;
@@ -29,8 +31,15 @@ export default class GameInstance {
 
   constructor(player: Player) {
     this.player = player;
+    this.buildMap();
     this.actualRoom = changeEvent(dataEvents.mainEvents[1], this.render);
-    this.render.dipslayEquipment(player);
+    this.render.dipslayEquipment(this.player);
+  }
+
+  buildMap() {
+    for (let i = 0; i <= this.maxRoom; i++) {
+      this.rooms.push(getRandomEvent());
+    }
   }
 
   changeRoom(): void {
@@ -39,7 +48,7 @@ export default class GameInstance {
       this.render.endGame(true);
     } else {
       console.log("change de salle");
-      this.actualRoom = changeEvent(undefined, this.render);
+      this.actualRoom = changeEvent(this.rooms[this.roomCount], this.render);
 
       this.render.displayMessage(
         ".prompt__room-advance",
@@ -50,8 +59,8 @@ export default class GameInstance {
 
   handleChoice(choiceIndex: number): void {
     if (this.actualRoom) {
-      if (this.actualRoom.isChoiceExist(choiceIndex)) {
-        const choice = this.actualRoom.getChoice(choiceIndex);
+      if (this.actualRoom.choices[choiceIndex] !== undefined) {
+        const choice = this.actualRoom.choices[choiceIndex];
         this.handleAction(choice);
       } else {
         this.render.displayMessage(

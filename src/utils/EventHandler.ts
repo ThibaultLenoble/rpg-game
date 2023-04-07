@@ -1,13 +1,7 @@
-import { getRandomEvent } from "./EventGenerator";
+import Render from "../class/Render/Render";
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 
-export const baseScenario: string = "Base";
-
-export const changeEvent = (event?: RoomEvent, render?: Render) => {
-  if (!event) {
-    event = getRandomEvent();
-  }
-
+export const changeEvent = (event: RoomEvent, render: Render) => {
   event.outputContext = event.outputContext ?? "";
 
   render.displayMessage(".prompt__error", "");

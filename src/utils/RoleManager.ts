@@ -6,7 +6,7 @@ export const setRole = (player: Player, roleId: number) => {
 
   player.role = role.title;
   player.currentLife = player.maxLife = role.hpMax;
-  player.weapon = role.weapon;
+  player.coins = role.coins;
   player.image = role.image;
 
   return player;
@@ -15,9 +15,9 @@ export const setRole = (player: Player, roleId: number) => {
 export const displayAllRoleChoices = (): string => {
   let labels = "";
   dataRole.forEach((role, index) => {
-    labels += `${index + 1} - ${role.title} - ❤️:${role.hpMax} /  🗡️:${
-      role.weapon.name
-    } - ${role.weapon.damage} \n`;
+    labels += `${index + 1} - ${role.title} - ❤️:${role.hpMax} / 🫘:${
+      role.coins
+    } \n`;
   });
   return labels;
 };
