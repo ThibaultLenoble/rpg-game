@@ -1,19 +1,16 @@
-import Weapon from "../Weapon/Weapon";
-
 class Player {
   name: string;
   currentLife: number = 0;
   maxLife: number = 0;
-  weapon?: Weapon;
   role?: string;
   level: number;
   coins: number;
   image?: string;
 
-  constructor(name: string) {
+  constructor(name: string, coins: number) {
     this.name = name;
     this.level = 1;
-    this.coins = 100;
+    this.coins = coins;
   }
 
   setRole(role: string) {
