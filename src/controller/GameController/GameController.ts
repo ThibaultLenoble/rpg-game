@@ -50,7 +50,7 @@ export default class GameController {
                   "' />"
               );
 
-            this.gameInstance = new GameInstance(this.player);
+            this.gameInstance = new GameInstance(this.player, this.render);
           } else {
             this.render.displayMessage(
               ".prompt__error",
@@ -60,7 +60,7 @@ export default class GameController {
         }
       } else {
         if (inputValue.length >= 3) {
-          this.player = new Player(inputValue);
+          this.player = new Player(inputValue, this.render);
           this.render.displayMessage(".prompt__error", "");
           this.render.displayMessage(
             ".player__name",

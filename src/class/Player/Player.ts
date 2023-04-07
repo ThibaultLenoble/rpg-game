@@ -11,12 +11,12 @@ class Player {
   level: number;
   coins: number = 0;
   image?: string;
+  render: Render;
 
-  render = new Render();
-
-  constructor(name: string) {
+  constructor(name: string, render: Render) {
     this.name = name;
     this.level = 1;
+    this.render = render;
   }
 
   takeHit(damage: number) {

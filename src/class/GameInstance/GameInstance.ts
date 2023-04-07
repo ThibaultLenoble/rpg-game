@@ -26,12 +26,12 @@ export default class GameInstance {
   coinMinValue: number = 50;
   chestMinDamageValue: number = 5;
   levelMultiplicator: number = 2;
+  render: Render;
 
-  render = new Render();
-
-  constructor(player: Player) {
+  constructor(player: Player, render: Render) {
     this.player = player;
     this.buildMap();
+    this.render = render;
     this.actualRoom = changeEvent(dataEvents.mainEvents[1], this.render);
     this.render.dipslayEquipment(this.player);
   }
