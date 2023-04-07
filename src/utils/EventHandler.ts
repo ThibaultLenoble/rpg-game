@@ -1,7 +1,5 @@
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 
-export const baseScenario: string = "Base";
-
 export const changeEvent = (event: RoomEvent) => {
 
   event.outputContext = event.outputContext ?? "";

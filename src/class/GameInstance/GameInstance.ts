@@ -31,7 +31,7 @@ export default class GameInstance {
   }
 
   buildMap() {
-    for (let i = 1; i <= this.maxRoom; i++) {
+    for (let i = 0; i <= this.maxRoom; i++) {
       this.rooms.push(getRandomEvent())
     }
   }
