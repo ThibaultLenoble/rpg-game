@@ -10,6 +10,10 @@ export default class Render {
       `${player.currentLife}/${player.maxLife} ❤️`
     );
     this.displayMessage(".player__coins", `${player.coins} 🫘`);
+
+    this.displayMessage(".player__thirst", `${player.thirst}/${player.maxThirst} 💧`);
+
+    this.displayMessage(".player__sip", `${player.sip} 🥛`);
   }
 
   displayMessage(selector: string, message: string) {

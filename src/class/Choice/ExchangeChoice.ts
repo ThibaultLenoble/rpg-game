@@ -35,6 +35,8 @@ export default class ExchangeChoice extends Choice {
         return "❤️";
       case "hp-plus":
         return "❤️ supplémentaires";
+      case "get-sip":
+        return "dose d'🥛"
       default:
         return "Objet inconnu";
     }

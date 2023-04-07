@@ -11,6 +11,10 @@ class Player {
   level: number;
   coins: number = 0;
   image?: string;
+  sip: number = 3;
+  thirst: number = 50;
+  maxThirst: number = 50;
+  sipRecovery: number = 25;
   render: Render;
 
   constructor(name: string, render: Render) {
@@ -83,9 +87,52 @@ class Player {
         this.maxLife += amount;
         this.currentLife += amount;
         return "Votre vie augmente de " + amount + " ❤️ supplémentaires";
+      case "get-sip":
+        this.getSip()
+        return "Vous gagnez " + amount + " dose d'🥛 pour votre gourde";
       default:
         return "Objet inconnu";
     }
+  }
+
+  loseThirst(quantity: number) {
+    this.thirst -= quantity;
+
+    if (this.thirst < 0) {
+      this.thirst = 0;
+    }
+
+    this.render.displayMessage(
+      ".player__thirst",
+      `${this.thirst}/${this.maxThirst} 💧`
+    );
+  }
+
+  drink() {
+    this.sip--;
+    this.thirst += this.sipRecovery;
+
+    if (this.thirst > this.maxThirst) {
+      this.thirst = this.maxThirst;
+    }
+
+    this.render.displayMessage(
+      ".player__thirst",
+      `${this.thirst}/${this.maxThirst} 💧`
+    );
+
+    this.render.displayMessage(
+      ".player__sip",
+      `${this.sip} 🥛`
+    );
+  }
+
+  getSip() {
+    this.sip++
+    this.render.displayMessage(
+      ".player__sip",
+      `${this.sip} 🥛`
+    );
   }
 }
 
