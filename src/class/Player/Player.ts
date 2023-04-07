@@ -1,72 +1,26 @@
-import Weapon from "../Weapon/Weapon";
+/* eslint-disable @typescript-eslint/no-inferrable-types */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable no-case-declarations */
+import Render from "../Render/Render";
 
 class Player {
   name: string;
   currentLife: number = 0;
   maxLife: number = 0;
-  weapon?: Weapon;
   role?: string;
   level: number;
-  coins: number;
+  coins: number = 0;
   image?: string;
+  sip: number = 3;
+  thirst: number = 50;
+  maxThirst: number = 50;
+  sipRecovery: number = 25;
+  render: Render;
 
-  constructor(name: string) {
+  constructor(name: string, render: Render) {
     this.name = name;
     this.level = 1;
-    this.coins = 100;
-  }
-
-  getName(): string {
-    return this.name;
-  }
-
-  setLife(currentLife: number, maxLife: number) {
-    this.currentLife = currentLife;
-    this.maxLife = maxLife;
-  }
-
-  getLife(): { current?: number; max?: number } {
-    return { current: this.currentLife, max: this.maxLife };
-  }
-
-  setWeapon(weapon: Weapon) {
-    this.weapon = weapon;
-  }
-
-  getWeapon(): Weapon | undefined {
-    return this.weapon;
-  }
-
-  setRole(role: string) {
-    this.role = role;
-  }
-
-  getRole(): string | undefined {
-    return this.role;
-  }
-
-  setLevel(level: number) {
-    this.level = level;
-  }
-
-  getLevel(): number {
-    return this.level;
-  }
-
-  setCoins(coins: number) {
-    this.coins = coins;
-  }
-
-  getCoins(): number {
-    return this.coins;
-  }
-
-  setImage(image: string) {
-    this.image = image;
-  }
-
-  getImage(): string | undefined {
-    return this.image;
+    this.render = render;
   }
 
   takeHit(damage: number) {
@@ -76,9 +30,10 @@ class Player {
       this.currentLife = 0;
     }
 
-    document.querySelector<HTMLDivElement>(
-      ".player__life"
-    )!.innerHTML = `${this.currentLife}/${this.maxLife} ❤️`;
+    this.render.displayMessage(
+      ".player__life",
+      `${this.currentLife}/${this.maxLife} ❤️`
+    );
   }
 
   heal(amount: number) {
@@ -88,17 +43,16 @@ class Player {
       this.currentLife = this.maxLife;
     }
 
-    document.querySelector<HTMLDivElement>(
-      ".player__life"
-    )!.innerHTML = `${this.currentLife}/${this.maxLife} ❤️`;
+    this.render.displayMessage(
+      ".player__life",
+      `${this.currentLife}/${this.maxLife} ❤️`
+    );
   }
 
   earnMoney(amount: number) {
     this.coins += amount;
 
-    document.querySelector<HTMLDivElement>(
-      ".player__coins"
-    )!.innerHTML = `${this.coins} 🫘`;
+    this.render.displayMessage(".player__coins", `${this.coins} 🫘`);
   }
 
   giveMoney(amount: number): boolean {
@@ -110,9 +64,7 @@ class Player {
       response = true;
     }
 
-    document.querySelector<HTMLDivElement>(
-      ".player__coins"
-    )!.innerHTML = `${this.coins} 🫘`;
+    this.render.displayMessage(".player__coins", `${this.coins} 🫘`);
 
     return response;
   }
@@ -123,7 +75,7 @@ class Player {
         this.takeHit(amount);
         return "Vous prenez " + amount + " dégats";
       case "give-coin":
-        let isExchangeable = this.giveMoney(amount);
+        const isExchangeable = this.giveMoney(amount);
         return isExchangeable ? "Vous donnez " + amount + " 🫘" : false;
       case "get-coin":
         this.earnMoney(amount);
@@ -133,11 +85,54 @@ class Player {
         return "Vous êtes soigné de " + amount + " ❤️";
       case "hp-plus":
         this.maxLife += amount;
-        this.currentLife += amount
+        this.currentLife += amount;
         return "Votre vie augmente de " + amount + " ❤️ supplémentaires";
+      case "get-sip":
+        this.getSip()
+        return "Vous gagnez " + amount + " dose d'🥛 pour votre gourde";
       default:
         return "Objet inconnu";
     }
+  }
+
+  loseThirst(quantity: number) {
+    this.thirst -= quantity;
+
+    if (this.thirst < 0) {
+      this.thirst = 0;
+    }
+
+    this.render.displayMessage(
+      ".player__thirst",
+      `${this.thirst}/${this.maxThirst} 💧`
+    );
+  }
+
+  drink() {
+    this.sip--;
+    this.thirst += this.sipRecovery;
+
+    if (this.thirst > this.maxThirst) {
+      this.thirst = this.maxThirst;
+    }
+
+    this.render.displayMessage(
+      ".player__thirst",
+      `${this.thirst}/${this.maxThirst} 💧`
+    );
+
+    this.render.displayMessage(
+      ".player__sip",
+      `${this.sip} 🥛`
+    );
+  }
+
+  getSip() {
+    this.sip++
+    this.render.displayMessage(
+      ".player__sip",
+      `${this.sip} 🥛`
+    );
   }
 }
 
