@@ -42,8 +42,8 @@ export default class GameInstance {
 
   handleChoice(choiceIndex: number): void {
     if (this.actualRoom) {
-      if (this.actualRoom.isChoiceExist(choiceIndex)) {
-        let choice = this.actualRoom.getChoice(choiceIndex);
+      if (this.actualRoom.choices[choiceIndex] !== undefined) {
+        let choice = this.actualRoom.choices[choiceIndex];
         this.handleAction(choice);
       } else {
         document.querySelector<HTMLDivElement>(
