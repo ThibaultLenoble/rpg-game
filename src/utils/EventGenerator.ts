@@ -1,12 +1,17 @@
+
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 import {dataEvents} from "../datas/events";
-import {dataChoices} from "../datas/choices";
 import Choice from "../class/Choice/Choice";
 import ExchangeEvent from "../class/RoomEvent/ExchangeEvent";
+import * as dataChoices from '../datas/choices.json';
+import Builder from "../class/Builder/builder";
+
 
 export const getRandomEvent = (): RoomEvent => {
   let rand = Math.floor(Math.random() * dataEvents.available.length)
   let event = dataEvents.available[rand]
+  let builder = new Builder();
+  
 
   switch (event.type) {
     case "EnigmaEvent":
@@ -15,7 +20,7 @@ export const getRandomEvent = (): RoomEvent => {
       if (event.choices.length === 0) {
         event.choices = getRandomChoicesAccordingToEvent(event)
         if (event instanceof ExchangeEvent) {
-          event.choices.push(dataChoices.MainEvent[2])
+          event.choices.push(builder.createChoice(dataChoices.MainEvent[2], 'ExchangeEvent'))
         }
       }
       break;
@@ -28,13 +33,19 @@ export const getRandomEvent = (): RoomEvent => {
 }
 
 export const getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => {
+
+  const builder = new Builder();
   let minChoices = 2;
   let maxChoices = 3;
   let choicesCount = randomIntFromInterval(minChoices, maxChoices)
 
+  
+
   let choices = [];
 
-  let choiceList: Choice[] = [];
+  let choiceList: any = [];
+
+
   switch (event.type) {
     case "EnigmaEvent":
       choiceList = dataChoices.EnigmaEvent;
@@ -49,8 +60,14 @@ export const getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => 
 
   for (let i = 0; i < choicesCount; i++) {
     let choiceIndex: number = randomIntFromInterval(0, choiceList.length - 1)
-    choices.push(choiceList[choiceIndex]);
+    if (event.type == 'ExchangeEvent') {
+      choices.push(builder.createExchangeChoice(choiceList[choiceIndex]));
+    } else {
+      choices.push(builder.createChoice(choiceList[choiceIndex], event.type));
+    }
+    
     choiceList.splice(choiceIndex, 1);
+    
   }
 
   return choices;

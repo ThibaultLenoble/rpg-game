@@ -2,6 +2,7 @@ import Choice from "../class/Choice/Choice";
 import ExchangeChoice from "../class/Choice/ExchangeChoice";
 import SimpleChoice from "../class/Choice/SimpleChoice";
 
+
 export const dataChoices: {
   MainEvent: Choice[];
   EnigmaEvent: SimpleChoice[];
