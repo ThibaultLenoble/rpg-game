@@ -6,20 +6,4 @@ export default class Weapon {
     this.name = name;
     this.damage = damage;
   }
-
-  setName(name: string) {
-    this.name = name;
-  }
-
-  getName():string {
-    return this.name;
-  }
-
-  setDamage(damage: number) {
-    this.damage = damage;
-  }
-
-  getDamage(): number {
-    return this.damage;
-  }
 }
