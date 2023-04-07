@@ -1,12 +1,8 @@
-import { getRandomEvent } from "./EventGenerator";
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 
 export const baseScenario: string = "Base";
 
-export const changeEvent = (event?: RoomEvent) => {
-  if (!event) {
-    event = getRandomEvent();
-  }
+export const changeEvent = (event: RoomEvent) => {
 
   event.outputContext = event.outputContext ?? "";
 

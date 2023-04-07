@@ -5,10 +5,12 @@ import { dataEvents } from "../../datas/events";
 import MainEvent from "../RoomEvent/MainEvent";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
+import {getRandomEvent} from "../../utils/EventGenerator";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
   player: Player;
+  rooms: RoomEvent[] = []
 
   mainEvent: MainEvent = dataEvents.mainEvents[0];
   roomCount: number = 0;
@@ -23,8 +25,15 @@ export default class GameInstance {
 
   constructor(player: Player) {
     this.player = player;
+    this.buildMap()
     this.actualRoom = changeEvent(dataEvents.mainEvents[1]);
     this.dipslayEquipment();
+  }
+
+  buildMap() {
+    for (let i = 1; i <= this.maxRoom; i++) {
+      this.rooms.push(getRandomEvent())
+    }
   }
 
   changeRoom(): void {
@@ -33,7 +42,7 @@ export default class GameInstance {
       this.endGame(true);
     } else {
       console.log("change de salle");
-      this.actualRoom = changeEvent(undefined);
+      this.actualRoom = changeEvent(this.rooms[this.roomCount]);
       document.querySelector<HTMLDivElement>(
         ".prompt__room-advance"
       )!.innerHTML = `${this.roomCount}/${this.maxRoom}`;
