@@ -29,25 +29,28 @@ export const getRandomEvent = (): RoomEvent => {
 
 export const getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => {
   let minChoices = 2;
-  let maxChoices = 4;
+  let maxChoices = 3;
   let choicesCount = randomIntFromInterval(minChoices, maxChoices)
 
   let choices = [];
 
+  let choiceList: Choice[] = [];
+  switch (event.type) {
+    case "EnigmaEvent":
+      choiceList = dataChoices.EnigmaEvent;
+      break;
+    case "ExchangeEvent":
+      choiceList = dataChoices.ExchangeEvent;
+      break;
+    default:
+      console.error("L'évènement n'existe pas ou n'a pas de type");
+      break;
+  }
+
   for (let i = 0; i < choicesCount; i++) {
-    let choiceList: Choice[] = [];
-    switch (event.type) {
-      case "EnigmaEvent":
-        choiceList = dataChoices.EnigmaEvent;
-        break;
-      case "ExchangeEvent":
-        choiceList = dataChoices.ExchangeEvent;
-        break;
-      default:
-        console.error("L'évènement n'existe pas ou n'a pas de type");
-        break;
-    }
-    choices.push(choiceList[randomIntFromInterval(0, choiceList.length - 1)]);
+    let choiceIndex: number = randomIntFromInterval(0, choiceList.length - 1)
+    choices.push(choiceList[choiceIndex]);
+    choiceList.splice(choiceIndex, 1);
   }
 
   return choices;
