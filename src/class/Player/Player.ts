@@ -4,19 +4,14 @@ class Player {
   maxLife: number = 0;
   role?: string;
   level: number;
-  coins: number;
+  coins: number = 0;
   image?: string;
 
-  constructor(name: string, coins: number) {
+  constructor(name: string) {
     this.name = name;
     this.level = 1;
-    this.coins = coins;
   }
-
-  setRole(role: string) {
-    this.role = role;
-  }
-
+  
   takeHit(damage: number) {
     this.currentLife -= damage;
 
