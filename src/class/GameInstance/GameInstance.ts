@@ -27,6 +27,7 @@ export default class GameInstance {
   chestMinDamageValue: number = 5;
   levelMultiplicator: number = 2;
   render: Render;
+  thirstLose: number = 10;
 
   constructor(player: Player, render: Render) {
     this.player = player;
@@ -49,6 +50,18 @@ export default class GameInstance {
     } else {
       console.log("change de salle");
       this.actualRoom = changeEvent(this.rooms[this.roomCount], this.render);
+
+      if (this.roomCount > 1) {
+        this.player.loseThirst(this.thirstLose)
+      }
+
+      if (this.player.thirst == 0) {
+        this.player.takeHit(this.player.maxLife * 0.3)
+
+        if (this.player.currentLife <= 0) {
+          this.render.endGame(false);
+        }
+      }
 
       this.render.displayMessage(
         ".prompt__room-advance",
@@ -141,6 +154,12 @@ export default class GameInstance {
         this.mainEvent.outputContext = `Vous avez gagné ${money} 🫘.`;
         this.actualRoom = changeEvent(this.mainEvent, this.render);
         break;
+      case "chest-get-sip":
+        hasCase = true;
+        this.player.getSip();
+        this.mainEvent.outputContext = `Vous avez gagné 1 dose d'🥛.`;
+        this.actualRoom = changeEvent(this.mainEvent, this.render);
+        break;
       case "exchange":
         hasCase = true;
         let isExchangeOk = false;
@@ -169,6 +188,18 @@ export default class GameInstance {
           this.render.displayMessage(
             ".prompt__error",
             `Erreur : l'échange n'est pas possible`
+          );
+        }
+        break;
+      case "drink":
+        hasCase = true;
+        if (this.player.sip > 0) {
+          this.player.drink()
+          this.changeRoom();
+        } else {
+          this.render.displayMessage(
+            ".prompt__error",
+            `Erreur : Vous n'avez plus d'eau dans votre gourde`
           );
         }
         break;

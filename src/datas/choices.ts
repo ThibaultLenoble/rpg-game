@@ -18,7 +18,8 @@ export const dataChoices: {
     new Choice(
       'Vous prenez le tacos',
       'tacos'
-    )
+    ),
+    new Choice("Boire une gorgée dans la gourde", "drink"),
   ],
   EnigmaEvent: [
     new SimpleChoice("Ouvrir le coffre", "chest-heal"),
@@ -85,6 +86,14 @@ export const dataChoices: {
     new SimpleChoice(
       "Vous voyez une fiole magique",
       "chest-hp-plus"
+    ),
+    new SimpleChoice(
+      "Vous voyez une fontaine à eau",
+      "chest-get-sip"
+    ),
+    new SimpleChoice(
+      "Vous voyez un fente où coule de l'eau de pluie",
+      "chest-get-sip"
     )
   ],
   ExchangeEvent: [
@@ -266,6 +275,18 @@ export const dataChoices: {
       {
         type: "get-coin",
         amount: 240,
+      }
+    ),
+    new ExchangeChoice(
+      "Echanger",
+      "exchange",
+      {
+        type: "give-coin",
+        amount: 300,
+      },
+      {
+        type: "get-sip",
+        amount: 1,
       }
     ),
   ],

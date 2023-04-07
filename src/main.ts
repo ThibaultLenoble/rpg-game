@@ -19,6 +19,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <p class="player__role"></p>
       <p class="player__life"></p>
       <p class="player__coins"></p>
+      <p class="player__thirst"></p>
+      <p class="player__sip"></p>
       <div class="player__pic"></div>
     </div>
   </div>
