@@ -1,3 +1,6 @@
+/* eslint-disable no-case-declarations */
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
+/* eslint-disable @typescript-eslint/no-inferrable-types */
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeEvent } from "../../utils/EventHandler";
@@ -5,6 +8,7 @@ import { dataEvents } from "../../datas/events";
 import MainEvent from "../RoomEvent/MainEvent";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
+import Render from "../Render/Render";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -21,34 +25,39 @@ export default class GameInstance {
   chestMinDamageValue: number = 5;
   levelMultiplicator: number = 2;
 
+  render = new Render();
+
   constructor(player: Player) {
     this.player = player;
-    this.actualRoom = changeEvent(dataEvents.mainEvents[1]);
-    this.dipslayEquipment();
+    this.actualRoom = changeEvent(dataEvents.mainEvents[1], this.render);
+    this.render.dipslayEquipment(player);
   }
 
   changeRoom(): void {
     this.roomCount++;
     if (this.roomCount > this.maxRoom) {
-      this.endGame(true);
+      this.render.endGame(true);
     } else {
       console.log("change de salle");
-      this.actualRoom = changeEvent(undefined);
-      document.querySelector<HTMLDivElement>(
-        ".prompt__room-advance"
-      )!.innerHTML = `${this.roomCount}/${this.maxRoom}`;
+      this.actualRoom = changeEvent(undefined, this.render);
+
+      this.render.displayMessage(
+        ".prompt__room-advance",
+        `${this.roomCount}/${this.maxRoom}`
+      );
     }
   }
 
   handleChoice(choiceIndex: number): void {
     if (this.actualRoom) {
       if (this.actualRoom.isChoiceExist(choiceIndex)) {
-        let choice = this.actualRoom.getChoice(choiceIndex);
+        const choice = this.actualRoom.getChoice(choiceIndex);
         this.handleAction(choice);
       } else {
-        document.querySelector<HTMLDivElement>(
-          ".prompt__error"
-        )!.innerHTML = `Erreur : l'option n'existe pas`;
+        this.render.displayMessage(
+          ".prompt__error",
+          "Erreur : l'option n'existe pas"
+        );
       }
     }
   }
@@ -62,29 +71,29 @@ export default class GameInstance {
         break;
       case "chest-heal":
         hasCase = true;
-        let heal =
+        const heal =
           this.healMinValue *
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.heal(heal);
         this.mainEvent.outputContext = `Vous avez été soigné de ${heal} ❤️.`;
-        this.actualRoom = changeEvent(this.mainEvent);
+        this.actualRoom = changeEvent(this.mainEvent, this.render);
         break;
       case "chest-hp-plus":
         hasCase = true;
-        let hpPlus =
+        const hpPlus =
           this.hpPlusMinValue *
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.maxLife += hpPlus;
         this.player.heal(hpPlus);
         this.mainEvent.outputContext = `Votre vie augmente de ${hpPlus} ❤️.`;
-        this.actualRoom = changeEvent(this.mainEvent);
+        this.actualRoom = changeEvent(this.mainEvent, this.render);
         break;
       case "tacos":
         hasCase = true;
         if (this.randomIntFromInterval(1, 2) == 1) {
-          let tacosPlus = 100;
+          const tacosPlus = 100;
           this.player.maxLife += tacosPlus;
           this.player.heal(tacosPlus);
           this.mainEvent.outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
@@ -93,41 +102,41 @@ export default class GameInstance {
         }
 
         if (this.player.currentLife <= 0) {
-          this.endGame(false);
+          this.render.endGame(false);
         } else {
-          this.actualRoom = changeEvent(this.mainEvent);
+          this.actualRoom = changeEvent(this.mainEvent, this.render);
         }
         break;
       case "chest-hit":
         hasCase = true;
-        let damage =
+        const damage =
           this.chestMinDamageValue *
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.takeHit(damage);
 
         if (this.player.currentLife <= 0) {
-          this.endGame(false);
+          this.render.endGame(false);
         } else {
           this.mainEvent.outputContext = `Vous avez subi ${damage} dégats.`;
-          this.actualRoom = changeEvent(this.mainEvent);
+          this.actualRoom = changeEvent(this.mainEvent, this.render);
         }
         break;
       case "chest-earn-money":
         hasCase = true;
-        let money =
+        const money =
           this.coinMinValue *
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.earnMoney(money);
         this.mainEvent.outputContext = `Vous avez gagné ${money} 🫘.`;
-        this.actualRoom = changeEvent(this.mainEvent);
+        this.actualRoom = changeEvent(this.mainEvent, this.render);
         break;
       case "exchange":
         hasCase = true;
         let isExchangeOk = false;
         if (choice instanceof ExchangeChoice) {
-          let exchangeAction = this.player.exchangeAction(
+          const exchangeAction = this.player.exchangeAction(
             choice.needed.type,
             choice.needed.amount
           );
@@ -140,19 +149,23 @@ export default class GameInstance {
                 choice.giving.type,
                 choice.giving.amount
               );
-            this.actualRoom = changeEvent(dataEvents.mainEvents[0]);
+            this.actualRoom = changeEvent(
+              dataEvents.mainEvents[0],
+              this.render
+            );
           }
         }
 
         if (!isExchangeOk) {
-          document.querySelector<HTMLDivElement>(
-            ".prompt__error"
-          )!.innerHTML = `Erreur : l'échange n'est pas possible`;
+          this.render.displayMessage(
+            ".prompt__error",
+            `Erreur : l'échange n'est pas possible`
+          );
         }
         break;
       case "nothing":
         this.mainEvent.outputContext = `Vous n'avez rien fait`;
-        this.actualRoom = changeEvent(this.mainEvent);
+        this.actualRoom = changeEvent(this.mainEvent, this.render);
         break;
       default:
         if (!hasCase) {
@@ -160,39 +173,6 @@ export default class GameInstance {
         }
         break;
     }
-  }
-
-  dipslayEquipment() {
-    document.querySelector<HTMLDivElement>(
-      ".player__life"
-    )!.innerHTML = `${this.player.currentLife}/${this.player.maxLife} ❤️`;
-
-    document.querySelector<HTMLDivElement>(
-      ".player__coins"
-    )!.innerHTML = `${this.player.coins} 🫘`;
-  }
-
-  endGame(isWin: boolean = false): void {
-    console.log("Fin du jeu");
-    if (isWin) {
-      document.querySelector<HTMLDivElement>(
-        ".prompt__description"
-      )!.innerHTML = "Le jeu est fini. Vous avez gagné !!! 🥳🥳🥳🥳🥳🥳";
-    } else {
-      document.querySelector<HTMLDivElement>(
-        ".prompt__description"
-      )!.innerHTML = "Le jeu est fini. Vous avez perdu !!!";
-    }
-
-    document.querySelector<HTMLDivElement>(
-      ".prompt__room-advance"
-    )!.remove();
-    document.querySelector<HTMLDivElement>(
-      ".prompt__input"
-    )!.remove();
-    document.querySelector<HTMLDivElement>(
-      ".prompt__submit"
-    )!.remove();
   }
 
   randomIntFromInterval(min: number, max: number): number {
