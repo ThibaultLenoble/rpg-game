@@ -315,8 +315,8 @@
         "amount": 300
       },
       "giving": {
-        "type": "hit",
-        "amount": 50
+        "type": "heal",
+        "amount": 10000
       }
     },
 
