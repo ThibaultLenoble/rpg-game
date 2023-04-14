@@ -184,6 +184,9 @@ export default class GameInstance {
                 choice.giving.type,
                 choice.giving.amount
               );
+            if (this.player.currentLife <= 0) {
+              this.render.endGame(false);
+            }
             this.actualRoom = changeEvent(
               event,
               this.render
