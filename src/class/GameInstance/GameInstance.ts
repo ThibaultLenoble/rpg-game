@@ -184,10 +184,14 @@ export default class GameInstance {
                 choice.giving.type,
                 choice.giving.amount
               );
-            this.actualRoom = changeEvent(
-              event,
-              this.render
-            );
+            if (this.player.currentLife <= 0) {
+              this.render.endGame(false);
+            } else {
+              this.actualRoom = changeEvent(
+                event,
+                this.render
+              );
+            }
           }
         }
 
