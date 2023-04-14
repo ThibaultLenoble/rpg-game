@@ -15,6 +15,10 @@
     {
       "label": "Vous prenez le tacos",
       "action": "tacos"
+    },
+    {
+      "label": "Boire une gorgée dans la gourde",
+      "action": "drink"
     }
   ],
   "EnigmaEvent": [
@@ -221,11 +225,11 @@
       "action": "exchange",
       "needed": {
         "type": "give-coin",
-        "amount": 500
+        "amount": 200
       },
       "giving": {
-        "type": "hp-plus",
-        "amount": 40
+        "type": "heal",
+        "amount": 30
       }
     },
     {
@@ -233,59 +237,23 @@
       "action": "exchange",
       "needed": {
         "type": "hit",
-        "amount": 55
+        "amount": 5
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "get-coin",
+        "amount": 50
       }
     },
     {
       "label": "Donner de l'argent au mendiant qui vous supplie",
       "action": "exchange",
       "needed": {
-        "type": "give-coin",
-        "amount": 10
-      },
-      "giving": {
         "type": "hit",
-        "amount": 5
-      }
-    },
-    {
-      "label": "Utiliser une potion de soins pour guérir une maladie inconnue",
-      "action": "exchange",
-      "needed": {
-        "type": "get-coin",
-        "amount": 20
-      },
-      "giving": {
-        "type": "hp-plus",
-        "amount": 10
-      }
-    },
-    {
-      "label": "Défendre un village attaqué par des gobelins pour une récompense en pièces d'or",
-      "action": "exchange",
-      "needed": {
-        "type": "hit",
-        "amount": 40
+        "amount": 21
       },
       "giving": {
         "type": "get-coin",
-        "amount": 200
-      }
-    },
-    {
-      "label": "Échanger une pierre rare contre une amélioration d'armure",
-      "action": "exchange",
-      "needed": {
-        "type": "give-coin",
-        "amount": 50
-      },
-      "giving": {
-        "type": "hp-plus",
-        "amount": 20
+        "amount": 111
       }
     },
     {
@@ -293,37 +261,11 @@
       "action": "exchange",
       "needed": {
         "type": "give-coin",
-        "amount": 150
-      },
-      "giving": {
-        "type": "get-coin",
-        "amount": 75
-      }
-    },
-
-    {
-      "label": "Défier le gardien du pont pour traverser la rivière",
-      "action": "exchange",
-      "needed": {
-        "type": "hit",
-        "amount": 40
-      },
-      "giving": {
-        "type": "get-coin",
-        "amount": 200
-      }
-    },
-
-    {
-      "label": "Faire un marché avec le magicien maléfique pour obtenir un sortilège puissant",
-      "action": "exchange",
-      "needed": {
-        "type": "give-coin",
         "amount": 300
       },
       "giving": {
-        "type": "hp-plus",
-        "amount": 30
+        "type": "heal",
+        "amount": 45
       }
     },
 
@@ -331,38 +273,12 @@
       "label": "Récupérer une potion magique dans la grotte infestée de monstres",
       "action": "exchange",
       "needed": {
-        "type": "hit",
-        "amount": 50
-      },
-      "giving": {
-        "type": "get-coin",
-        "amount": 150
-      }
-    },
-
-    {
-      "label": "Miser sur un jeu de hasard pour gagner des pièces d'or",
-      "action": "exchange",
-      "needed": {
         "type": "give-coin",
-        "amount": 20
-      },
-      "giving": {
-        "type": "get-coin",
         "amount": 100
-      }
-    },
-
-    {
-      "label": "Accepter de transporter un colis précieux pour un marchand en échange d'une récompense",
-      "action": "exchange",
-      "needed": {
-        "type": "give-coin",
-        "amount": 0
       },
       "giving": {
-        "type": "get-coin",
-        "amount": 300
+        "type": "heal",
+        "amount": 15
       }
     },
 
@@ -370,62 +286,24 @@
       "label": "Résoudre l'énigme de la porte verrouillée pour accéder à la salle au trésor",
       "action": "exchange",
       "needed": {
-        "type": "hit",
-        "amount": 20
-      },
-      "giving": {
-        "type": "get-coin",
-        "amount": 100
-      }
-    },
-    {
-      "label": "Participer à une chasse aux trésors organisée par les villageois pour gagner des richesses",
-      "action": "exchange",
-      "needed": {
         "type": "give-coin",
-        "amount": 80
+        "amount": 1000
       },
       "giving": {
-        "type": "get-coin",
-        "amount": 300
+        "type": "heal",
+        "amount": 200
       }
     },
     {
       "label": "Récupérer l'ancien artefact gardé par le dragon redoutable",
       "action": "exchange",
       "needed": {
-        "type": "hit",
-        "amount": 60
-      },
-      "giving": {
-        "type": "hp-plus",
-        "amount": 30
-      }
-    },
-
-    {
-      "label": "Sacrifier une partie de votre santé pour gagner de la richesse",
-      "action": "exchange",
-      "needed": {
-        "type": "hit",
-        "amount": 25
-      },
-      "giving": {
-        "type": "get-coin",
-        "amount": 200
-      }
-    },
-
-    {
-      "label": "Payer un expert pour améliorer vos compétences en combat",
-      "action": "exchange",
-      "needed": {
         "type": "give-coin",
-        "amount": 150
+        "amount": 750
       },
       "giving": {
-        "type": "hit",
-        "amount": 40
+        "type": "heal",
+        "amount": 150
       }
     },
 
@@ -447,24 +325,11 @@
       "action": "exchange",
       "needed": {
         "type": "give-coin",
-        "amount": 100
+        "amount": 1000
       },
       "giving": {
         "type": "hp-plus",
-        "amount": 20
-      }
-    },
-
-    {
-      "label": "Investir dans des équipements de qualité pour vous protéger des attaques ennemies",
-      "action": "exchange",
-      "needed": {
-        "type": "give-coin",
-        "amount": 250
-      },
-      "giving": {
-        "type": "hit",
-        "amount": 35
+        "amount": 40
       }
     },
 
@@ -473,24 +338,11 @@
       "action": "exchange",
       "needed": {
         "type": "hit",
-        "amount": 40
-      },
-      "giving": {
-        "type": "hp-plus",
         "amount": 25
-      }
-    },
-
-    {
-      "label": "Donner une somme d'argent à un vieil ermite pour qu'il vous enseigne une technique de combat ancestrale",
-      "action": "exchange",
-      "needed": {
-        "type": "give-coin",
-        "amount": 200
       },
       "giving": {
-        "type": "hit",
-        "amount": 30
+        "type": "get-coin",
+        "amount": 150
       }
     },
 
@@ -498,48 +350,24 @@
       "label": "Perdre une partie de votre richesse pour avoir accès à un passage secret",
       "action": "exchange",
       "needed": {
-        "type": "give-coin",
-        "amount": 150
+        "type": "hit",
+        "amount": 10
       },
       "giving": {
         "type": "get-coin",
-        "amount": 100
+        "amount": 60
       }
     },
     {
       "label": "Se mesurer au champion en combat singulier pour gagner sa fortune",
       "action": "exchange",
       "needed": {
-        "type": "hit",
-        "amount": 40
-      },
-      "giving": {
-        "type": "get-coin",
-        "amount": 300
-      }
-    },
-    {
-      "label": "Fournir une information vitale à l'espion ennemi en échange d'un trésor rare",
-      "action": "exchange",
-      "needed": {
         "type": "give-coin",
-        "amount": 100
+        "amount": 50
       },
       "giving": {
-        "type": "hp-plus",
-        "amount": 20
-      }
-    },
-    {
-      "label": "Utiliser un sortilège pour fermer la porte secrète en échange de pièces d'or",
-      "action": "exchange",
-      "needed": {
-        "type": "hit",
-        "amount": 20
-      },
-      "giving": {
-        "type": "give-coin",
-        "amount": 150
+        "type": "heal",
+        "amount": 5
       }
     },
     {
@@ -547,23 +375,11 @@
       "action": "exchange",
       "needed": {
         "type": "give-coin",
-        "amount": 50
+        "amount": 120
       },
       "giving": {
-        "type": "get-coin",
-        "amount": 200
-      }
-    },
-    {
-      "label": "Partager vos provisions avec le mendiant pour découvrir un secret caché",
-      "action": "exchange",
-      "needed": {
-        "type": "give-coin",
-        "amount": 20
-      },
-      "giving": {
-        "type": "hit",
-        "amount": 10
+        "type": "heal",
+        "amount": 15
       }
     },
     {
@@ -571,35 +387,35 @@
       "action": "exchange",
       "needed": {
         "type": "hit",
-        "amount": 60
+        "amount": 15
       },
       "giving": {
         "type": "get-coin",
-        "amount": 400
+        "amount": 150
       }
     },
     {
       "label": "Renoncer à votre fierté pour convaincre le marchand de baisser ses prix",
       "action": "exchange",
       "needed": {
-        "type": "give-coin",
+        "type": "hit",
         "amount": 30
       },
       "giving": {
         "type": "get-coin",
-        "amount": 100
+        "amount": 240
       }
     },
     {
       "label": "S'exposer aux flammes pour sauver un artefact sacré en échange d'une bénédiction divine",
       "action": "exchange",
       "needed": {
-        "type": "hit",
-        "amount": 50
+        "type": "give-coin",
+        "amount": 300
       },
       "giving": {
-        "type": "hp-plus",
-        "amount": 30
+        "type": "get-sip",
+        "amount": 1
       }
     }
   ]

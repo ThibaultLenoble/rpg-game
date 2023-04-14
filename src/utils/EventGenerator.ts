@@ -1,61 +1,72 @@
 import RoomEvent from "../class/RoomEvent/RoomEvent";
-import {dataEvents} from "../datas/events";
-import {dataChoices} from "../datas/choices";
+import * as dataEvents from "../datas/events.json";
+import * as dataChoices from "../datas/choices.json";
 import Choice from "../class/Choice/Choice";
 import ExchangeEvent from "../class/RoomEvent/ExchangeEvent";
+import ChoiceBuilder from "../class/Builder/ChoiceBuilder";
+import EventBuilder from "../class/Builder/EventBuilder";
 
-export const getRandomEvent = (): RoomEvent => {
-  let rand = Math.floor(Math.random() * dataEvents.available.length)
-  let event = dataEvents.available[rand]
+export default class EventGenerator {
+  choiceBuilder: ChoiceBuilder
+  eventBuilder: EventBuilder
 
-  switch (event.type) {
-    case "EnigmaEvent":
-    case "FightEvent":
-    case "ExchangeEvent":
-      if (event.choices.length === 0) {
-        event.choices = getRandomChoicesAccordingToEvent(event)
-        if (event instanceof ExchangeEvent) {
-          event.choices.push(dataChoices.MainEvent[2])
+  constructor() {
+    this.choiceBuilder = new ChoiceBuilder()
+    this.eventBuilder = new EventBuilder()
+  }
+
+  getRandomEvent = (): RoomEvent => {
+    let rand = Math.floor(Math.random() * dataEvents.available.length)
+    let event = dataEvents.available[rand]
+    let buildEvent
+
+    switch (event.type) {
+      case "EnigmaEvent":
+      case "ExchangeEvent":
+      default:
+        buildEvent = this.eventBuilder.build(event)
+
+        if (!event.choices || event.choices.length === 0) {
+          buildEvent.choices = this.getRandomChoicesAccordingToEvent(buildEvent)
+          if (buildEvent instanceof ExchangeEvent) {
+            buildEvent.choices.push(this.choiceBuilder.build(dataChoices.MainEvent[2], 'MainEvent'))
+          }
         }
-      }
-      break;
-    default:
-      console.error("L'évènement n'existe pas ou n'a pas de type");
-      break;
+        break;
+    }
+
+    return buildEvent;
   }
 
-  return event;
-}
+  getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => {
+    let minChoices = 2;
+    let maxChoices = 3;
+    let choicesCount = this.randomIntFromInterval(minChoices, maxChoices)
 
-export const getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => {
-  let minChoices = 2;
-  let maxChoices = 3;
-  let choicesCount = randomIntFromInterval(minChoices, maxChoices)
+    let choices: any[] = [];
 
-  let choices = [];
+    let choiceList: Choice[] = [];
+    switch (event.type) {
+      case "EnigmaEvent":
+        choiceList = dataChoices.EnigmaEvent;
+        break;
+      case "ExchangeEvent":
+        choiceList = dataChoices.ExchangeEvent;
+        break;
+      default:
+        console.error("L'évènement n'existe pas ou n'a pas de type");
+        break;
+    }
 
-  let choiceList: Choice[] = [];
-  switch (event.type) {
-    case "EnigmaEvent":
-      choiceList = dataChoices.EnigmaEvent;
-      break;
-    case "ExchangeEvent":
-      choiceList = dataChoices.ExchangeEvent;
-      break;
-    default:
-      console.error("L'évènement n'existe pas ou n'a pas de type");
-      break;
+    for (let i = 0; i < choicesCount; i++) {
+      let choiceIndex: number = this.randomIntFromInterval(0, choiceList.length - 1)
+      choices.push(this.choiceBuilder.build(choiceList[choiceIndex], event.type));
+    }
+
+    return choices;
   }
 
-  for (let i = 0; i < choicesCount; i++) {
-    let choiceIndex: number = randomIntFromInterval(0, choiceList.length - 1)
-    choices.push(choiceList[choiceIndex]);
-    choiceList.splice(choiceIndex, 1);
+  randomIntFromInterval = (min: number, max: number): number => { // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min)
   }
-
-  return choices;
-}
-
-export const randomIntFromInterval = (min: number, max: number): number => { // min and max included
-  return Math.floor(Math.random() * (max - min + 1) + min)
 }
