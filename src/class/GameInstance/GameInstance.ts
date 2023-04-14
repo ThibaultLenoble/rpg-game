@@ -186,11 +186,12 @@ export default class GameInstance {
               );
             if (this.player.currentLife <= 0) {
               this.render.endGame(false);
+            } else {
+              this.actualRoom = changeEvent(
+                event,
+                this.render
+              );
             }
-            this.actualRoom = changeEvent(
-              event,
-              this.render
-            );
           }
         }
 
