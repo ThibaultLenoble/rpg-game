@@ -3,6 +3,7 @@ import { dataChoices } from "./choices";
 import EnigmaEvent from "../class/RoomEvent/EnigmaEvent";
 import MainEvent from "../class/RoomEvent/MainEvent";
 import ExchangeEvent from "../class/RoomEvent/ExchangeEvent";
+import AppImages from "../assets/image";
 
 export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
   mainEvents: [
@@ -76,7 +77,7 @@ export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
     ),
     new ExchangeEvent(
       "Au loin, vous entendez des murmures... ... ... Vous vous approchez et vous apercevez un mage noir. C'est l'archimage Lenoble qui vous propose quelques affaires.",
-      "https://i.postimg.cc/J7sJRnPf/mage-noire.png"
+      AppImages.mageNoire
     ),
     new ExchangeEvent(
       "Oh mon dieu !!!! LE MEILLEUR MARCHAND DE LA REGION EST ICI !!!! C'est Alexis Bezos et ses super deals de la mort qui tue !! Profitez-en !",
