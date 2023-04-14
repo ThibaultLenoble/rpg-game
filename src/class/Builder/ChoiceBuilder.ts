@@ -17,7 +17,6 @@ export default class ChoiceBuilder {
   }
 
   buildSpecificChoice(choiceId: number, eventType: string) {
-    console.log(choiceId, eventType)
     let choice
     switch (eventType) {
       case "MainEvent":
