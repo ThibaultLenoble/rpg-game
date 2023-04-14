@@ -25,7 +25,7 @@ export const dataEvents: { mainEvents: MainEvent[]; available: RoomEvent[] } = {
       "Vous arrivez dans une salle et un marchand vous accueille."
     ),
     new EnigmaEvent(
-      "Vous arrivez dans une salle et vous voyez plusieurs coffre"
+      "Vous arrivez dans une salle et un marchand vous accueille."
     ),
     new EnigmaEvent(
       "Vous trouvez plusieurs malles en bois au centre de la pièce. Laquelle voulez-vous ouvrir ?"

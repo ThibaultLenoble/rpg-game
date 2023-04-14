@@ -4,19 +4,20 @@
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeEvent } from "../../utils/EventHandler";
-import { dataEvents } from "../../datas/events";
-import MainEvent from "../RoomEvent/MainEvent";
+import * as dataEvents from "../../datas/events.json"
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
-import { getRandomEvent } from "../../utils/EventGenerator";
+import EventGenerator from "../../utils/EventGenerator";
+import EventBuilder from "../Builder/EventBuilder";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
   player: Player;
   rooms: RoomEvent[] = [];
+  eventGenerator: EventGenerator = new EventGenerator();
+  eventBuilder: EventBuilder = new EventBuilder();
 
-  mainEvent: MainEvent = dataEvents.mainEvents[0];
   roomCount: number = 0;
 
   maxRoom: number = 15;
@@ -33,13 +34,13 @@ export default class GameInstance {
     this.player = player;
     this.buildMap();
     this.render = render;
-    this.actualRoom = changeEvent(dataEvents.mainEvents[1], this.render);
+    this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[1]), this.render);
     this.render.dipslayEquipment(this.player);
   }
 
   buildMap() {
     for (let i = 0; i <= this.maxRoom; i++) {
-      this.rooms.push(getRandomEvent());
+      this.rooms.push(this.eventGenerator.getRandomEvent());
     }
   }
 
@@ -86,6 +87,7 @@ export default class GameInstance {
 
   handleAction(choice: Choice | ExchangeChoice) {
     let hasCase = false;
+    let event
     switch (choice.action) {
       case "get-out":
         hasCase = true;
@@ -98,8 +100,8 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.heal(heal);
-        this.mainEvent.outputContext = `Vous avez été soigné de ${heal} ❤️.`;
-        this.actualRoom = changeEvent(this.mainEvent, this.render);
+        this.eventBuilder.build(dataEvents.mainEvents[1]).outputContext = `Vous avez été soigné de ${heal} ❤️.`;
+        this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[0]), this.render);
         break;
       case "chest-hp-plus":
         hasCase = true;
@@ -109,8 +111,9 @@ export default class GameInstance {
           this.randomIntFromInterval(1, 4);
         this.player.maxLife += hpPlus;
         this.player.heal(hpPlus);
-        this.mainEvent.outputContext = `Votre vie augmente de ${hpPlus} ❤️.`;
-        this.actualRoom = changeEvent(this.mainEvent, this.render);
+        event = this.eventBuilder.build(dataEvents.mainEvents[1]);
+        event.outputContext = `Votre vie augmente de ${hpPlus} ❤️.`;
+        this.actualRoom = changeEvent(event, this.render);
         break;
       case "tacos":
         hasCase = true;
@@ -118,7 +121,7 @@ export default class GameInstance {
           const tacosPlus = 100;
           this.player.maxLife += tacosPlus;
           this.player.heal(tacosPlus);
-          this.mainEvent.outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
+          this.eventBuilder.build(dataEvents.mainEvents[0]).outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
         } else {
           this.player.currentLife = 0;
         }
@@ -126,7 +129,7 @@ export default class GameInstance {
         if (this.player.currentLife <= 0) {
           this.render.endGame(false);
         } else {
-          this.actualRoom = changeEvent(this.mainEvent, this.render);
+          this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[0]), this.render);
         }
         break;
       case "chest-hit":
@@ -140,8 +143,9 @@ export default class GameInstance {
         if (this.player.currentLife <= 0) {
           this.render.endGame(false);
         } else {
-          this.mainEvent.outputContext = `Vous avez subi ${damage} dégats.`;
-          this.actualRoom = changeEvent(this.mainEvent, this.render);
+          let event = this.eventBuilder.build(dataEvents.mainEvents[0])
+          event.outputContext = `Vous avez subi ${damage} dégats.`;
+          this.actualRoom = changeEvent(event, this.render);
         }
         break;
       case "chest-earn-money":
@@ -151,14 +155,16 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.earnMoney(money);
-        this.mainEvent.outputContext = `Vous avez gagné ${money} 🫘.`;
-        this.actualRoom = changeEvent(this.mainEvent, this.render);
+        event = this.eventBuilder.build(dataEvents.mainEvents[0])
+        event.outputContext = `Vous avez gagné ${money} 🫘.`;
+        this.actualRoom = changeEvent(event, this.render);
         break;
       case "chest-get-sip":
         hasCase = true;
         this.player.getSip();
-        this.mainEvent.outputContext = `Vous avez gagné 1 dose d'🥛.`;
-        this.actualRoom = changeEvent(this.mainEvent, this.render);
+        event = this.eventBuilder.build(dataEvents.mainEvents[0])
+        event.outputContext = `Vous avez gagné 1 dose d'🥛.`;
+        this.actualRoom = changeEvent(event, this.render);
         break;
       case "exchange":
         hasCase = true;
@@ -170,7 +176,8 @@ export default class GameInstance {
           );
           if (exchangeAction) {
             isExchangeOk = true;
-            this.mainEvent.outputContext =
+            event = this.eventBuilder.build(dataEvents.mainEvents[0])
+            event.outputContext =
               exchangeAction +
               ", " +
               this.player.exchangeAction(
@@ -178,7 +185,7 @@ export default class GameInstance {
                 choice.giving.amount
               );
             this.actualRoom = changeEvent(
-              dataEvents.mainEvents[0],
+              event,
               this.render
             );
           }
@@ -204,8 +211,9 @@ export default class GameInstance {
         }
         break;
       case "nothing":
-        this.mainEvent.outputContext = `Vous n'avez rien fait`;
-        this.actualRoom = changeEvent(this.mainEvent, this.render);
+        event = this.eventBuilder.build(dataEvents.mainEvents[0])
+        event.outputContext = `Vous n'avez rien fait`;
+        this.actualRoom = changeEvent(event, this.render);
         break;
       default:
         if (!hasCase) {

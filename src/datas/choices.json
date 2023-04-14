@@ -15,6 +15,10 @@
     {
       "label": "Vous prenez le tacos",
       "action": "tacos"
+    },
+    {
+      "label": "Boire une gorgée dans la gourde",
+      "action": "drink"
     }
   ],
   "EnigmaEvent": [
