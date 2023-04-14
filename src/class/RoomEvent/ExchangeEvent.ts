@@ -1,10 +1,11 @@
 import RoomEvent from "./RoomEvent";
 import Choice from "../Choice/Choice";
+import AppImages from "../../assets/image";
 
 export default class ExchangeEvent extends RoomEvent {
 
   type: string = 'ExchangeEvent';
-  image: string = "https://i.postimg.cc/YCFJQmQK/alexis-bezos.png";
+  image: string = AppImages.marchant;
   constructor(
     inputContext: string,
     outputContext?: string,
