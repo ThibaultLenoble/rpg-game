@@ -1,9 +1,10 @@
 import RoomEvent from "./RoomEvent";
 import Choice from "../Choice/Choice";
+import AppImages from "../../assets/image";
 
 export default class EnigmaEvent extends RoomEvent {
   type: string = "EnigmaEvent";
-  image?: string = "https://i.postimg.cc/hPb06HNY/golden-chest.webp";
+  image?: string = AppImages.goldenChest;
 
   constructor(
     inputContext: string,

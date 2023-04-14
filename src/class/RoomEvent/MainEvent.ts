@@ -1,10 +1,11 @@
 import RoomEvent from "./RoomEvent";
 import Choice from "../Choice/Choice";
+import AppImages from "../../assets/image";
 
 export default class MainEvent extends RoomEvent {
 
   type: string = 'MainEvent';
-  image?: string = "https://i.postimg.cc/85FpQzq1/douglas-archeologue.png";
+  image?: string = AppImages.archeologue;
 
   constructor(
     inputContext: string,

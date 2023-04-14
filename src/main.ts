@@ -1,3 +1,4 @@
+import AppImages from "./assets/image";
 import GameController from "./controller/GameController/GameController";
 import "./style.css";
 
@@ -11,7 +12,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <button class="prompt__submit">Continuer</button>
   </div>
   <div class="context">
-    <img src="https://i.postimg.cc/85FpQzq1/douglas-archeologue.png" />
+    <img src="${AppImages.archeologue}" />
   </div>
   <div class="player">
     <div class="player__info">
