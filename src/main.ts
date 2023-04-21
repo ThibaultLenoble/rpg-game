@@ -71,6 +71,9 @@ saveLoaderBtn.addEventListener("click", async () => {
     if (gameInstance) {
       gameController.player = gameInstance.player;
       gameController.newGameFromSave(gameInstance);
+      if (!saveLoaderContainer.classList.contains("hide")) {
+        saveLoaderContainer.classList.add("hide");
+      }
     }
   }
 });

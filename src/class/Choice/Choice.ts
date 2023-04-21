@@ -2,13 +2,15 @@ class Choice {
   label: string;
   action: string;
   id: number;
-  item?: string;
+  item?: number;
 
-  constructor(id: number, label: string, action: string, item?: string) {
+  constructor(id: number, label: string, action: string, item?: number) {
     this.label = label;
     this.action = action;
     this.id = id;
-    this.item = item ?? undefined;
+    if (item) {
+      this.item = item;
+    }
   }
 }
 
