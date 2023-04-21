@@ -2,6 +2,7 @@ import ChoiceBuilder from "./ChoiceBuilder";
 import ExchangeEvent from "../RoomEvent/ExchangeEvent";
 import * as dataEvents from "../../datas/events.json";
 import RoomEvent from "../RoomEvent/RoomEvent";
+import Choice from "../Choice/Choice";
 
 export default class EventBuilder {
   choiceBuilder: ChoiceBuilder;
@@ -10,7 +11,7 @@ export default class EventBuilder {
     this.choiceBuilder = new ChoiceBuilder();
   }
 
-  build(eventData: any) {
+  build(eventData: any, choices?: Choice[]) {
     let event: any;
 
     eventData.type == "ExchangeEvent"
@@ -22,12 +23,16 @@ export default class EventBuilder {
           eventData.outputContext
         ));
 
-    if (eventData.choices?.length > 0) {
-      eventData.choices.forEach((choice: number) => {
-        event.choices.push(
-          this.choiceBuilder.buildSpecificChoice(this.choiceBuilder.getChoice(choice, 'MainEvent'), eventData.type)
-        );
-      });
+    if (choices) {
+      event.choices = choices;
+    } else {
+      if (eventData.choices?.length > 0) {
+        eventData.choices.forEach((choice: number) => {
+          event.choices.push(
+            this.choiceBuilder.buildSpecificChoice(this.choiceBuilder.getChoice(choice, 'MainEvent'), eventData.type)
+          );
+        });
+      }
     }
     return event;
   }
@@ -35,7 +40,7 @@ export default class EventBuilder {
   getEvent(eventId: number, eventType: string) {
     let list: any[] = [];
 
-    if (eventType === 'main') {
+    if (eventType === 'MainEvent') {
       list = dataEvents.mainEvents
     } else {
       list = dataEvents.available
