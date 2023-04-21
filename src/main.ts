@@ -34,6 +34,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
 const inputBtn: any = document.querySelector(".prompt__submit");
 const inputEl: any = document.querySelector(".prompt__input");
+const saveLoaderContainer: any = document.querySelector(".load-save__container");
 const saveLoaderBtn: any = document.querySelector(".load-save__btn");
 const fileSelector: HTMLInputElement|null = document.querySelector('#file-selector');
 
@@ -42,6 +43,8 @@ saveLoaderBtn.addEventListener('click', async () => {
     let gameDatas = await gameController.saveManager.load(fileSelector.files[0])
 
     gameController.newGameFromSave(gameDatas)
+
+    saveLoaderContainer.classList.add('hide')
   }
 });
 
