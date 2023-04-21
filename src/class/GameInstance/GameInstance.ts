@@ -45,7 +45,9 @@ export default class GameInstance {
   }
 
   newGameFromFile() {
+
     if (this.actualRoom) {
+
       this.actualRoom = changeEvent(this.actualRoom, this.render);
     }
   }
@@ -168,13 +170,6 @@ export default class GameInstance {
           const event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'));
           event.outputContext = `Vous avez subi ${damage} dégats.`;
           this.actualRoom = changeEvent(event, this.render);
-        }
-        break;
-      case "give-item":
-        if (choice.item) {
-          this.player.inventory.addItem(dataItems.items[Number(choice.item)]);
-        } else {
-          console.error("Le choix sélectionné n'a pas d'item associé");
         }
         break;
       case "chest-earn-money":

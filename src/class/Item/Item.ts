@@ -4,12 +4,10 @@ export default class Item {
   amount: number;
   image: string;
   useCount: number;
-  id: number;
 
   constructor(
     name: string,
     action: string,
-    id: number,
     amount?: number,
     image?: string,
     useCount?: number
@@ -21,6 +19,5 @@ export default class Item {
       image ??
       "https://static.vecteezy.com/system/resources/previews/001/208/666/original/banana-png.png";
     this.useCount = useCount ?? 1;
-    this.id = id;
   }
 }
