@@ -44,6 +44,7 @@ export default class SaveManager {
         choices: roomChoices,
       };
 
+      // @ts-ignore
       savedGameInstance.rooms.push(tempRoom);
     });
 
@@ -66,7 +67,7 @@ export default class SaveManager {
       downloadLink.click();
     }
   }
-
+  // @ts-ignore
   async load(file: Blob, render: Render) {
     this.reader.readAsText(file);
 
