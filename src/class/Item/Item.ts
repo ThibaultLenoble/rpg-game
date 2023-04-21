@@ -3,14 +3,14 @@ export default class Item {
   action: string;
   amount: number;
   image: string;
-  load: number;
+  useCount: number;
 
   constructor(
     name: string,
     action: string,
     amount?: number,
     image?: string,
-    load?: number
+    useCount?: number
   ) {
     this.name = name;
     this.action = action;
@@ -18,6 +18,6 @@ export default class Item {
     this.image =
       image ??
       "https://static.vecteezy.com/system/resources/previews/001/208/666/original/banana-png.png";
-    this.load = load ?? 1;
+    this.useCount = useCount ?? 1;
   }
 }

@@ -1,11 +1,7 @@
 import Item from "../Item/Item";
 
 export default class Inventory {
-  items: Item[];
-
-  constructor() {
-    this.items = [];
-  }
+  items: Item[] = [];
 
   addItem(item: Item) {
     this.items.push(item);
@@ -25,16 +21,16 @@ export default class Inventory {
   useItem(itemToFind: Item) {
     const index = this.items.indexOf(itemToFind);
     if (index !== -1) {
-      this.items[index].load -= 1;
+      this.items[index].useCount -= 1;
 
-      if (this.items[index].load < 1) {
+      if (this.items[index].useCount < 1) {
         this.removeItem(itemToFind);
       }
 
       return {
         action: this.items[index].action,
         amount: this.items[index].amount,
-        load: this.items[index].load,
+        load: this.items[index].useCount,
       };
     } else {
       console.info("false");
