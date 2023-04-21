@@ -11,7 +11,6 @@ import Render from "../Render/Render";
 import EventGenerator from "../../utils/EventGenerator";
 import EventBuilder from "../Builder/EventBuilder";
 import SaveManager from "../../utils/SaveManager";
-import MainEvent from "../RoomEvent/MainEvent";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -47,13 +46,8 @@ export default class GameInstance {
   newGameFromFile() {
 
     if (this.actualRoom) {
-      let choices: Choice[] = []
-      this.actualRoom.choices.forEach(choice => {
-        choices.push(new Choice(choice.label, choice.action))
-      })
-      let room = new MainEvent(this.actualRoom.inputContext, this.actualRoom.outputContext, choices, this.actualRoom.image)
 
-      this.actualRoom = changeEvent(room, this.render);
+      this.actualRoom = changeEvent(this.actualRoom, this.render);
     }
   }
 

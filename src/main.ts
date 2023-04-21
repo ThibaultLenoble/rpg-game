@@ -1,6 +1,7 @@
 import AppImages from "./assets/image";
 import GameController from "./controller/GameController/GameController";
 import "./style.css";
+import Render from "./class/Render/Render";
 
 document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="prompt">
@@ -40,11 +41,12 @@ const fileSelector: HTMLInputElement|null = document.querySelector('#file-select
 
 saveLoaderBtn.addEventListener('click', async () => {
   if (fileSelector?.files) {
-    let gameDatas = await gameController.saveManager.load(fileSelector.files[0])
+    let gameInstance = await gameController.saveManager.load(fileSelector.files[0], new Render())
 
-    gameController.newGameFromSave(gameDatas)
-
-    saveLoaderContainer.classList.add('hide')
+    if (gameInstance) {
+      gameController.player = gameInstance.player
+      gameController.newGameFromSave(gameInstance)
+    }
   }
 });
 
@@ -63,4 +65,8 @@ const gameController = new GameController();
 
 const getValue = () => {
   gameController.handleInput(inputEl.value);
+
+  if (!saveLoaderContainer.classList.contains('hide')) {
+    saveLoaderContainer.classList.add('hide')
+  }
 };
