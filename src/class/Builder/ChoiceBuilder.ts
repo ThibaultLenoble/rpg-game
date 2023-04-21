@@ -14,19 +14,7 @@ export default class ChoiceBuilder {
     }
   }
 
-  buildSpecificChoice(choiceId: number, eventType: string) {
-    let choice
-    switch (eventType) {
-      case "MainEvent":
-        choice = dataChoices.MainEvent[choiceId]
-        break;
-      case "EnigmaEvent":
-        choice = dataChoices.EnigmaEvent[choiceId]
-        break;
-      case "ExchangeEvent":
-        choice = dataChoices.ExchangeEvent[choiceId]
-        break;
-    }
+  buildSpecificChoice(choice: any, eventType: string) {
     return this.build(choice, eventType)
   }
 
@@ -43,5 +31,23 @@ export default class ChoiceBuilder {
     }
     ) {
     return new ExchangeChoice(choiceData.label, choiceData.action, choiceData.needed, choiceData.giving);
+  }
+
+  getChoice(choiceId: number, eventType: string) {
+    let list: any[] = [];
+
+    if (eventType === 'MainEvent') {
+      list = dataChoices.MainEvent
+    }
+
+    if (eventType === 'EnigmaEvent') {
+      list = dataChoices.EnigmaEvent
+    }
+
+    if (eventType === 'ExchangeEvent') {
+      list = dataChoices.ExchangeEvent
+    }
+
+    return list.find(choice => choice.id == choiceId)
   }
 }

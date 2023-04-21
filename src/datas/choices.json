@@ -1,291 +1,329 @@
 {
   "MainEvent": [
     {
+      "id": 1,
       "label": "Partir en direction de la salle suivante",
       "action": "get-out"
     },
     {
+      "id": 2,
       "label": "Rester dans cette salle",
       "action": "Vous avez choisi de rester dans cette salle"
     },
     {
+      "id": 3,
       "label": "Ne rien faire",
       "action": "nothing"
     },
     {
+      "id": 4,
       "label": "Vous prenez le tacos",
       "action": "tacos"
     },
     {
+      "id": 5,
       "label": "Boire une gorgée dans la gourde",
       "action": "drink"
     },
     {
+      "id": 6,
       "label": "Sauvegarder la partie",
       "action": "save"
     }
   ],
   "EnigmaEvent": [
     {
+      "id": 7,
       "label": "Passer le pont suspendu au-dessus du gouffre sans fond en utilisant les cordes tendues de part et d'autre",
       "action": "chest-earn-money"
     },
     {
+      "id": 8,
       "label": "Récupérer le grimoire interdit caché dans le sarcophage au fond de la salle funéraire",
       "action": "chest-hit"
     },
     {
+      "id": 9,
       "label": "Utiliser la torche magique pour repousser les esprits maléfiques qui hantent les couloirs obscurs",
       "action": "chest-hit"
     },
     {
+      "id": 10,
       "label": "Récupérer la clé ensorcelée posée sur l'autel sombre au fond de la salle",
       "action": "chest-heal"
     },
     {
+      "id": 11,
       "label": "Trouver l'antidote dans le laboratoire secret pour guérir de la maladie mortelle qui vous ronge",
       "action": "chest-heal"
     },
     {
+      "id": 12,
       "label": "Ouvrir le coffre avec la clé posée au sol juste à côté",
       "action": "chest-earn-money"
     },
     {
+      "id": 13,
       "label": "Combattre les monstres qui infestent les souterrains pour protéger les villageois",
       "action": "chest-hit"
     },
     {
+      "id": 14,
       "label": "Trouver le levier dissimulé dans l'ombre pour ouvrir la porte secrète de la salle des trésors",
       "action": "chest-hit"
     },
     {
+      "id": 15,
       "label": "Ouvrir la porte de la chambre forte en résolvant l'énigme gravée sur la plaque en acier",
       "action": "chest-earn-money"
     },
     {
+      "id": 16,
       "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
       "action": "chest-hit"
     },
     {
+      "id": 17,
       "label": "Boire la potion mystérieuse trouvée sur le rebord de la fenêtre",
       "action": "chest-heal"
     },
     {
+      "id": 18,
       "label": "Lire le grimoire ancien trouvé sur le pupitre de la bibliothèque",
       "action": "chest-heal"
     },
     {
+      "id": 19,
       "label": "Tenter de désarmer le piège mortel qui protège le coffre en or massif",
       "action": "chest-earn-money"
     },
     {
+      "id": 20,
       "label": "Décrypter le parchemin ancien pour trouver le sortilège de protection",
       "action": "chest-heal"
     }
-    ],
-    "ExchangeEvent": [{
-            "label": "Sauver le village de l'attaque des bandits qui menaçaient de tout détruire",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 30
-            },
-            "giving": {
-                "type": "get-coin",
-                "amount": 250
-            }
-        },
-        {
-            "label": "Dépenser toutes vos économies pour acheter l'objet magique convoité qui vous rendra plus fort",
-            "action": "exchange",
-            "needed": {
-                "type": "give-coin",
-                "amount": 500
-            },
-            "giving": {
-                "type": "hp-plus",
-                "amount": 40
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        },
-        {
-            "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-            "action": "exchange",
-            "needed": {
-                "type": "heal",
-                "amount": 55
-            },
-            "giving": {
-                "type": "give-coin",
-                "amount": 400
-            }
-        }
-    ]
+  ],
+  "ExchangeEvent": [
+    {
+      "id": 20,
+      "label": "Sauver le village de l'attaque des bandits qui menaçaient de tout détruire",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 30
+      },
+      "giving": {
+        "type": "get-coin",
+        "amount": 250
+      }
+    },
+    {
+      "id": 21,
+      "label": "Dépenser toutes vos économies pour acheter l'objet magique convoité qui vous rendra plus fort",
+      "action": "exchange",
+      "needed": {
+        "type": "give-coin",
+        "amount": 500
+      },
+      "giving": {
+        "type": "hp-plus",
+        "amount": 40
+      }
+    },
+    {
+      "id": 22,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 23,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 24,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 25,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 26,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 27,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 28,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 29,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 30,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 31,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 32,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 33,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 34,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 35,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    },
+    {
+      "id": 36,
+      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "action": "exchange",
+      "needed": {
+        "type": "heal",
+        "amount": 55
+      },
+      "giving": {
+        "type": "give-coin",
+        "amount": 400
+      }
+    }
+  ]
 }
