@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-this-alias */
-import GameController from "../../controller/GameController/GameController";
 import Item from "../Item/Item";
 
 export default class Inventory {
