@@ -9,9 +9,9 @@ export default class Inventory {
   }
 
   drawItem() {
-    for (var i = 0; i < this.items.length; i++) {
+    for (let i = 1; i < this.items.length; i++) {
       console.log(this.items);
-      var item = document.createElement("div");
+      const item = document.createElement("div");
       item.className = "itemSlot " + this.items[i].name;
       item.setAttribute("inv-type", "p");
       item.setAttribute(
@@ -20,7 +20,7 @@ export default class Inventory {
           this.items[i].image +
           "); background-size: contain;"
       );
-      
+
       document.getElementById("invContainer")?.appendChild(item);
 
       //creates item element
@@ -53,6 +53,7 @@ export default class Inventory {
       // item.appendChild(itemDesc);
       // itemDesc.appendChild(itemDescTitle);
       // itemDescTitle.appendChild(getItemTitle);
+      // }
     }
   }
 

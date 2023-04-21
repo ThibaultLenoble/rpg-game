@@ -7,43 +7,46 @@ import ChoiceBuilder from "../class/Builder/ChoiceBuilder";
 import EventBuilder from "../class/Builder/EventBuilder";
 
 export default class EventGenerator {
-  choiceBuilder: ChoiceBuilder
-  eventBuilder: EventBuilder
+  choiceBuilder: ChoiceBuilder;
+  eventBuilder: EventBuilder;
 
   constructor() {
-    this.choiceBuilder = new ChoiceBuilder()
-    this.eventBuilder = new EventBuilder()
+    this.choiceBuilder = new ChoiceBuilder();
+    this.eventBuilder = new EventBuilder();
   }
 
   getRandomEvent = (): RoomEvent => {
-    let rand = Math.floor(Math.random() * dataEvents.available.length)
-    let event = dataEvents.available[rand]
-    let buildEvent
+    const rand = Math.floor(Math.random() * dataEvents.available.length);
+    const event = dataEvents.available[rand];
+    let buildEvent;
 
     switch (event.type) {
       case "EnigmaEvent":
       case "ExchangeEvent":
       default:
-        buildEvent = this.eventBuilder.build(event)
+        buildEvent = this.eventBuilder.build(event);
 
         if (!event.choices || event.choices.length === 0) {
-          buildEvent.choices = this.getRandomChoicesAccordingToEvent(buildEvent)
+          buildEvent.choices =
+            this.getRandomChoicesAccordingToEvent(buildEvent);
           if (buildEvent instanceof ExchangeEvent) {
-            buildEvent.choices.push(this.choiceBuilder.build(dataChoices.MainEvent[2], 'MainEvent'))
+            buildEvent.choices.push(
+              this.choiceBuilder.build(dataChoices.MainEvent[2], "MainEvent")
+            );
           }
         }
         break;
     }
 
     return buildEvent;
-  }
+  };
 
   getRandomChoicesAccordingToEvent = (event: RoomEvent): Choice[] => {
-    let minChoices = 2;
-    let maxChoices = 3;
-    let choicesCount = this.randomIntFromInterval(minChoices, maxChoices)
+    const minChoices = 2;
+    const maxChoices = 3;
+    const choicesCount = this.randomIntFromInterval(minChoices, maxChoices);
 
-    let choices: any[] = [];
+    const choices: any[] = [];
 
     let choiceList: Choice[] = [];
     switch (event.type) {
@@ -59,14 +62,20 @@ export default class EventGenerator {
     }
 
     for (let i = 0; i < choicesCount; i++) {
-      let choiceIndex: number = this.randomIntFromInterval(0, choiceList.length - 1)
-      choices.push(this.choiceBuilder.build(choiceList[choiceIndex], event.type));
+      const choiceIndex: number = this.randomIntFromInterval(
+        0,
+        choiceList.length - 1
+      );
+      choices.push(
+        this.choiceBuilder.build(choiceList[choiceIndex], event.type)
+      );
     }
 
     return choices;
-  }
+  };
 
-  randomIntFromInterval = (min: number, max: number): number => { // min and max included
-    return Math.floor(Math.random() * (max - min + 1) + min)
-  }
+  randomIntFromInterval = (min: number, max: number): number => {
+    // min and max included
+    return Math.floor(Math.random() * (max - min + 1) + min);
+  };
 }

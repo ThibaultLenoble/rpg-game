@@ -42,8 +42,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 // <p class="player__sip"></p>
 
 // Show Inventory
-var invent: HTMLDivElement | null = document.querySelector(".pInvWrapper");
-var buttonShow = document.querySelector("#showInventory");
+const invent: HTMLDivElement | null = document.querySelector(".pInvWrapper");
+const buttonShow = document.querySelector("#showInventory");
 buttonShow?.addEventListener("click", () => {
   if (invent)
     invent.classList.contains("hide")
@@ -63,7 +63,7 @@ const fileSelector: HTMLInputElement | null =
 
 saveLoaderBtn.addEventListener("click", async () => {
   if (fileSelector?.files) {
-    let gameInstance = await gameController.saveManager.load(
+    const gameInstance = await gameController.saveManager.load(
       fileSelector.files[0],
       new Render()
     );
