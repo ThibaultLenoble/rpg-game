@@ -1,3 +1,8 @@
+/* Icons */
+.icon{
+  width: 20px;
+}
+
 .prompt {
   width: 100%;
   max-width: 500px;
@@ -26,6 +31,7 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+  background-repeat: no-repeat;
 }
 
 .context {
@@ -81,6 +87,189 @@ body {
   color: rgb(219, 75, 75);
 }
 
-.hide {
+/******************** INVENTORY ********************/
+
+/* *** FOR TESTING ONLY *** */
+.greyFont {
+  color: gray;
+  font-size: 14px;
+  width: 250px;
+}
+
+#commandOpts {
+  width: 250px;
+  height: 50px;
+  overflow: hidden;
+  overflow-y: scroll;
+}
+
+#commandOpts li{
+  cursor: pointer;
+}
+
+/* *** FOR TESTING ONLY *** */
+
+button {
+  
+  background-color: lightGrey;
+  padding: 5px;
+  margin: 2px 0px; 
+  border: none;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: grey;
+}
+
+h2 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 18px;
+  color: white;
+  margin:5px;
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #808080;
+}
+
+h3 {
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0px 0px;
+}
+
+.pInvWrapper {
+  background: #222;
+  height: 309px;
+  width: 340px;
+  display: block;
+  padding: 5px;
+  position: absolute;
+}
+
+#invContainer{
+  width: 100%;
+  height: auto;
+}
+
+#invContainer h3 {
+  padding: 0px 10px; 
+}
+
+.itemSlot {
+  width: 54px;
+  height: 54px;
+  margin: 5px;
+  float: left;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  position: relative;
+  cursor: pointer;
+}
+
+.itemSlot:hover {
+  border: 1px solid #999999;
+}
+
+.itemAmount p {
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 700;
+  text-shadow: 0px 0px 2px black;
+  position: absolute;
+  top: 16px;
+  left: 4px;
+}
+
+
+.selected {
+  box-shadow: 0px 0px 6px white;
+  border: 1px solid yellow;
+}
+
+.common {
+  box-shadow: 0 0 2px 1px white inset;
+}
+
+.common h3 {
+  color: white;
+  text-shadow: 0 0 0 1px black;
+}
+
+.uncommon {
+  box-shadow: 0 0 2px 1px #3333ff inset;
+}
+
+.uncommon h3 {
+  color: #3333ff;
+  text-shadow: 0 0 0 1px black;
+}
+
+.rare {
+  box-shadow: 0 0 2px 1px #66ff33 inset;
+}
+
+.rare h3 {
+  color: #66ff33;
+  text-shadow: 0 0 0 1px black;
+}
+
+.superior {
+  box-shadow: 0 0 3px 1px #990099 inset;
+}
+
+.superior h3 {
+  color: #990099;
+  text-shadow: 0px 0px 1px black;
+}
+
+.mythic {
+  box-shadow: 0 0 3px 1px #ffa333 inset;
+}
+
+.mythic h3 {
+  color: #ffa333;
+  text-shadow: 0px 0px 1px black;
+}
+
+.pForgeWrapper {
+  background: #222;
+  height: 176px;
+  width: 330px;
+  display: block;
+  padding: 5px;
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+/*item description */
+.itemSlot:hover > .itemDesc {
+  display: block;
+}
+
+.itemDesc {
+  width: 250px;
+  height: auto;
+  top: 60px;
+  border: 1px solid #808080;
+  border-radius: 5px;
+  background: #1a1a1a;
+  position: absolute;
   display: none;
+  z-index: 9999;
+}
+
+.itemDesc p{
+  color: white;
+}
+
+/* tasks */
+
+/* Utilitary */
+
+.hide{
+  display: none !important;
 }
