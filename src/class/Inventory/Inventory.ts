@@ -10,36 +10,35 @@ export default class Inventory {
   addItem(item: Item) {
     this.items.push(item);
   }
-  removeItem(itemToFind: Item) {
-    console.log("About to remove item :", this.items, itemToFind);
-    const itemToRemove = this.items.find(item => item.name === itemToFind.name);
+  removeItem(item: Item) {
+    const index = this.items.indexOf(item);
+    if (index !== -1) {
+      this.items.splice(index, 1);
 
-    if (itemToRemove !== undefined) {
-      const removeIndex = this.items
-        .map(item => item.name)
-        .indexOf(itemToRemove.name);
-
-      removeIndex && this.items.splice(removeIndex, 1);
+      return true;
     } else {
       console.error("Objet à retirer non trouvé dans l'inventaire");
+      return false;
     }
-
-    console.log("End of function : ", this.items);
   }
 
   useItem(itemToFind: Item) {
-    const itemToUse = this.items.find(item => item.name === itemToFind.name);
+    const index = this.items.indexOf(itemToFind);
+    if (index !== -1) {
+      this.items[index].load -= 1;
 
-    if (itemToUse !== undefined) {
-      const useIndex = this.items
-        .map(item => item.name)
-        .indexOf(itemToUse.name);
+      if (this.items[index].load < 1) {
+        this.removeItem(itemToFind);
+      }
 
-      return useIndex
-        ? this.items[useIndex]
-        : console.error("Objet à utiliser non trouvé dans l'inventaire");
+      return {
+        action: this.items[index].action,
+        amount: this.items[index].amount,
+        load: this.items[index].load,
+      };
     } else {
-      console.error("Objet à utiliser non trouvé dans l'inventaire");
+      console.info("false");
+      return false;
     }
   }
 }

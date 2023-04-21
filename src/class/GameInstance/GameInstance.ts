@@ -10,8 +10,6 @@ import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
 import EventGenerator from "../../utils/EventGenerator";
 import EventBuilder from "../Builder/EventBuilder";
-import Inventory from "../Inventory/Inventory";
-import Item from "../Item/Item";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -50,28 +48,6 @@ export default class GameInstance {
   }
 
   changeRoom(): void {
-    const myInventory = new Inventory();
-    const firstItem = new Item(
-      "Patate de forain",
-      "heal",
-      50,
-      "https://cdn.shopify.com/s/files/1/0521/8890/5621/products/patatesdeforain.jpg?v=1669295057"
-    );
-
-    const secondItem = new Item(
-      "Fraise",
-      "heal",
-      80,
-      "https://cdn.shopify.com/s/files/1/0521/8890/5621/products/patatesdeforain.jpg?v=1669295057"
-    );
-
-    myInventory.addItem(firstItem);
-    myInventory.addItem(firstItem);
-    myInventory.addItem(secondItem);
-
-    console.info("myInventory", myInventory);
-
-    myInventory.removeItem;
     this.roomCount++;
     if (this.roomCount > this.maxRoom) {
       this.render.endGame(true);
