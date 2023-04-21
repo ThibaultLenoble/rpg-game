@@ -1,5 +1,4 @@
 import ExchangeChoice from "../Choice/ExchangeChoice";
-import SimpleChoice from "../Choice/SimpleChoice";
 import Choice from "../Choice/Choice";
 import dataChoices from "../../datas/choices.json";
 
@@ -8,9 +7,8 @@ export default class ChoiceBuilder {
   build(choiceData: any, type: string): any {
     switch (type) {
       case "MainEvent":
-        return this.createMainChoice(choiceData)
       case "EnigmaEvent":
-        return this.createEnigmaChoice(choiceData)
+        return this.createChoice(choiceData)
       case "ExchangeEvent":
         return this.createExchangeChoice(choiceData)
     }
@@ -32,12 +30,8 @@ export default class ChoiceBuilder {
     return this.build(choice, eventType)
   }
 
-  createMainChoice(choiceData : { label: string; action: string }) {
+  createChoice(choiceData : { label: string; action: string }) {
     return new Choice(choiceData.label, choiceData.action);
-  }
-
-  createEnigmaChoice(choiceData : { label: string; action: string }) {
-    return new SimpleChoice(choiceData.label, choiceData.action);
   }
 
   createExchangeChoice(
