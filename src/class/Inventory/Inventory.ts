@@ -5,12 +5,17 @@ export default class Inventory {
 
   addItem(item: Item) {
     this.items.push(item);
+    console.info("adding item ");
     this.drawItem();
   }
 
   drawItem() {
+    const parent = document.getElementById("invContainer");
+    while (parent && parent.firstChild) {
+      parent.removeChild(parent.firstChild);
+    }
+
     for (let i = 1; i < this.items.length; i++) {
-      console.log(this.items);
       const item = document.createElement("div");
       item.className = "itemSlot " + this.items[i].name;
       item.setAttribute("inv-type", "p");
