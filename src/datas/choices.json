@@ -1,110 +1,87 @@
 {
-    "MainEvent": [{
-            "label": "Partir en direction de la salle suivante",
-            "action": "get-out"
-        },
-        {
-            "label": "Rester dans cette salle",
-            "action": "Vous avez choisi de rester dans cette salle"
-        },
-        {
-            "label": "Ne rien faire",
-            "action": "nothing"
-        },
-        {
-            "label": "Vous prenez le tacos",
-            "action": "tacos"
-        },
-        {
-          "label": "Boire une gorgée dans la gourde",
-          "action": "drink"
-        }
-    ],
-    "EnigmaEvent": [{
-            "label": "Passer le pont suspendu au-dessus du gouffre sans fond en utilisant les cordes tendues de part et d'autre",
-            "action": "chest-earn-money"
-        },
-        {
-            "label": "Récupérer le grimoire interdit caché dans le sarcophage au fond de la salle funéraire",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Utiliser la torche magique pour repousser les esprits maléfiques qui hantent les couloirs obscurs",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Récupérer la clé ensorcelée posée sur l'autel sombre au fond de la salle",
-            "action": "chest-heal"
-        },
-        {
-            "label": "Trouver l'antidote dans le laboratoire secret pour guérir de la maladie mortelle qui vous ronge",
-            "action": "chest-heal"
-        },
-        {
-            "label": "Ouvrir le coffre avec la clé posée au sol juste à côté",
-            "action": "chest-earn-money"
-        },
-        {
-            "label": "Combattre les monstres qui infestent les souterrains pour protéger les villageois",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Trouver le levier dissimulé dans l'ombre pour ouvrir la porte secrète de la salle des trésors",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Ouvrir la porte de la chambre forte en résolvant l'énigme gravée sur la plaque en acier",
-            "action": "chest-earn-money"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        },
-        {
-            "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
-            "action": "chest-hit"
-        }
-
+  "MainEvent": [
+    {
+      "label": "Partir en direction de la salle suivante",
+      "action": "get-out"
+    },
+    {
+      "label": "Rester dans cette salle",
+      "action": "Vous avez choisi de rester dans cette salle"
+    },
+    {
+      "label": "Ne rien faire",
+      "action": "nothing"
+    },
+    {
+      "label": "Vous prenez le tacos",
+      "action": "tacos"
+    },
+    {
+      "label": "Boire une gorgée dans la gourde",
+      "action": "drink"
+    },
+    {
+      "label": "Sauvegarder la partie",
+      "action": "save"
+    }
+  ],
+  "EnigmaEvent": [
+    {
+      "label": "Passer le pont suspendu au-dessus du gouffre sans fond en utilisant les cordes tendues de part et d'autre",
+      "action": "chest-earn-money"
+    },
+    {
+      "label": "Récupérer le grimoire interdit caché dans le sarcophage au fond de la salle funéraire",
+      "action": "chest-hit"
+    },
+    {
+      "label": "Utiliser la torche magique pour repousser les esprits maléfiques qui hantent les couloirs obscurs",
+      "action": "chest-hit"
+    },
+    {
+      "label": "Récupérer la clé ensorcelée posée sur l'autel sombre au fond de la salle",
+      "action": "chest-heal"
+    },
+    {
+      "label": "Trouver l'antidote dans le laboratoire secret pour guérir de la maladie mortelle qui vous ronge",
+      "action": "chest-heal"
+    },
+    {
+      "label": "Ouvrir le coffre avec la clé posée au sol juste à côté",
+      "action": "chest-earn-money"
+    },
+    {
+      "label": "Combattre les monstres qui infestent les souterrains pour protéger les villageois",
+      "action": "chest-hit"
+    },
+    {
+      "label": "Trouver le levier dissimulé dans l'ombre pour ouvrir la porte secrète de la salle des trésors",
+      "action": "chest-hit"
+    },
+    {
+      "label": "Ouvrir la porte de la chambre forte en résolvant l'énigme gravée sur la plaque en acier",
+      "action": "chest-earn-money"
+    },
+    {
+      "label": "Explorer les chambres sombres du donjon où se cachent des secrets inquiétants",
+      "action": "chest-hit"
+    },
+    {
+      "label": "Boire la potion mystérieuse trouvée sur le rebord de la fenêtre",
+      "action": "chest-heal"
+    },
+    {
+      "label": "Lire le grimoire ancien trouvé sur le pupitre de la bibliothèque",
+      "action": "chest-heal"
+    },
+    {
+      "label": "Tenter de désarmer le piège mortel qui protège le coffre en or massif",
+      "action": "chest-earn-money"
+    },
+    {
+      "label": "Décrypter le parchemin ancien pour trouver le sortilège de protection",
+      "action": "chest-heal"
+    }
     ],
     "ExchangeEvent": [{
             "label": "Sauver le village de l'attaque des bandits qui menaçaient de tout détruire",

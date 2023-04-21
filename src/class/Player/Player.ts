@@ -128,6 +128,17 @@ class Player {
     this.sip++;
     this.render.displayMessage(".player__sip", `${this.sip} 🥛`);
   }
+
+  loadFromDatas(savedPlayer: { currentLife: number; maxLife: number; role: string | undefined; level: number; coins: number; image: string | undefined; sip: number; thirst: number; }) {
+    this.currentLife = savedPlayer.currentLife
+    this.maxLife = savedPlayer.maxLife
+    this.role = savedPlayer.role
+    this.level = savedPlayer.level
+    this.coins = savedPlayer.coins
+    this.image = savedPlayer.image
+    this.sip = savedPlayer.sip
+    this.thirst = savedPlayer.thirst
+  }
 }
 
 export default Player;
