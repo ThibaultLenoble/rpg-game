@@ -10,8 +10,6 @@ import Render from "../Render/Render";
 import EventGenerator from "../../utils/EventGenerator";
 import EventBuilder from "../Builder/EventBuilder";
 import SaveManager from "../../utils/SaveManager";
-import Inventory from "../Inventory/Inventory";
-import Item from "../Item/Item";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
