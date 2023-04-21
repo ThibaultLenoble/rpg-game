@@ -62,24 +62,10 @@ export default class GameInstance {
   }
 
   changeRoom(): void {
-    const myInventory = new Inventory();
-
-    
-
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
-    
-
     this.roomCount++;
     if (this.roomCount > this.maxRoom) {
       this.render.endGame(true);
     } else {
-      console.log("change de salle");
       this.actualRoom = changeEvent(this.rooms[this.roomCount], this.render);
 
       if (this.roomCount > 1) {
