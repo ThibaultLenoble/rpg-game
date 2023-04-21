@@ -4,7 +4,6 @@
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeEvent } from "../../utils/EventHandler";
-import * as dataItems from "../../datas/items.json";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
