@@ -1,11 +1,13 @@
 class Choice {
   label: string;
   action: string;
-  item?: number;
+  id: number;
+  item?: string;
 
-  constructor(label: string, action: string, item?: number) {
+  constructor(id: number, label: string, action: string, item?: string) {
     this.label = label;
     this.action = action;
+    this.id = id;
     this.item = item ?? undefined;
   }
 }

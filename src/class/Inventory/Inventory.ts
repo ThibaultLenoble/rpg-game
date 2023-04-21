@@ -38,7 +38,6 @@ export default class Inventory {
       });
     });
   }
-
   removeItem(item: Item) {
     const index = this.items.indexOf(item);
     if (index !== -1) {

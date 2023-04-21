@@ -31,7 +31,10 @@ export default class EventGenerator {
             this.getRandomChoicesAccordingToEvent(buildEvent);
           if (buildEvent instanceof ExchangeEvent) {
             buildEvent.choices.push(
-              this.choiceBuilder.build(dataChoices.MainEvent[2], "MainEvent")
+              this.choiceBuilder.build(
+                this.choiceBuilder.getChoice(3, "MainEvent"),
+                "MainEvent"
+              )
             );
           }
         }
@@ -48,7 +51,7 @@ export default class EventGenerator {
 
     const choices: any[] = [];
 
-    let choiceList: Choice[] = [];
+    let choiceList: any[] = [];
     switch (event.type) {
       case "EnigmaEvent":
         choiceList = dataChoices.EnigmaEvent;

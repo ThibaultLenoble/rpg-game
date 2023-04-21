@@ -2,19 +2,51 @@ import GameInstance from "../class/GameInstance/GameInstance";
 import Player from "../class/Player/Player";
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 import Choice from "../class/Choice/Choice";
-import MainEvent from "../class/RoomEvent/MainEvent";
 import Render from "../class/Render/Render";
+import ChoiceBuilder from "../class/Builder/ChoiceBuilder";
+import EventBuilder from "../class/Builder/EventBuilder";
 
 export default class SaveManager {
   reader: FileReader = new FileReader();
+  eventBuilder: EventBuilder = new EventBuilder();
+  choiceBuilder: ChoiceBuilder = new ChoiceBuilder();
 
   save(gameInstance: GameInstance) {
     let savedGameInstance = {
-      "actualRoom" : gameInstance.actualRoom,
+      "actualRoom" : {},
       "player" : gameInstance.player,
-      "rooms" : gameInstance.rooms,
-      "roomCount" : gameInstance.roomCount
+      "roomCount" : gameInstance.roomCount,
+      "rooms": []
     }
+
+    let actualRoomChoices: number[] = [];
+
+    gameInstance.actualRoom?.choices.forEach(choice => {
+      actualRoomChoices.push(choice.id)
+    })
+
+    savedGameInstance.actualRoom = {
+      'id' : gameInstance.actualRoom?.id,
+      'type': gameInstance.actualRoom?.type,
+      'choices' : actualRoomChoices
+    }
+
+    gameInstance.rooms.forEach(room => {
+      let roomChoices: number[] = [];
+
+      room.choices.forEach(choice => {
+        roomChoices.push(choice.id)
+      })
+
+      let tempRoom = {
+        'id' : room.id,
+        'type': room.type,
+        'choices': roomChoices
+      }
+
+      // @ts-ignore
+      savedGameInstance.rooms.push(tempRoom)
+    })
 
     const dataStr: string = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(savedGameInstance));
     let downloadLink: HTMLElement|null = document.getElementById('downloadLink');
@@ -45,17 +77,25 @@ export default class SaveManager {
 
       let rooms: RoomEvent[] = []
 
+      console.log(savedDatas)
+
       savedDatas.rooms.forEach((savedRoom: {
-        choices: { label: string; action: string; }[];
-        inputContext: string;
-        outputContext: string | undefined;
-        image: string | undefined;
+        id: number,
+        type: string,
+        choices: [];
       }) => {
         let choices: Choice[] = []
-        savedRoom.choices.forEach((choice: { label: string; action: string; }) => {
-          choices.push(new Choice(choice.label, choice.action))
+        savedRoom.choices.forEach((choiceId) => {
+
+          let choice = this.choiceBuilder.getChoice(choiceId, savedRoom.type);
+          if (choice === undefined) {
+            choice = this.choiceBuilder.getChoice(choiceId,'MainEvent');
+          }
+
+          choices.push(choice)
         })
-        let room = new MainEvent(savedRoom.inputContext, savedRoom.outputContext, choices, savedRoom.image)
+
+        let room = this.eventBuilder.build(this.eventBuilder.getEvent(savedRoom.id, savedRoom.type), choices)
 
         rooms.push(room)
       })
@@ -63,11 +103,16 @@ export default class SaveManager {
       gameInstance.rooms = rooms
 
       let choices: Choice[] = []
-      savedDatas.actualRoom.choices.forEach((choice: { label: string; action: string; }) => {
-        choices.push(new Choice(choice.label, choice.action))
+      savedDatas.actualRoom.choices.forEach((choiceId: number) => {
+        let choice = this.choiceBuilder.getChoice(choiceId, savedDatas.actualRoom.type);
+        if (choice === undefined) {
+          choice = this.choiceBuilder.getChoice(choiceId,'MainEvent');
+        }
+
+        choices.push(choice)
       })
 
-      gameInstance.actualRoom = new MainEvent(savedDatas.actualRoom.inputContext, savedDatas.actualRoom.outputContext, choices, savedDatas.actualRoom.image)
+      gameInstance.actualRoom = this.eventBuilder.build(this.eventBuilder.getEvent(savedDatas.actualRoom.id, savedDatas.actualRoom.type), choices)
 
       return gameInstance
     }
