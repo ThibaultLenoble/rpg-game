@@ -7,12 +7,13 @@ export default class EnigmaEvent extends RoomEvent {
   image?: string = AppImages.goldenChest;
 
   constructor(
+    id: number,
     inputContext: string,
     outputContext?: string,
     choices?: Choice[],
     image?: string,
   ) {
-    super(inputContext, 'EnigmaEvent', outputContext, choices, image);
+    super(id, inputContext, 'EnigmaEvent', outputContext, choices, image);
 
     if (outputContext) {
       this.outputContext = outputContext;

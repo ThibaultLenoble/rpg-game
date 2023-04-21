@@ -8,12 +8,13 @@ export default class MainEvent extends RoomEvent {
   image?: string = AppImages.archeologue;
 
   constructor(
+    id: number,
     inputContext: string,
     outputContext?: string,
     choices?: Choice[],
     image?: string,
   ) {
-    super(inputContext, 'MainEvent', outputContext, choices, image);
+    super(id, inputContext, 'MainEvent', outputContext, choices, image);
 
     if (outputContext) {
       this.outputContext = outputContext;

@@ -1,102 +1,125 @@
 {
-  "mainEvents": [
+  "MainEvent": [
     {
+      "id" : 1,
       "label" : "Que faire ?",
       "type": "MainEvent",
-      "choices" : [0, 4, 5]
+      "choices" : [1, 5, 6]
     },
     {
+      "id" : 2,
       "label" : "Douglas Ancelin, un archéologue intrépide, a découvert l'entrée d'un ancien château abandonné dans les sous-terrains de la ville. Il s'est mis en tête de découvrir les trésors cachés dans le château, mais il n'est jamais revenu de son exploration. Inquiète pour son ami, la Jambonneuse Justicière a décidé de partir à sa recherche. Elle s'est rapidement rendue compte que le château était infesté de créatures étranges et dangereuses, qui avaient sans doute été libérées par les fouilles de Douglas. Pour sauver son ami, la Jambonneuse Justicière doit parcourir les sombres couloirs du château, affronter des ennemis redoutables et résoudre des énigmes complexes. Heureusement, elle peut compter sur le Voleur de Moutons, Saucifflard l'Implaccable ainsi que le Nain voleur de chaussettes qui se sont joints à sa quête.",
       "type": "MainEvent",
-      "choices" : [0]
+      "choices" : [1]
     }
   ],
   "available": [
     {
+      "id" : 3,
       "label": "Vous arrivez dans une salle et vous voyez plusieurs coffre",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 4,
       "label": "Vous arrivez dans une salle et un marchand vous accueille.",
       "type": "ExchangeEvent"
     },
     {
+      "id" : 5,
       "label": "Vous trouvez plusieurs malles en bois au centre de la pièce. Laquelle voulez-vous ouvrir ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 6,
       "label": "C'est votre jour de chance ! Vous trouvez plusieurs coffres en or au centre de la pièce. Laquelle voulez-vous ouvrir ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 7,
       "label": "Vous entrez dans une salle dont le sol est couvert de sable fin. Plusieurs urnes attirent votre attention. Quelle urne ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 8,
       "label": "Vous entrez dans une salle dont le sol est couvert de poudre noire. Plusieurs urnes attirent votre attention. Quelle urne ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 9,
       "label": "Vous entrez dans une salle dont le plafond est couvert de lait. Plusieurs urnes attirent votre attention. Quelle urne ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 10,
       "label": "Vous êtes dans une pièce remplie d'armes anciennes et mystérieuses. Vous trouvez plusieurs boîtes sur une étagère en hauteur. Laquelle ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 11,
       "label": "Vous entrez dans une grande salle avec un coffre doré au milieu. À côté, plusieurs coffres plus petits se trouvent. Lequel ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 12,
       "label": "Vous arrivez dans une salle remplie de champignons étranges. Plusieurs coffres se trouvent dans la pièce. Lequel ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 13,
       "label": "Vous arrivez dans une salle remplie de nains étranges. Plusieurs coffres se trouvent dans la pièce. Lequel ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 14,
       "label": "Vous arrivez dans une salle remplie d'escargots. Plusieurs coffres se trouvent dans la pièce. Lequel ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 15,
       "label": "Vous arrivez dans une salle remplie de lapins bleus. Plusieurs coffres se trouvent dans la pièce. Lequel ouvrez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 16,
       "label": "Vous entrez dans une salle obscure. Vous discernez à peine un coffre sur votre gauche et une boîte en métal rouillé à votre droite. Que choisissez-vous ?",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 17,
       "label": "Au détour d'un couloir, vous apercevez une lumière scintillante dans un coin de la pièce, quelques coffres sont entassés.",
       "type": "EnigmaEvent"
     },
     {
+      "id" : 18,
       "label": "«C'EST L'HEURE DE MARCHANDER !!!!» Vous entendez une voix qui vous interpelle. Vous vous retournez et vous apercevez un marchand qui vous propose quelques affaires.",
       "type": "ExchangeEvent"
     },
     {
+      "id" : 19,
       "label": "La salle est plongée dans le noir, au centre un homme et sa lampe qui vous propose de marchander.",
       "type": "ExchangeEvent"
     },
     {
+      "id" : 20,
       "label": "Vous tombez nez à nez avec un marchand qui vous propose quelques affaires.",
       "type": "ExchangeEvent"
     },
     {
+      "id" : 21,
       "label": "Au loin, vous entendez des murmures... ... ... Vous vous approchez et vous apercevez un mage noir. C'est l'archimage Lenoble qui vous propose quelques affaires.",
       "type": "ExchangeEvent",
       "outputContext": "https://i.postimg.cc/J7sJRnPf/mage-noire.png"
     },
     {
+      "id" : 22,
       "label": "Oh mon dieu !!!! LE MEILLEUR MARCHAND DE LA REGION EST ICI !!!! C'est Alexis Bezos et ses super deals de la mort qui tue !! Profitez-en !",
       "type": "ExchangeEvent"
     },
     {
+      "id" : 23,
       "label": "La nouvelle pièce dans laquelle vous rentrez a une odeur étrange. Vous sentez comme une odeur de tacos 3 viandes XXL supplément cheddar. (Attention, vous pouvez en mourir)",
       "type": "EnigmaEvent",
-      "choices": [3, 2]
+      "choices": [4, 3]
     }
   ]
 }

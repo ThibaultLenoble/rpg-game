@@ -5,12 +5,13 @@ export default class ExchangeChoice extends Choice {
   giving: { type: string; amount: number };
 
   constructor(
+    id: number,
     label: string,
     action: string,
     needed: { type: string; amount: number },
     giving: { type: string; amount: number }
   ) {
-    super(label, action);
+    super(id, label, action);
     this.needed = needed;
     this.giving = giving;
     this.label +=
