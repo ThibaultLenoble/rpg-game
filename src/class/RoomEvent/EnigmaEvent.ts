@@ -12,7 +12,7 @@ export default class EnigmaEvent extends RoomEvent {
     choices?: Choice[],
     image?: string,
   ) {
-    super(inputContext, outputContext, choices, image);
+    super(inputContext, 'EnigmaEvent', outputContext, choices, image);
 
     if (outputContext) {
       this.outputContext = outputContext;

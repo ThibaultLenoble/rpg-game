@@ -12,7 +12,7 @@ export default class ExchangeEvent extends RoomEvent {
     choices?: Choice[],
     image?: string,
   ) {
-    super(inputContext, outputContext, choices, image);
+    super(inputContext, 'ExchangeEvent', outputContext, choices, image);
 
     if (outputContext) {
       this.outputContext = outputContext;
