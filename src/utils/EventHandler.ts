@@ -2,6 +2,7 @@ import Render from "../class/Render/Render";
 import RoomEvent from "../class/RoomEvent/RoomEvent";
 
 export const changeEvent = (event: RoomEvent, render: Render) => {
+  
   event.outputContext = event.outputContext ?? "";
 
   render.displayMessage(".prompt__error", "");
