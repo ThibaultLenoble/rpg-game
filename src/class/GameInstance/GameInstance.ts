@@ -4,6 +4,8 @@
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeEvent } from "../../utils/EventHandler";
+import * as dataEvents from "../../datas/events.json";
+import * as dataItems from "../../datas/items.json";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
@@ -169,7 +171,11 @@ export default class GameInstance {
         }
         break;
       case "give-item":
-        console.info("gagagougou");
+        if (choice.item) {
+          this.player.inventory.addItem(dataItems.items[Number(choice.item)]);
+        } else {
+          console.error("Le choix sélectionné n'a pas d'item associé");
+        }
         break;
       case "chest-earn-money":
         hasCase = true;
