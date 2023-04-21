@@ -4,13 +4,18 @@ import Player from "../../class/Player/Player";
 import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
 import { dataRole } from "../../datas/role";
 import Render from "../../class/Render/Render";
+import SaveManager from "../../utils/SaveManager";
+import RoomEvent from "../../class/RoomEvent/RoomEvent";
+import Choice from "../../class/Choice/Choice";
+import MainEvent from "../../class/RoomEvent/MainEvent";
 
 export default class GameController {
   gameInstance?: GameInstance;
 
   player?: Player;
 
-  render = new Render();
+  render: Render = new Render();
+  saveManager: SaveManager = new SaveManager();
 
   validateNumericInput(inputValue: string): boolean {
     if (this.isNumeric(inputValue)) {
@@ -46,11 +51,12 @@ export default class GameController {
               this.render.displayMessage(
                 ".player__pic",
                 "<img width='150' height='150' src='" +
-                  this.player.image +
-                  "' />"
+                this.player.image +
+                "' />"
               );
 
             this.gameInstance = new GameInstance(this.player, this.render);
+            this.gameInstance.newGame()
           } else {
             this.render.displayMessage(
               ".prompt__error",
@@ -78,6 +84,52 @@ export default class GameController {
           );
         }
       }
+    }
+  }
+
+  newGameFromSave(savedDatas: any) {
+
+    let savedPlayer = new Player(savedDatas.player.name, this.render);
+    savedPlayer.loadFromDatas(savedDatas.player)
+    this.player = savedPlayer
+
+    if (this.player) {
+      this.render.displayMessage(
+        ".player__name",
+        "Joueur " + this.player.name
+      );
+
+      this.render.displayMessage(
+        ".player__role",
+        "Role : " + this.player.role
+      );
+
+      this.render.displayMessage(
+        ".player__pic",
+        "<img width='150' height='150' src='" +
+        this.player.image +
+        "' />"
+      );
+
+      this.gameInstance = new GameInstance(this.player, this.render);
+      this.gameInstance.roomCount = savedDatas.roomCount
+
+      let rooms: RoomEvent[] = []
+
+      savedDatas.rooms.forEach((savedRoom: { choices: { label: string; action: string; }[]; inputContext: string; outputContext: string | undefined; image: string | undefined; }) => {
+        let choices: Choice[] = []
+        savedRoom.choices.forEach((choice: { label: string; action: string; }) => {
+          choices.push(new Choice(choice.label, choice.action))
+        })
+        let room = new MainEvent(savedRoom.inputContext, savedRoom.outputContext, choices, savedRoom.image)
+
+        rooms.push(room)
+      })
+
+      this.gameInstance.rooms = rooms
+      this.gameInstance.actualRoom = savedDatas.actualRoom
+
+      this.gameInstance.newGameFromFile()
     }
   }
 

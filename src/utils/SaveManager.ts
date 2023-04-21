@@ -1,12 +1,13 @@
 import GameInstance from "../class/GameInstance/GameInstance";
 
 export default class SaveManager {
+  reader: FileReader = new FileReader();
 
   save(gameInstance: GameInstance) {
     let savedGameInstance = {
       "actualRoom" : gameInstance.actualRoom,
       "player" : gameInstance.player,
-      "room" : gameInstance.rooms,
+      "rooms" : gameInstance.rooms,
       "roomCount" : gameInstance.roomCount
     }
 
@@ -21,7 +22,10 @@ export default class SaveManager {
     }
   }
 
-  load() {
+  async load(file: Blob) {
+    this.reader.readAsText(file)
 
+    await new Promise<void>(resolve => this.reader.onload = () => resolve());
+    return JSON.parse(<string>this.reader.result)
   }
 }

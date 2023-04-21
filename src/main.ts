@@ -10,6 +10,10 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
     <p class="prompt__description">Bienvenue sur Donjons & Lardons, veuillez entrer votre nom pour commencer une partie</p>
     <input type="text" class="prompt__input">
     <button class="prompt__submit">Continuer</button>
+    <div class="load-save__container">
+        <input id="file-selector" type="file">
+        <button class="load-save__btn">Charger</button>
+    </div>
   </div>
   <div class="context">
     <img src="${AppImages.archeologue}" />
@@ -30,6 +34,16 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 
 const inputBtn: any = document.querySelector(".prompt__submit");
 const inputEl: any = document.querySelector(".prompt__input");
+const saveLoaderBtn: any = document.querySelector(".load-save__btn");
+const fileSelector: HTMLInputElement|null = document.querySelector('#file-selector');
+
+saveLoaderBtn.addEventListener('click', async () => {
+  if (fileSelector?.files) {
+    let gameDatas = await gameController.saveManager.load(fileSelector.files[0])
+
+    gameController.newGameFromSave(gameDatas)
+  }
+});
 
 inputBtn.addEventListener("click", () => {
   getValue();

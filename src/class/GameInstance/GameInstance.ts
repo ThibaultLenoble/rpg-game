@@ -11,6 +11,7 @@ import Render from "../Render/Render";
 import EventGenerator from "../../utils/EventGenerator";
 import EventBuilder from "../Builder/EventBuilder";
 import SaveManager from "../../utils/SaveManager";
+import MainEvent from "../RoomEvent/MainEvent";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -34,10 +35,26 @@ export default class GameInstance {
 
   constructor(player: Player, render: Render) {
     this.player = player;
-    this.buildMap();
     this.render = render;
-    this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[1]), this.render);
     this.render.dipslayEquipment(this.player);
+  }
+
+  newGame() {
+    this.buildMap();
+    this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[1]), this.render);
+  }
+
+  newGameFromFile() {
+
+    if (this.actualRoom) {
+      let choices: Choice[] = []
+      this.actualRoom.choices.forEach(choice => {
+        choices.push(new Choice(choice.label, choice.action))
+      })
+      let room = new MainEvent(this.actualRoom.inputContext, this.actualRoom.outputContext, choices, this.actualRoom.image)
+
+      this.actualRoom = changeEvent(room, this.render);
+    }
   }
 
   buildMap() {
