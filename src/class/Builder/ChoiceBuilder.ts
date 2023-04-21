@@ -13,37 +13,41 @@ export default class ChoiceBuilder {
     }
   }
 
-  buildSpecificChoice(choiceId: number, eventType: string) {
-    let choice;
-    switch (eventType) {
-      case "MainEvent":
-        choice = dataChoices.MainEvent[choiceId];
-        break;
-      case "EnigmaEvent":
-        choice = dataChoices.EnigmaEvent[choiceId];
-        break;
-      case "ExchangeEvent":
-        choice = dataChoices.ExchangeEvent[choiceId];
-        break;
+  buildSpecificChoice(choice: any, eventType: string) {
+    return this.build(choice, eventType)
+  }
+
+  createChoice(choiceData : { id: number, label: string; action: string }) {
+    return new Choice(choiceData.id, choiceData.label, choiceData.action);
+  }
+
+  createExchangeChoice(
+    choiceData: {
+      id: number,
+      label: string;
+      action: string,
+      needed: {type: string, amount: number},
+      giving: {type: string, amount: number}
     }
-    return this.build(choice, eventType);
+    ) {
+    return new ExchangeChoice(choiceData.id, choiceData.label, choiceData.action, choiceData.needed, choiceData.giving);
   }
 
-  createChoice(choiceData: { label: string; action: string }) {
-    return new Choice(choiceData.label, choiceData.action);
-  }
+  getChoice(choiceId: number, eventType: string) {
+    let list: any[] = [];
 
-  createExchangeChoice(choiceData: {
-    label: string;
-    action: string;
-    needed: { type: string; amount: number };
-    giving: { type: string; amount: number };
-  }) {
-    return new ExchangeChoice(
-      choiceData.label,
-      choiceData.action,
-      choiceData.needed,
-      choiceData.giving
-    );
+    if (eventType === 'MainEvent') {
+      list = dataChoices.MainEvent
+    }
+
+    if (eventType === 'EnigmaEvent') {
+      list = dataChoices.EnigmaEvent
+    }
+
+    if (eventType === 'ExchangeEvent') {
+      list = dataChoices.ExchangeEvent
+    }
+
+    return list.find(choice => choice.id == choiceId)
   }
 }

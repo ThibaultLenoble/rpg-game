@@ -7,14 +7,17 @@ export default class RoomEvent {
   outputContext?: string;
   choices: Choice[] = [];
   image?: string;
+  id: number;
 
   constructor(
+    id: number,
     inputContext: string,
     type: string,
     outputContext?: string,
     choices?: Choice[],
     image?: string
   ) {
+    this.id = id
     this.inputContext = inputContext;
     this.type = type;
     this.image = undefined;

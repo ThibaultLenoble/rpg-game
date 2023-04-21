@@ -29,7 +29,7 @@ export default class EventGenerator {
         if (!event.choices || event.choices.length === 0) {
           buildEvent.choices = this.getRandomChoicesAccordingToEvent(buildEvent)
           if (buildEvent instanceof ExchangeEvent) {
-            buildEvent.choices.push(this.choiceBuilder.build(dataChoices.MainEvent[2], 'MainEvent'))
+            buildEvent.choices.push(this.choiceBuilder.build(this.choiceBuilder.getChoice(3, 'MainEvent'), 'MainEvent'))
           }
         }
         break;
