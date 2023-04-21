@@ -5,6 +5,55 @@ export default class Inventory {
 
   addItem(item: Item) {
     this.items.push(item);
+    this.drawItem();
+  }
+
+  drawItem() {
+    for (var i = 0; i < this.items.length; i++) {
+      console.log(this.items);
+      var item = document.createElement("div");
+      item.className = "itemSlot " + this.items[i].name;
+      item.setAttribute("inv-type", "p");
+      item.setAttribute(
+        "style",
+        "background: url(" +
+          this.items[i].image +
+          "); background-size: contain;"
+      );
+      
+      document.getElementById("invContainer")?.appendChild(item);
+
+      //creates item element
+
+      //show element amounts
+      // var itemAmount = document.createElement("div");
+      // itemAmount.className = "itemAmount";
+      // var itemAmountDisplay = document.createElement("p");
+      // if (this.items[i].amount) {
+      //   var itemDisplayStatsName = document.createTextNode(
+      //     this.items[i].amount.toString()
+      //   );
+      // } else {
+      //   var itemDisplayStatsName = document.createTextNode("");
+      // }
+      // item.appendChild(itemAmount);
+      // itemAmount.appendChild(itemAmountDisplay);
+      // itemAmountDisplay.appendChild(itemDisplayStatsName);
+
+      //adds item element or elements
+      // document.getElementById("invContainer")?.appendChild(item);
+
+      //creates item display information
+
+      // var itemDesc = document.createElement("div");
+      // var itemDescTitle = document.createElement("h3");
+      // var getItemTitle = document.createTextNode(this.items[i].name);
+
+      // itemDesc.className = "itemDesc";
+      // item.appendChild(itemDesc);
+      // itemDesc.appendChild(itemDescTitle);
+      // itemDescTitle.appendChild(getItemTitle);
+    }
   }
 
   removeItem(item: Item) {

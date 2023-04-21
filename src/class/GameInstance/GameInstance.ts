@@ -12,6 +12,8 @@ import Render from "../Render/Render";
 import EventGenerator from "../../utils/EventGenerator";
 import EventBuilder from "../Builder/EventBuilder";
 import SaveManager from "../../utils/SaveManager";
+import Inventory from "../Inventory/Inventory";
+import Item from "../Item/Item";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -60,6 +62,19 @@ export default class GameInstance {
   }
 
   changeRoom(): void {
+    const myInventory = new Inventory();
+
+    
+
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    myInventory.addItem(new Item("Gourde", "sip", 1, 3, undefined, 12));
+    
+
     this.roomCount++;
     if (this.roomCount > this.maxRoom) {
       this.render.endGame(true);

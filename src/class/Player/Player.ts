@@ -2,6 +2,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-case-declarations */
 import Inventory from "../Inventory/Inventory";
+import Item from "../Item/Item";
 import Render from "../Render/Render";
 
 class Player {
@@ -69,6 +70,10 @@ class Player {
     this.render.displayMessage(".player__coins", `${this.coins} 🫘`);
 
     return response;
+  }
+
+  setInventory() {
+    this.inventory.addItem(new Item("Gourde", "", 1, undefined, "", 12));
   }
 
   exchangeAction(slug: string, amount: number): string | boolean {
