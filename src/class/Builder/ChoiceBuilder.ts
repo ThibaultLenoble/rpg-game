@@ -3,14 +3,13 @@ import Choice from "../Choice/Choice";
 import dataChoices from "../../datas/choices.json";
 
 export default class ChoiceBuilder {
-
   build(choiceData: any, type: string): any {
     switch (type) {
       case "MainEvent":
       case "EnigmaEvent":
-        return this.createChoice(choiceData)
+        return this.createChoice(choiceData);
       case "ExchangeEvent":
-        return this.createExchangeChoice(choiceData)
+        return this.createExchangeChoice(choiceData);
     }
   }
 

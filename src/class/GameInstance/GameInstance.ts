@@ -43,9 +43,7 @@ export default class GameInstance {
   }
 
   newGameFromFile() {
-
     if (this.actualRoom) {
-
       this.actualRoom = changeEvent(this.actualRoom, this.render);
     }
   }
@@ -169,6 +167,9 @@ export default class GameInstance {
           event.outputContext = `Vous avez subi ${damage} dégats.`;
           this.actualRoom = changeEvent(event, this.render);
         }
+        break;
+      case "give-item":
+        console.info("gagagougou");
         break;
       case "chest-earn-money":
         hasCase = true;
