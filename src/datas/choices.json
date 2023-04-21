@@ -19,6 +19,10 @@
     {
       "label": "Boire une gorgée dans la gourde",
       "action": "drink"
+    },
+    {
+      "label": "Sauvegarder la partie",
+      "action": "save"
     }
   ],
   "EnigmaEvent": [

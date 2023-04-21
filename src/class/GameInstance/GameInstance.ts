@@ -10,6 +10,7 @@ import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
 import EventGenerator from "../../utils/EventGenerator";
 import EventBuilder from "../Builder/EventBuilder";
+import SaveManager from "../../utils/SaveManager";
 
 export default class GameInstance {
   actualRoom?: RoomEvent | undefined;
@@ -17,6 +18,7 @@ export default class GameInstance {
   rooms: RoomEvent[] = [];
   eventGenerator: EventGenerator = new EventGenerator();
   eventBuilder: EventBuilder = new EventBuilder();
+  saveManager: SaveManager = new SaveManager();
 
   roomCount: number = 0;
 
@@ -217,6 +219,12 @@ export default class GameInstance {
       case "nothing":
         event = this.eventBuilder.build(dataEvents.mainEvents[0])
         event.outputContext = `Vous n'avez rien fait`;
+        this.actualRoom = changeEvent(event, this.render);
+        break;
+      case "save":
+        this.saveManager.save(this)
+        event = this.eventBuilder.build(dataEvents.mainEvents[0])
+        event.outputContext = `Vous avez sauvegardé`;
         this.actualRoom = changeEvent(event, this.render);
         break;
       default:

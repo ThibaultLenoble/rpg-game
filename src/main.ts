@@ -25,7 +25,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <div class="player__pic"></div>
     </div>
   </div>
-
+  <a id="downloadLink" style="display:none"></a>
 `;
 
 const inputBtn: any = document.querySelector(".prompt__submit");
