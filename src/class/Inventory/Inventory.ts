@@ -6,7 +6,6 @@ export default class Inventory {
   addItem(item: Item) {
     this.items.push(item);
   }
-
   removeItem(item: Item) {
     const index = this.items.indexOf(item);
     if (index !== -1) {

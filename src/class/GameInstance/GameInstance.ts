@@ -5,7 +5,6 @@ import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeEvent } from "../../utils/EventHandler";
 import * as dataEvents from "../../datas/events.json";
-import * as dataItems from "../../datas/items.json";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
 import Render from "../Render/Render";
@@ -41,14 +40,13 @@ export default class GameInstance {
 
   newGame() {
     this.buildMap();
-    this.actualRoom = changeEvent(
-      this.eventBuilder.build(dataEvents.mainEvents[1]),
-      this.render
-    );
+    this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[1]), this.render);
   }
 
   newGameFromFile() {
+
     if (this.actualRoom) {
+
       this.actualRoom = changeEvent(this.actualRoom, this.render);
     }
   }
@@ -173,13 +171,6 @@ export default class GameInstance {
           this.actualRoom = changeEvent(event, this.render);
         }
         break;
-      case "give-item":
-        if (choice.item) {
-          this.player.inventory.addItem(dataItems.items[Number(choice.item)]);
-        } else {
-          console.error("Le choix sélectionné n'a pas d'item associé");
-        }
-        break;
       case "chest-earn-money":
         hasCase = true;
         const money =
@@ -249,8 +240,8 @@ export default class GameInstance {
         this.actualRoom = changeEvent(event, this.render);
         break;
       case "save":
-        this.saveManager.save(this);
-        event = this.eventBuilder.build(dataEvents.mainEvents[0]);
+        this.saveManager.save(this)
+        event = this.eventBuilder.build(dataEvents.mainEvents[0])
         event.outputContext = `Vous avez sauvegardé`;
         this.actualRoom = changeEvent(event, this.render);
         break;
