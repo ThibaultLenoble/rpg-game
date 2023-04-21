@@ -18,19 +18,20 @@ export default class ChoiceBuilder {
     return this.build(choice, eventType)
   }
 
-  createChoice(choiceData : { label: string; action: string }) {
-    return new Choice(choiceData.label, choiceData.action);
+  createChoice(choiceData : { id: number, label: string; action: string }) {
+    return new Choice(choiceData.id, choiceData.label, choiceData.action);
   }
 
   createExchangeChoice(
     choiceData: {
+      id: number,
       label: string;
       action: string,
       needed: {type: string, amount: number},
       giving: {type: string, amount: number}
     }
     ) {
-    return new ExchangeChoice(choiceData.label, choiceData.action, choiceData.needed, choiceData.giving);
+    return new ExchangeChoice(choiceData.id, choiceData.label, choiceData.action, choiceData.needed, choiceData.giving);
   }
 
   getChoice(choiceId: number, eventType: string) {

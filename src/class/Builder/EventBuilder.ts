@@ -14,8 +14,9 @@ export default class EventBuilder {
     let event: any;
 
     eventData.type == "ExchangeEvent"
-      ? (event = new ExchangeEvent(eventData.label, eventData.outputContext))
+      ? (event = new ExchangeEvent(eventData.id, eventData.label, eventData.outputContext))
       : (event = new RoomEvent(
+          eventData.id,
           eventData.label,
           eventData.type,
           eventData.outputContext
@@ -24,7 +25,7 @@ export default class EventBuilder {
     if (eventData.choices?.length > 0) {
       eventData.choices.forEach((choice: number) => {
         event.choices.push(
-          this.choiceBuilder.buildSpecificChoice(this.choiceBuilder.getChoice(choice, eventData.type), eventData.type)
+          this.choiceBuilder.buildSpecificChoice(this.choiceBuilder.getChoice(choice, 'MainEvent'), eventData.type)
         );
       });
     }
