@@ -13,7 +13,7 @@ export default class MainEvent extends RoomEvent {
     choices?: Choice[],
     image?: string,
   ) {
-    super(inputContext, outputContext, choices, image);
+    super(inputContext, 'MainEvent', outputContext, choices, image);
 
     if (outputContext) {
       this.outputContext = outputContext;
