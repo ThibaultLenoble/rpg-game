@@ -40,13 +40,14 @@ export default class GameInstance {
 
   newGame() {
     this.buildMap();
-    this.actualRoom = changeEvent(this.eventBuilder.build(dataEvents.mainEvents[1]), this.render);
+    this.actualRoom = changeEvent(
+      this.eventBuilder.build(dataEvents.mainEvents[1]),
+      this.render
+    );
   }
 
   newGameFromFile() {
-
     if (this.actualRoom) {
-
       this.actualRoom = changeEvent(this.actualRoom, this.render);
     }
   }
@@ -171,6 +172,9 @@ export default class GameInstance {
           this.actualRoom = changeEvent(event, this.render);
         }
         break;
+      case "give-item":
+        console.info("gagagougou");
+        break;
       case "chest-earn-money":
         hasCase = true;
         const money =
@@ -240,8 +244,8 @@ export default class GameInstance {
         this.actualRoom = changeEvent(event, this.render);
         break;
       case "save":
-        this.saveManager.save(this)
-        event = this.eventBuilder.build(dataEvents.mainEvents[0])
+        this.saveManager.save(this);
+        event = this.eventBuilder.build(dataEvents.mainEvents[0]);
         event.outputContext = `Vous avez sauvegardé`;
         this.actualRoom = changeEvent(event, this.render);
         break;
