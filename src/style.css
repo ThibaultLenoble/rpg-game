@@ -80,3 +80,7 @@ body {
 .prompt__error {
   color: rgb(219, 75, 75);
 }
+
+.hide {
+  display: none;
+}

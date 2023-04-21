@@ -88,7 +88,7 @@ class Player {
         this.currentLife += amount;
         return "Votre vie augmente de " + amount + " ❤️ supplémentaires";
       case "get-sip":
-        this.getSip()
+        this.getSip();
         return "Vous gagnez " + amount + " dose d'🥛 pour votre gourde";
       default:
         return "Objet inconnu";
@@ -121,18 +121,23 @@ class Player {
       `${this.thirst}/${this.maxThirst} 💧`
     );
 
-    this.render.displayMessage(
-      ".player__sip",
-      `${this.sip} 🥛`
-    );
+    this.render.displayMessage(".player__sip", `${this.sip} 🥛`);
   }
 
   getSip() {
-    this.sip++
-    this.render.displayMessage(
-      ".player__sip",
-      `${this.sip} 🥛`
-    );
+    this.sip++;
+    this.render.displayMessage(".player__sip", `${this.sip} 🥛`);
+  }
+
+  loadFromDatas(savedPlayer: { currentLife: number; maxLife: number; role: string | undefined; level: number; coins: number; image: string | undefined; sip: number; thirst: number; }) {
+    this.currentLife = savedPlayer.currentLife
+    this.maxLife = savedPlayer.maxLife
+    this.role = savedPlayer.role
+    this.level = savedPlayer.level
+    this.coins = savedPlayer.coins
+    this.image = savedPlayer.image
+    this.sip = savedPlayer.sip
+    this.thirst = savedPlayer.thirst
   }
 }
 

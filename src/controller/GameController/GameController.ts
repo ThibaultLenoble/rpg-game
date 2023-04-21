@@ -1,16 +1,18 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 import GameInstance from "../../class/GameInstance/GameInstance";
 import Player from "../../class/Player/Player";
-import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
-import { dataRole } from "../../datas/role";
+import {displayAllRoleChoices, setRole} from "../../utils/RoleManager";
+import {dataRole} from "../../datas/role";
 import Render from "../../class/Render/Render";
+import SaveManager from "../../utils/SaveManager";
 
 export default class GameController {
   gameInstance?: GameInstance;
 
   player?: Player;
 
-  render = new Render();
+  render: Render = new Render();
+  saveManager: SaveManager = new SaveManager();
 
   validateNumericInput(inputValue: string): boolean {
     if (this.isNumeric(inputValue)) {
@@ -46,11 +48,12 @@ export default class GameController {
               this.render.displayMessage(
                 ".player__pic",
                 "<img width='150' height='150' src='" +
-                  this.player.image +
-                  "' />"
+                this.player.image +
+                "' />"
               );
 
             this.gameInstance = new GameInstance(this.player, this.render);
+            this.gameInstance.newGame()
           } else {
             this.render.displayMessage(
               ".prompt__error",
@@ -79,6 +82,31 @@ export default class GameController {
         }
       }
     }
+  }
+
+  newGameFromSave(gameInstance: GameInstance) {
+    this.gameInstance = gameInstance
+    this.player = this.gameInstance.player
+
+    this.render.displayMessage(
+      ".player__name",
+      "Joueur " + this.player.name
+    );
+
+    this.render.displayMessage(
+      ".player__role",
+      "Role : " + this.player.role
+    );
+
+    this.render.displayMessage(
+      ".player__pic",
+      "<img width='150' height='150' src='" +
+      this.player.image +
+      "' />"
+    );
+
+    this.gameInstance?.newGameFromFile()
+
   }
 
   isNumeric(str: string) {
