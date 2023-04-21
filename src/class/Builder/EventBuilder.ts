@@ -41,7 +41,7 @@ export default class EventBuilder {
     let list: any[] = [];
 
     if (eventType === 'MainEvent') {
-      list = dataEvents.mainEvents
+      list = dataEvents.MainEvent
     } else {
       list = dataEvents.available
     }

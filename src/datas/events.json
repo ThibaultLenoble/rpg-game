@@ -1,5 +1,5 @@
 {
-  "mainEvents": [
+  "MainEvent": [
     {
       "id" : 1,
       "label" : "Que faire ?",

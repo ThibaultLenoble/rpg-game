@@ -4,7 +4,6 @@
 import RoomEvent from "../RoomEvent/RoomEvent";
 import Player from "../Player/Player";
 import { changeEvent } from "../../utils/EventHandler";
-import * as dataEvents from "../../datas/events.json";
 import * as dataItems from "../../datas/items.json";
 import ExchangeChoice from "../Choice/ExchangeChoice";
 import Choice from "../Choice/Choice";
@@ -41,7 +40,8 @@ export default class GameInstance {
 
   newGame() {
     this.buildMap();
-    this.actualRoom = changeEvent(this.eventBuilder.build(this.eventBuilder.getEvent(2, 'main')), this.render);
+    console.log(this.rooms)
+    this.actualRoom = changeEvent(this.eventBuilder.build(this.eventBuilder.getEvent(2, 'MainEvent')), this.render);
   }
 
   newGameFromFile() {
@@ -113,10 +113,10 @@ export default class GameInstance {
           this.randomIntFromInterval(1, 4);
         this.player.heal(heal);
         this.eventBuilder.build(
-          this.eventBuilder.getEvent(2, 'main')
+          this.eventBuilder.getEvent(2, 'MainEvent')
         ).outputContext = `Vous avez été soigné de ${heal} ❤️.`;
         this.actualRoom = changeEvent(
-          this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main')),
+          this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent')),
           this.render
         );
         break;
@@ -128,7 +128,7 @@ export default class GameInstance {
           this.randomIntFromInterval(1, 4);
         this.player.maxLife += hpPlus;
         this.player.heal(hpPlus);
-        event = this.eventBuilder.build(this.eventBuilder.getEvent(2, 'main'));
+        event = this.eventBuilder.build(this.eventBuilder.getEvent(2, 'MainEvent'));
         event.outputContext = `Votre vie augmente de ${hpPlus} ❤️.`;
         this.actualRoom = changeEvent(event, this.render);
         break;
@@ -139,7 +139,7 @@ export default class GameInstance {
           this.player.maxLife += tacosPlus;
           this.player.heal(tacosPlus);
           this.eventBuilder.build(
-            this.eventBuilder.getEvent(1, 'main')
+            this.eventBuilder.getEvent(1, 'MainEvent')
           ).outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
         } else {
           this.player.currentLife = 0;
@@ -149,7 +149,7 @@ export default class GameInstance {
           this.render.endGame(false);
         } else {
           this.actualRoom = changeEvent(
-            this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main')),
+            this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent')),
             this.render
           );
         }
@@ -165,7 +165,7 @@ export default class GameInstance {
         if (this.player.currentLife <= 0) {
           this.render.endGame(false);
         } else {
-          const event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main'));
+          const event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'));
           event.outputContext = `Vous avez subi ${damage} dégats.`;
           this.actualRoom = changeEvent(event, this.render);
         }
@@ -184,14 +184,14 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.earnMoney(money);
-        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main'));
+        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'));
         event.outputContext = `Vous avez gagné ${money} 🫘.`;
         this.actualRoom = changeEvent(event, this.render);
         break;
       case "chest-get-sip":
         hasCase = true;
         this.player.getSip();
-        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main'));
+        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'));
         event.outputContext = `Vous avez gagné 1 dose d'🥛.`;
         this.actualRoom = changeEvent(event, this.render);
         break;
@@ -205,7 +205,7 @@ export default class GameInstance {
           );
           if (exchangeAction) {
             isExchangeOk = true;
-            event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main'));
+            event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'));
             event.outputContext =
               exchangeAction +
               ", " +
@@ -241,13 +241,13 @@ export default class GameInstance {
         }
         break;
       case "nothing":
-        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main'));
+        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'));
         event.outputContext = `Vous n'avez rien fait`;
         this.actualRoom = changeEvent(event, this.render);
         break;
       case "save":
         this.saveManager.save(this)
-        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'main'))
+        event = this.eventBuilder.build(this.eventBuilder.getEvent(1, 'MainEvent'))
         event.outputContext = `Vous avez sauvegardé`;
         this.actualRoom = changeEvent(event, this.render);
         break;
