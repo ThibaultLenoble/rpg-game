@@ -112,13 +112,11 @@ export default class GameInstance {
           (this.player.level * this.levelMultiplicator) *
           this.randomIntFromInterval(1, 4);
         this.player.heal(heal);
-        this.eventBuilder.build(
-          this.eventBuilder.getEvent(2, "MainEvent")
-        ).outputContext = `Vous avez été soigné de ${heal} ❤️.`;
-        this.actualRoom = changeEvent(
-          this.eventBuilder.build(this.eventBuilder.getEvent(1, "MainEvent")),
-          this.render
-        );
+        event = this.eventBuilder.build(
+          this.eventBuilder.getEvent(1, "MainEvent")
+        )
+        event.outputContext = `Vous avez été soigné de ${heal} ❤️.`;
+        this.actualRoom = event
         break;
       case "chest-hp-plus":
         hasCase = true;
@@ -129,7 +127,7 @@ export default class GameInstance {
         this.player.maxLife += hpPlus;
         this.player.heal(hpPlus);
         event = this.eventBuilder.build(
-          this.eventBuilder.getEvent(2, "MainEvent")
+          this.eventBuilder.getEvent(1, "MainEvent")
         );
         event.outputContext = `Votre vie augmente de ${hpPlus} ❤️.`;
         this.actualRoom = changeEvent(event, this.render);
@@ -140,9 +138,10 @@ export default class GameInstance {
           const tacosPlus = 100;
           this.player.maxLife += tacosPlus;
           this.player.heal(tacosPlus);
-          this.eventBuilder.build(
+          event = this.eventBuilder.build(
             this.eventBuilder.getEvent(1, "MainEvent")
-          ).outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
+          )
+          event.outputContext = `Vous avez de la chance, votre vie augmente de ${tacosPlus} ❤️.`;
         } else {
           this.player.currentLife = 0;
         }
@@ -151,7 +150,7 @@ export default class GameInstance {
           this.render.endGame(false);
         } else {
           this.actualRoom = changeEvent(
-            this.eventBuilder.build(this.eventBuilder.getEvent(1, "MainEvent")),
+            event,
             this.render
           );
         }
