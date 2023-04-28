@@ -20,9 +20,9 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
   <div class="context">
     <img src="${AppImages.archeologue}" />
   </div>
-  <div class="pInvWrapper hide">
+  <div class="p-inv-wrapper hide">
     <h2>Inventory</h2>
-    <div id="invContainer"></div>
+    <div id="inv-container"></div>
   </div>
   <div class="player">
     <div class="player__info">
@@ -32,7 +32,7 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
       <p class="player__coins"></p>
       <p class="player__thirst"></p>
       <p class="player__sip"></p>
-      <button id='showInventory'><img src="${AppImages.iconInventory}" class="icon" /></button>
+      <button id='show_inventory' class="hide"><img src="${AppImages.iconInventory}" class="icon" /></button>
       <div class="player__pic"></div>
     </div>
   </div>
@@ -42,8 +42,8 @@ document.querySelector<HTMLDivElement>("#app")!.innerHTML = `
 // <p class="player__sip"></p>
 
 // Show Inventory
-const invent: HTMLDivElement | null = document.querySelector(".pInvWrapper");
-const buttonShow = document.querySelector("#showInventory");
+const invent: HTMLDivElement | null = document.querySelector(".p-inv-wrapper");
+const buttonShow = document.querySelector("#show_inventory");
 buttonShow?.addEventListener("click", () => {
   if (invent)
     invent.classList.contains("hide")
@@ -98,3 +98,26 @@ const getValue = () => {
     saveLoaderContainer.classList.add("hide");
   }
 };
+
+function useInventoryItem(id: string) {
+  const item: HTMLDivElement | null = document.querySelector(
+    ".itemSlot[data-item-id='" + id + "']"
+  );
+  if (gameController.gameInstance?.player.inventory) {
+    if (item) {
+      const itemId = item.getAttribute("data-item-id");
+
+      if (itemId) {
+        const result = gameController.gameInstance?.player.inventory.useItem(
+          parseInt(itemId)
+        );
+
+        if (result) {
+          gameController.handleSpecificAction(result.action, result.name);
+        }
+      }
+    }
+  }
+}
+
+window.useInventoryItem = useInventoryItem;

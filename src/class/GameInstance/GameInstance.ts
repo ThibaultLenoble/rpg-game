@@ -233,14 +233,13 @@ export default class GameInstance {
         break;
       case "drink":
         hasCase = true;
-        if (this.player.sip > 0) {
-          this.player.drink();
-          this.changeRoom();
-        } else {
-          this.render.displayMessage(
-            ".prompt__error",
-            `Erreur : Vous n'avez plus d'eau dans votre gourde`
-          );
+
+        this.player.drink();
+
+        const item = this.player.inventory.getItemById(0);
+
+        if (item) {
+          this.player.inventory.useItem(item.id);
         }
         break;
       case "nothing":
