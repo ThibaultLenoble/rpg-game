@@ -119,5 +119,5 @@ function useInventoryItem(id: string) {
     }
   }
 }
-
+declare const window: any;
 window.useInventoryItem = useInventoryItem;
