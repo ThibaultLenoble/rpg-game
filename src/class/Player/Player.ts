@@ -25,7 +25,9 @@ class Player {
     this.level = 1;
     this.render = render;
     this.inventory.addItem(new Item("Game winner", "heal", 1, 1, 1, undefined));
-    this.inventory.addItem(new Item("Gourde", "drink", 0, 25, 3, undefined));
+    this.inventory.addItem(
+      new Item("Boire une gorgée dans la gourde", "drink", 0, 25, 3, undefined)
+    );
   }
 
   takeHit(damage: number) {
@@ -118,12 +120,6 @@ class Player {
 
     if (this.thirst > this.maxThirst) {
       this.thirst = this.maxThirst;
-    }
-
-    const item = this.inventory.getItemById(0);
-
-    if (item) {
-      this.inventory.useItem(item);
     }
 
     this.render.displayMessage(

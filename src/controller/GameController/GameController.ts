@@ -5,6 +5,7 @@ import { displayAllRoleChoices, setRole } from "../../utils/RoleManager";
 import { dataRole } from "../../datas/role";
 import Render from "../../class/Render/Render";
 import SaveManager from "../../utils/SaveManager";
+import Choice from "../../class/Choice/Choice";
 
 export default class GameController {
   gameInstance?: GameInstance;
@@ -102,5 +103,13 @@ export default class GameController {
 
   isNumeric(str: string) {
     return !isNaN(parseFloat(str));
+  }
+
+  handleSpecificAction(action: string, name: string) {
+    const choice = new Choice(9999, name, action);
+
+    if (this.gameInstance) {
+      this.gameInstance.handleAction(choice);
+    }
   }
 }

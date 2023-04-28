@@ -98,3 +98,26 @@ const getValue = () => {
     saveLoaderContainer.classList.add("hide");
   }
 };
+
+function useInventoryItem(id: string) {
+  const item: HTMLDivElement | null = document.querySelector(
+    ".itemSlot[data-item-id='" + id + "']"
+  );
+  if (gameController.gameInstance?.player.inventory) {
+    if (item) {
+      const itemId = item.getAttribute("data-item-id");
+
+      if (itemId) {
+        const result = gameController.gameInstance?.player.inventory.useItem(
+          parseInt(itemId)
+        );
+
+        if (result) {
+          gameController.handleSpecificAction(result.action, result.name);
+        }
+      }
+    }
+  }
+}
+
+window.useInventoryItem = useInventoryItem;
