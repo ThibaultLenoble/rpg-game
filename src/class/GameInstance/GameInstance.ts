@@ -235,6 +235,7 @@ export default class GameInstance {
         hasCase = true;
         if (this.player.sip > 0) {
           this.player.drink();
+
           this.changeRoom();
         } else {
           this.render.displayMessage(

@@ -1,6 +1,7 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 
+import Item from "../Item/Item";
 import Player from "../Player/Player";
 
 export default class Render {
@@ -17,6 +18,8 @@ export default class Render {
     );
 
     this.displayMessage(".player__sip", `${player.sip} 🥛`);
+
+    document.querySelector("#show_inventory")?.classList.remove("hide");
   }
 
   displayMessage(selector: string, message: string) {
@@ -47,5 +50,11 @@ export default class Render {
     this.removeMessage(".prompt__room-advance");
     this.removeMessage(".prompt__input");
     this.removeMessage(".prompt__submit");
+  }
+
+  updateInventoryItem(itemToUpdate: Item) {
+    document
+      .querySelector(".itemSlot[data-item-id='" + itemToUpdate.id + "']")
+      ?.setAttribute("data-item-use-count", itemToUpdate.useCount.toString());
   }
 }
