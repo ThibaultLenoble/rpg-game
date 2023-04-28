@@ -21,7 +21,7 @@ export default class GameInstance {
 
   roomCount: number = 0;
 
-  maxRoom: number = 15;
+  maxRoom: number = 3;
 
   healMinValue: number = 10;
   hpPlusMinValue: number = 5;
@@ -60,7 +60,7 @@ export default class GameInstance {
   changeRoom(): void {
     this.roomCount++;
     if (this.roomCount > this.maxRoom) {
-      this.render.endGame(true);
+      this.render.endGame(!!this.player.inventory.getItemById(1) ?? false);
     } else {
       this.actualRoom = changeEvent(this.rooms[this.roomCount], this.render);
 

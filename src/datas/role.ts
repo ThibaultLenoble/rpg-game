@@ -1,6 +1,11 @@
 import AppImages from "../assets/image";
 
-export const dataRole: { title: string; hpMax: number; coins: number; image: string }[] = [
+export const dataRole: {
+  title: string;
+  hpMax: number;
+  coins: number;
+  image: string;
+}[] = [
   {
     title: "La Jambonneuse Justicière",
     hpMax: 60,

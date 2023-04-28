@@ -22,9 +22,9 @@ export default class Inventory {
       item.setAttribute("inv-type", "p");
       item.setAttribute(
         "style",
-        "background: url(" +
+        "background: url('" +
           this.items[i].image +
-          "); background-size: contain;"
+          "'); background-size: contain;"
       );
 
       document.getElementById("invContainer")?.appendChild(item);
@@ -64,5 +64,9 @@ export default class Inventory {
       console.info("false");
       return false;
     }
+  }
+
+  getItemById(itemId: number) {
+    return this.items.find(item => item.id === itemId);
   }
 }

@@ -2,8 +2,8 @@ export default class Item {
   name: string;
   action: string;
   amount: number;
-  image: string;
   useCount: number;
+  image: string;
   id: number;
 
   constructor(
@@ -11,8 +11,8 @@ export default class Item {
     action: string,
     id: number,
     amount?: number,
-    image?: string,
-    useCount?: number
+    useCount?: number,
+    image?: string
   ) {
     this.name = name;
     this.action = action;

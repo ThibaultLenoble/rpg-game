@@ -24,6 +24,7 @@ class Player {
     this.name = name;
     this.level = 1;
     this.render = render;
+    this.inventory.addItem(new Item("Game winner", "heal", 1, 1, 1, undefined));
   }
 
   takeHit(damage: number) {
@@ -70,10 +71,6 @@ class Player {
     this.render.displayMessage(".player__coins", `${this.coins} 🫘`);
 
     return response;
-  }
-
-  setInventory() {
-    this.inventory.addItem(new Item("Gourde", "", 1, undefined, "", 12));
   }
 
   exchangeAction(slug: string, amount: number): string | boolean {
