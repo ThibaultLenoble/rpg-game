@@ -1,6 +1,8 @@
 /* eslint-disable @typescript-eslint/no-inferrable-types */
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
 /* eslint-disable no-case-declarations */
+import Inventory from "../Inventory/Inventory";
+import Item from "../Item/Item";
 import Render from "../Render/Render";
 
 class Player {
@@ -16,11 +18,16 @@ class Player {
   maxThirst: number = 50;
   sipRecovery: number = 25;
   render: Render;
+  inventory: Inventory = new Inventory();
 
   constructor(name: string, render: Render) {
     this.name = name;
     this.level = 1;
     this.render = render;
+    this.inventory.addItem(new Item("Game winner", "heal", 1, 1, 1, undefined));
+    this.inventory.addItem(
+      new Item("Boire une gorgée dans la gourde", "drink", 0, 25, 3, undefined)
+    );
   }
 
   takeHit(damage: number) {
@@ -109,7 +116,6 @@ class Player {
   }
 
   drink() {
-    this.sip--;
     this.thirst += this.sipRecovery;
 
     if (this.thirst > this.maxThirst) {
@@ -129,15 +135,24 @@ class Player {
     this.render.displayMessage(".player__sip", `${this.sip} 🥛`);
   }
 
-  loadFromDatas(savedPlayer: { currentLife: number; maxLife: number; role: string | undefined; level: number; coins: number; image: string | undefined; sip: number; thirst: number; }) {
-    this.currentLife = savedPlayer.currentLife
-    this.maxLife = savedPlayer.maxLife
-    this.role = savedPlayer.role
-    this.level = savedPlayer.level
-    this.coins = savedPlayer.coins
-    this.image = savedPlayer.image
-    this.sip = savedPlayer.sip
-    this.thirst = savedPlayer.thirst
+  loadFromDatas(savedPlayer: {
+    currentLife: number;
+    maxLife: number;
+    role: string | undefined;
+    level: number;
+    coins: number;
+    image: string | undefined;
+    sip: number;
+    thirst: number;
+  }) {
+    this.currentLife = savedPlayer.currentLife;
+    this.maxLife = savedPlayer.maxLife;
+    this.role = savedPlayer.role;
+    this.level = savedPlayer.level;
+    this.coins = savedPlayer.coins;
+    this.image = savedPlayer.image;
+    this.sip = savedPlayer.sip;
+    this.thirst = savedPlayer.thirst;
   }
 }
 
