@@ -140,21 +140,24 @@ h3 {
   padding: 0px 0px;
 }
 
-.pInvWrapper {
+.p-inv-wrapper {
   background: #222;
   height: 309px;
   width: 340px;
   display: block;
   padding: 5px;
   position: absolute;
+  z-index: 1500;
+  top: 0;
+  left: 0;
 }
 
-#invContainer{
+#inv-container{
   width: 100%;
   height: auto;
 }
 
-#invContainer h3 {
+#inv-container h3 {
   padding: 0px 10px; 
 }
 
@@ -167,6 +170,17 @@ h3 {
   border-radius: 5px;
   position: relative;
   cursor: pointer;
+
+}
+
+.itemSlot:before {
+  position: absolute;
+  content: attr(data-item-use-count);
+  display: block;
+  bottom: 0;
+  right: 0;
+  transform: translate(-50%, -50%);
+  background-color: pink;
 }
 
 .itemSlot:hover {
