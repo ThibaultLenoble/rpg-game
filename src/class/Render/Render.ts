@@ -84,7 +84,7 @@ export default class Render {
       document.getElementById("inv-container")?.appendChild(item);
     }
 
-    document.querySelectorAll(".itemitem").forEach((item, index) => {
+    document.querySelectorAll(".itemitem").forEach((item) => {
       item.setAttribute(
         "onclick",
         "window.useInventoryItem(" + item.getAttribute("data-item-id") + ")"
