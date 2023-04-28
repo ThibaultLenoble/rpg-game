@@ -103,23 +103,23 @@
       "action": "chest-heal"
     },
     {
+      "id": 21,
       "label": "Ramasser le sandwich placé dans le coin de la pièce, et le garder pour plus tard",
-      "action": "give-item",
-      "item": 1
+      "action": "chest-heal"
     },
     {
+      "id": 22,
       "label": "Mettre de côté le médaillon trouvé qui git au sol",
-      "action": "give-item",
-      "item": 2
+      "action": "chest-hit"
     }
   ],
   "ExchangeEvent": [
     {
-      "id": 20,
+      "id": 23,
       "label": "Sauver le village de l'attaque des bandits qui menaçaient de tout détruire",
       "action": "exchange",
       "needed": {
-        "type": "heal",
+        "type": "hit",
         "amount": 30
       },
       "giving": {
@@ -128,7 +128,7 @@
       }
     },
     {
-      "id": 21,
+      "id": 24,
       "label": "Dépenser toutes vos économies pour acheter l'objet magique convoité qui vous rendra plus fort",
       "action": "exchange",
       "needed": {
@@ -141,68 +141,29 @@
       }
     },
     {
-      "id": 22,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-      "action": "exchange",
-      "needed": {
-        "type": "heal",
-        "amount": 55
-      },
-      "giving": {
-        "type": "give-coin",
-        "amount": 400
-      }
-    },
-    {
-      "id": 23,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-      "action": "exchange",
-      "needed": {
-        "type": "heal",
-        "amount": 55
-      },
-      "giving": {
-        "type": "give-coin",
-        "amount": 400
-      }
-    },
-    {
-      "id": 24,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
-      "action": "exchange",
-      "needed": {
-        "type": "heal",
-        "amount": 55
-      },
-      "giving": {
-        "type": "give-coin",
-        "amount": 400
-      }
-    },
-    {
       "id": 25,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Une enigme est devant vous. La réaliser, mais attention, ça prend du temps !",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 5
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "get-coin",
+        "amount": 50
       }
     },
     {
       "id": 26,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Échanger une potion de soin contre un sac de pièces d'or pour améliorer votre fortune.",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 50
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "get-coin",
+        "amount": 100
       }
     },
     {
@@ -210,129 +171,168 @@
       "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
       "action": "exchange",
       "needed": {
-        "type": "heal",
+        "type": "hit",
         "amount": 55
       },
       "giving": {
-        "type": "give-coin",
+        "type": "get-coin",
         "amount": 400
       }
     },
     {
       "id": 28,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Vous rencontrer le cuisto du donjon. Il vous fait une ristourne sur son meilleur plat.",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "give-coin",
+        "amount": 20
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "hp-plus",
+        "amount": 5
       }
     },
     {
       "id": 29,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Prendre la fiole de couleur bleu",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 10
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "get-sip",
+        "amount": 1
       }
     },
     {
       "id": 30,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Une source d'eau est devant vous. Gouter l'eau et remplir votre gourde.",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 20
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "get-sip",
+        "amount": 2
       }
     },
     {
       "id": 31,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Un veille homme dort au sol. Volez le !",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 20
       },
       "giving": {
-        "type": "give-coin",
+        "type": "get-coin",
         "amount": 400
       }
     },
     {
       "id": 32,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Acheter une arme pour vous défendre !",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "give-coin",
+        "amount": 700
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "hp-plus",
+        "amount": 30
       }
     },
     {
       "id": 33,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Échanger un bouclier en bois qui vous donne de la défense.",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "give-coin",
+        "amount": 600
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "hp-plus",
+        "amount": 30
       }
     },
     {
       "id": 34,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Échanger une armure de cuir qui vous donne de la défense.",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 35
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "hp-plus",
+        "amount": 15
       }
     },
     {
       "id": 35,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Vous trouver un petit brocolis violet. Il sens très bon. Manger le !",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 30
       },
       "giving": {
-        "type": "give-coin",
-        "amount": 400
+        "type": "hp-plus",
+        "amount": 30
       }
     },
     {
       "id": 36,
-      "label": "Risquer votre vie pour sauver la princesse captive du donjon maudit",
+      "label": "Un homme armé vous menace. Un coffre est derrière lui. Vous avez une chance de le battre et récupérer le coffre.",
       "action": "exchange",
       "needed": {
-        "type": "heal",
-        "amount": 55
+        "type": "hit",
+        "amount": 40
       },
       "giving": {
+        "type": "get-coin",
+        "amount": 30
+      }
+    },
+    {
+      "id": 37,
+      "label": "En cherchant dans la salle, vous trouver un vieux lire. Lire la formule magique !",
+      "action": "exchange",
+      "needed": {
+        "type": "hit",
+        "amount": 2
+      },
+      "giving": {
+        "type": "get-coin",
+        "amount": 10
+      }
+    },
+    {
+      "id": 38,
+      "label": "Acheter un casque en or !",
+      "action": "exchange",
+      "needed": {
         "type": "give-coin",
-        "amount": 400
+        "amount": 200
+      },
+      "giving": {
+        "type": "hp-plus",
+        "amount": 10
+      }
+    },
+    {
+      "id": 39,
+      "label": "Un veille homme vous fait passer par une porte secrète",
+      "action": "exchange",
+      "needed": {
+        "type": "give-coin",
+        "amount": 100
+      },
+      "giving": {
+        "type": "hp-plus",
+        "amount": 20
       }
     }
   ]

@@ -21,7 +21,7 @@ export default class GameInstance {
 
   roomCount: number = 0;
 
-  maxRoom: number = 3;
+  maxRoom: number = 15;
 
   healMinValue: number = 10;
   hpPlusMinValue: number = 5;
